@@ -4,9 +4,93 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RhythmiX.WPF"
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Height="576" Width="1024"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border CornerRadius="10" Background="{StaticResource MainWindowBack}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="80*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*" />
+                <RowDefinition Height="93*" />
+            </Grid.RowDefinitions>
+
+            <Border Background="Transparent" Grid.ColumnSpan="2" x:Name="HeaderBar" 
+                    CornerRadius="10 10 0 0"
+                    MouseDown="HeaderBar_MouseDown"/>
+
+            <Border Grid.Column="1">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right">
+                    <Button x:Name="btnMinimize" Click="btnMinimize_Click">
+                        <svgc:SvgViewbox Style="{StaticResource WindowControlIcon}" Source="/Icons/btn_minimize.svg"/>
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Width" Value="20" />
+                                <Setter Property="Height" Value="20" />
+                                <Setter Property="Background" Value="#36acf4" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Cursor" Value="Hand" />
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#65bef5" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="btnClose" Click="btnClose_Click">
+                        <svgc:SvgViewbox Style="{StaticResource WindowControlIcon}" Source="/Icons/btn_close.svg"/>
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Width" Value="20" />
+                                <Setter Property="Height" Value="20" />
+                                <Setter Property="Background" Value="#f44236" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Cursor" Value="Hand" />
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#f3655b" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Border>
+            
+            <Border Grid.RowSpan="2">
+                
+            </Border>
+        </Grid>
+    </Border>
 </Window>
