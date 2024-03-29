@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmiX.WPF", "RhythmiX.WPF\RhythmiX.WPF.csproj", "{06CCE980-32C6-448D-9843-EC07C54800A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmiX.ClassLibrary", "RhythmiX.ClassLibrary\RhythmiX.ClassLibrary.csproj", "{F381939C-57A2-4CEB-87CA-F26833EAF648}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{06CCE980-32C6-448D-9843-EC07C54800A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06CCE980-32C6-448D-9843-EC07C54800A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06CCE980-32C6-448D-9843-EC07C54800A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F381939C-57A2-4CEB-87CA-F26833EAF648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F381939C-57A2-4CEB-87CA-F26833EAF648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F381939C-57A2-4CEB-87CA-F26833EAF648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F381939C-57A2-4CEB-87CA-F26833EAF648}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

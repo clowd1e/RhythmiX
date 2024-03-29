@@ -6,6 +6,33 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Icons\app_icon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\btn_close.svg" />
+    <None Remove="Icons\btn_minimize.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Icons\app_icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RhythmiX.ClassLibrary\RhythmiX.ClassLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpVectors" Version="1.8.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\btn_close.svg" />
+    <Resource Include="Icons\btn_minimize.svg" />
+  </ItemGroup>
 
 </Project>
