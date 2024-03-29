@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:RhythmiX.WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/UIColors.xaml" />
+                <ResourceDictionary Source="Styles/ButtonsStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
