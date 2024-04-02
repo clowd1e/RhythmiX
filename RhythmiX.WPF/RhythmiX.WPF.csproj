@@ -13,6 +13,8 @@
     <None Remove="Icons\btn_close.svg" />
     <None Remove="Icons\btn_minimize.svg" />
     <None Remove="Images\app_logo.png" />
+    <None Remove="Images\default.png" />
+    <None Remove="Images\envelope.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +37,8 @@
     <Resource Include="Icons\btn_close.svg" />
     <Resource Include="Icons\btn_minimize.svg" />
     <Resource Include="Images\app_logo.png" />
+    <Resource Include="Images\default.png" />
+    <Resource Include="Images\envelope.png" />
   </ItemGroup>
 
 </Project>
