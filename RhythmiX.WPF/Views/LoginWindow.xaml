@@ -13,6 +13,15 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/UIColors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
     <Border CornerRadius="10" Background="{StaticResource LoginWindowBack}">
         <Grid>
             <Grid.RowDefinitions>
@@ -34,8 +43,8 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    Height="43"/>
 
-            <StackPanel>
-                
+            <StackPanel Grid.Row="2">
+                <components:CustomInputField LabelText="Email" TextBoxBackImage="envelope.png" PlaceholderText="Type your email" />
             </StackPanel>
         </Grid>
     </Border>
