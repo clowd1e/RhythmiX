@@ -14,4 +14,29 @@
         <Setter Property="Height" Value="10" />
     </Style>
 
+    <Style x:Key="LoginButtonStyle" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontFamily" Value="{StaticResource RaleWay}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource CommonWhite}" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                            CornerRadius="20">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                                <GradientStop Color="#FEAC5E" Offset="0" />
+                                <GradientStop Color="#C779D0" Offset="0.5" />
+                                <GradientStop Color="#4BC0C8" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
