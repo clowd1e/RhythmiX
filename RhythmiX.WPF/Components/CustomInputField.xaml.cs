@@ -20,7 +20,7 @@ namespace RhythmiX.WPF.Components
 
         public static readonly DependencyProperty PlaceholderTextProperty =
             DependencyProperty.Register("PlaceholderText", typeof(string), typeof(CustomInputField), new PropertyMetadata("Default placeholder"));
-
+        
         public string LabelText
         {
             get { return (string)GetValue(LabelTextProperty); }

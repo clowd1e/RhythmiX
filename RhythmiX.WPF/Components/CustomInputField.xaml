@@ -18,15 +18,9 @@
     </UserControl.Resources>
 
     <StackPanel Orientation="Vertical">
-        <TextBlock Style="{StaticResource labelTextStyle}" x:Name="labelText" Text="Label" 
-                   FontFamily="{DynamicResource RaleWay}"
-                   Foreground="{StaticResource CommonWhite}"/>
+        <TextBlock Style="{StaticResource labelTextStyle}" x:Name="labelText" Text="Label" />
         <Grid>
             <TextBox Style="{StaticResource customTextBoxStyle}"
-                     BorderBrush="{StaticResource CommonWhite}"
-                     FontFamily="{DynamicResource RaleWay}"
-                     Foreground="{StaticResource CustomInputFieldGray}"
-                     CaretBrush="{StaticResource CustomInputFieldGray}"
                      x:Name="customTextBox">
                 <TextBox.Background>
                     <ImageBrush x:Name="customTextBoxBackImage" ImageSource="/Images/default.png" Stretch="Uniform"
@@ -35,11 +29,11 @@
             </TextBox>
 
             <TextBlock x:Name="Placeholder"
-                IsHitTestVisible="False" Text="Default placeholder" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="22,0,0,0" Foreground="#808080">
+                IsHitTestVisible="False" Text="Default placeholder" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="24,0,0,0" Foreground="#808080">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"/>
-                        <Setter Property="FontFamily" Value="{DynamicResource RaleWay}" />
+                        <Setter Property="FontFamily" Value="{StaticResource RaleWay}" />
                         <Setter Property="FontWeight" Value="Medium" />
 
                         <Style.Triggers>
