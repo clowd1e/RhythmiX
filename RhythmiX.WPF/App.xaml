@@ -8,6 +8,7 @@
                 <ResourceDictionary Source="Styles/UIColors.xaml" />
                 <ResourceDictionary Source="Styles/ButtonsStyle.xaml" />
                 <ResourceDictionary Source="Styles/CustomInputFieldStyle.xaml" />
+                <ResourceDictionary Source="Styles/LoginElementsStyle.xaml" />
                 <ResourceDictionary Source="Styles/FontFamilies.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
