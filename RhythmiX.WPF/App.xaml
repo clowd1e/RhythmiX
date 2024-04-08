@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="Styles/ButtonsStyle.xaml" />
                 <ResourceDictionary Source="Styles/CustomInputFieldStyle.xaml" />
                 <ResourceDictionary Source="Styles/LoginElementsStyle.xaml" />
+                <ResourceDictionary Source="Styles/SignupElementsStyle.xaml" />
                 <ResourceDictionary Source="Styles/FontFamilies.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

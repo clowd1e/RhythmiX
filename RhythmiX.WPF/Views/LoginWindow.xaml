@@ -56,9 +56,10 @@
 
             <StackPanel HorizontalAlignment="Center" Grid.Row="6" Margin="0 22 0 0" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource BottomTextStyle}"
-                    Text="Don't have account yet? "/>
+                        Text="Don't have account yet? "/>
                 <Button Style="{StaticResource SingUpButtonStyle}"
-                    Content="Sing up"/>
+                        Content="Sing up"
+                        Command="{Binding ChangeToSingupForm}"/>
             </StackPanel>
             
         </Grid>
