@@ -198,6 +198,8 @@
     <None Remove="Images\default.png" />
     <None Remove="Images\envelope.png" />
     <None Remove="Images\lock_key.png" />
+    <None Remove="Images\sound_track.png" />
+    <None Remove="Images\user_circle.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -401,6 +403,8 @@
     <Resource Include="Images\default.png" />
     <Resource Include="Images\envelope.png" />
     <Resource Include="Images\lock_key.png" />
+    <Resource Include="Images\sound_track.png" />
+    <Resource Include="Images\user_circle.png" />
   </ItemGroup>
 
 </Project>
