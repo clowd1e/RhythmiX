@@ -1,7 +1,5 @@
 ﻿using RhythmiX.WPF.ViewModels;
 using RhythmiX.WPF.Views;
-using System.Configuration;
-using System.Data;
 using System.Windows;
 
 namespace RhythmiX.WPF

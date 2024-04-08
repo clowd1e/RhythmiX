@@ -45,9 +45,11 @@
             </StackPanel>
 
             <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="70 28 70 0">
-                <CheckBox VerticalAlignment="Center" />
-                <TextBlock Style="{StaticResource labelTextStyle}"
-                    Text="Remember me" Margin="2 0 0 0" />
+                <CheckBox VerticalAlignment="Center" x:Name="checkbox" />
+                <Button Style="{StaticResource labelButtonStyle}"
+                        x:Name="labelButton"
+                        Click="labelButton_Click"
+                    Content="Remember me" Margin="2 0 0 0" />
             </StackPanel>
 
             <Button Grid.Row="5" Margin="0 32 0 0" Style="{StaticResource LoginButtonStyle}"
@@ -59,7 +61,7 @@
                         Text="Don't have account yet? "/>
                 <Button Style="{StaticResource SingUpButtonStyle}"
                         Content="Sing up"
-                        Command="{Binding ChangeToSingupForm}"/>
+                        Command="{Binding ChangeToSignupForm}"/>
             </StackPanel>
             
         </Grid>

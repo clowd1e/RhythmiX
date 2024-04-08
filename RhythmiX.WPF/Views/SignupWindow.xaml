@@ -67,6 +67,7 @@
             <Button Grid.Column="0" Grid.Row="4"
                 Style="{StaticResource LoginButtonStyle}"
                 Content="Submit"
+                    Command="{Binding ChangeToLoginForm}"
                     Width="210" Height="48"
                     Margin="0 47 0 0"/>
         </Grid>

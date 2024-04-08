@@ -1,14 +1,15 @@
 ﻿using RhythmiX.WPF.Commands;
+using RhythmiX.WPF.Views;
 using System.Windows.Input;
 
 namespace RhythmiX.WPF.ViewModels
 {
     public class LoginWindowModel : ViewModelBase
     {
-        public ICommand ChangeToSingupForm { get; }
+        public ICommand ChangeToSignupForm { get; }
         public LoginWindowModel()
         {
-            ChangeToSingupForm = new ChangeToSingupFormCommand();
+            ChangeToSignupForm = new ChangeWindowCommand(new SignupWindow(), typeof(SignupWindowModel));
         }
     }
 }

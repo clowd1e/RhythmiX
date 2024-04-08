@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using RhythmiX.WPF.ViewModels;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RhythmiX.WPF.Views
@@ -22,6 +23,14 @@ namespace RhythmiX.WPF.Views
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void labelButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkbox.IsChecked is true)
+                checkbox.IsChecked = false;
+            else
+                checkbox.IsChecked = true;
         }
     }
 }
