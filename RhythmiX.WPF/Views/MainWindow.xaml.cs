@@ -13,15 +13,9 @@ namespace RhythmiX.WPF
             InitializeComponent();
         }
 
-        private void HeaderBar_MouseDown(object sender, MouseButtonEventArgs e)
+        private void WindowControlButtons_MinimizeClicked(object sender, RoutedEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                DragMove();
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
+            this.WindowState = WindowState.Minimized;
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)

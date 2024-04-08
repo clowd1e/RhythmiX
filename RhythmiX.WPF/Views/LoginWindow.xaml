@@ -52,7 +52,9 @@
                     Content="Remember me" Margin="2 0 0 0" />
             </StackPanel>
 
-            <Button Grid.Row="5" Margin="0 32 0 0" Style="{StaticResource LoginButtonStyle}"
+            <Button Grid.Row="5" 
+                    Command="{Binding ChangeToMainWindow}"
+                    Margin="0 32 0 0" Style="{StaticResource LoginButtonStyle}"
                     Width="210" Height="48" Content="Login">
             </Button>
 
