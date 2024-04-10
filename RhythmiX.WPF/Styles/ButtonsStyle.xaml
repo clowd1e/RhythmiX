@@ -39,4 +39,39 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="MenuButton" TargetType="RadioButton">
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Width" Value="166" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource CommonWhite}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border CornerRadius="8" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Background" Value="{StaticResource MenuButtonHoverColor}" />
+            </Trigger>
+
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource MenuButtonCheckedColor}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="MenuButtonIcon" TargetType="Image">
+        <Setter Property="Width" Value="32" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="Margin" Value="10 0 0 0" />
+    </Style>
+    
 </ResourceDictionary>
