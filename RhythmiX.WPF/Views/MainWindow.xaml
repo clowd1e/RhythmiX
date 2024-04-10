@@ -7,6 +7,8 @@
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         xmlns:viewModels="clr-namespace:RhythmiX.WPF.ViewModels"
         xmlns:components="clr-namespace:RhythmiX.WPF.Components"
+        xmlns:menuViewModels="clr-namespace:RhythmiX.WPF.ViewModels.MenuViewModels"
+        xmlns:menuViews="clr-namespace:RhythmiX.WPF.Views.MenuViews"
         d:DataContext="{d:DesignInstance Type=viewModels:MainWindowModel}"
         mc:Ignorable="d"
         Height="576" Width="1024"
@@ -43,27 +45,51 @@
 
             <Border Background="{StaticResource MenuBackColor}" CornerRadius="0 0 0 10" Grid.Row="2" Grid.Column="0">
                 <StackPanel Margin="22 20 27 0" Height="500">
-                    <components:MenuButtonComponent IsChecked="True" Text="Home" Icon="house.png" />
-                    
-                    <components:MenuButtonComponent Text="Explore" Icon="compass.png" Margin="0 9 0 0" />
-                    
-                    <components:MenuButtonComponent Text="Liked" Icon="thumbs_up.png" Margin="0 9 0 0" />
-                    
-                    <components:MenuButtonComponent Text="History" Icon="clock_counter_clockwise.png" Margin="0 9 0 0" />
+                    <components:MenuButtonComponent IsChecked="True" Command="{Binding ChangeToHome}" Text="Home" Icon="house.png" />
+
+                    <components:MenuButtonComponent Command="{Binding ChangeToExplore}" Text="Explore" Icon="compass.png" Margin="0 9 0 0" />
+
+                    <components:MenuButtonComponent Command="{Binding ChangeToLiked}" Text="Liked" Icon="thumbs_up.png" Margin="0 9 0 0" />
+
+                    <components:MenuButtonComponent Command="{Binding ChangeToHistory}" Text="History" Icon="clock_counter_clockwise.png" Margin="0 9 0 0" />
 
 
                     <Border BorderThickness="0 1 0 0" BorderBrush="#242424" Margin="0 17 0 0"/>
 
-                    
-                    <components:MenuButtonComponent Text="Playlists" Icon="playlist.png" Margin="0 17 0 0" />
-                    
-                    <components:MenuButtonComponent Text="Account" Icon="user_circle_main.png" Margin="0 174 0 0" />
+
+                    <components:MenuButtonComponent Command="{Binding ChangeToPlaylists}" Text="Playlists" Icon="playlist.png" Margin="0 17 0 0" />
+
+                    <components:MenuButtonComponent Command="{Binding ChangeToAccount}" Text="Account" Icon="user_circle_main.png" Margin="0 174 0 0" />
                 </StackPanel>
             </Border>
 
-            <!--<Border CornerRadius="0 0 10 0">
-                
-            </Border>-->
+            <Border Grid.Row="1" Grid.Column="1"
+                CornerRadius="0 0 10 0">
+                <Grid>
+                    <Grid.Resources>
+                        <DataTemplate DataType="{x:Type menuViewModels:HomeViewModel}">
+                            <menuViews:HomeView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type menuViewModels:ExploreViewModel}">
+                            <menuViews:ExploreView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type menuViewModels:LikedViewModel}">
+                            <menuViews:LikedView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type menuViewModels:HistoryViewModel}">
+                            <menuViews:HistoryView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type menuViewModels:PlaylistsViewModel}">
+                            <menuViews:PlaylistsView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type menuViewModels:AccountViewModel}">
+                            <menuViews:AccountView />
+                        </DataTemplate>
+                    </Grid.Resources>
+
+                    <ContentControl Content="{Binding CurrentViewModel}" />
+                </Grid>
+            </Border>
         </Grid>
     </Border>
 </Window>
