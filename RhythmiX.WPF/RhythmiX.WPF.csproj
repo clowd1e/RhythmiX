@@ -195,11 +195,17 @@
     <None Remove="Icons\btn_close.svg" />
     <None Remove="Icons\btn_minimize.svg" />
     <None Remove="Images\app_logo.png" />
+    <None Remove="Images\clock_counter_clockwise.png" />
+    <None Remove="Images\compass.png" />
     <None Remove="Images\default.png" />
     <None Remove="Images\envelope.png" />
+    <None Remove="Images\house.png" />
     <None Remove="Images\lock_key.png" />
+    <None Remove="Images\playlist.png" />
     <None Remove="Images\sound_track.png" />
+    <None Remove="Images\thumbs_up.png" />
     <None Remove="Images\user_circle.png" />
+    <None Remove="Images\user_circle_main.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -400,11 +406,17 @@
     <Resource Include="Icons\btn_close.svg" />
     <Resource Include="Icons\btn_minimize.svg" />
     <Resource Include="Images\app_logo.png" />
+    <Resource Include="Images\clock_counter_clockwise.png" />
+    <Resource Include="Images\compass.png" />
     <Resource Include="Images\default.png" />
     <Resource Include="Images\envelope.png" />
+    <Resource Include="Images\house.png" />
     <Resource Include="Images\lock_key.png" />
+    <Resource Include="Images\playlist.png" />
     <Resource Include="Images\sound_track.png" />
+    <Resource Include="Images\thumbs_up.png" />
     <Resource Include="Images\user_circle.png" />
+    <Resource Include="Images\user_circle_main.png" />
   </ItemGroup>
 
 </Project>
