@@ -68,5 +68,38 @@ namespace RhythmiX.WPF.Components
             UpdateTextBoxBackgroungImage();
             UpdatePlaceholderText();
         }
+
+
+
+
+        private bool isTextChanging;
+
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
+        private void customTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            isTextChanging = true;
+            Text = customTextBox.Text;
+            isTextChanging = false;
+        }
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(CustomInputField), new PropertyMetadata(string.Empty, TextPropertyChanged));
+
+        private static void TextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is CustomInputField customTextBox)
+                customTextBox.UpdateText();
+        }
+
+        private void UpdateText()
+        {
+            if (!isTextChanging)
+                customTextBox.Text = Text;
+        }
     }
 }

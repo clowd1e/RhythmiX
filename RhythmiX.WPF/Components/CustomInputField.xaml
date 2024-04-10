@@ -21,7 +21,7 @@
         <TextBlock Style="{StaticResource labelTextStyle}" x:Name="labelText" Text="Label" />
         <Grid>
             <TextBox Style="{StaticResource customTextBoxStyle}"
-                     x:Name="customTextBox">
+                     x:Name="customTextBox" TextChanged="customTextBox_TextChanged">
                 <TextBox.Background>
                     <ImageBrush x:Name="customTextBoxBackImage" ImageSource="/Images/default.png" Stretch="Uniform"
                     AlignmentX="Left"/>
