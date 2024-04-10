@@ -16,26 +16,54 @@
         Background="Transparent"
         AllowsTransparency="True">
     <Border CornerRadius="10" Background="{StaticResource MainWindowBack}">
-        <Grid>
+        <Grid SnapsToDevicePixels="True">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20*" />
-                <ColumnDefinition Width="80*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="7*" />
-                <RowDefinition Height="93*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
             <components:DragableField Grid.ColumnSpan="2" MouseDown="DragableField_MouseDown" />
 
+            <Border Grid.Row="0" Grid.Column="0"
+                    MouseDown="DragableField_MouseDown"
+                    CornerRadius="10 0 0 0" Background="{StaticResource MenuBackColor}">
+                <Image Source="/Images/app_logo.png" 
+                        Margin="10"
+                        Height="30" />
+            </Border>
+
             <StackPanel Grid.Column="1"
-                Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
                 <components:WindowControlButtons MinimizeClicked="WindowControlButtons_MinimizeClicked" />
             </StackPanel>
 
-            <Border Grid.RowSpan="2">
-                
+            <Border Background="{StaticResource MenuBackColor}" CornerRadius="0 0 0 10" Grid.Row="2" Grid.Column="0">
+                <StackPanel Margin="22 20 27 0" Height="500">
+                    <components:MenuButtonComponent IsChecked="True" Text="Home" Icon="house.png" />
+                    
+                    <components:MenuButtonComponent Text="Explore" Icon="compass.png" Margin="0 9 0 0" />
+                    
+                    <components:MenuButtonComponent Text="Liked" Icon="thumbs_up.png" Margin="0 9 0 0" />
+                    
+                    <components:MenuButtonComponent Text="History" Icon="clock_counter_clockwise.png" Margin="0 9 0 0" />
+
+
+                    <Border BorderThickness="0 1 0 0" BorderBrush="#242424" Margin="0 17 0 0"/>
+
+                    
+                    <components:MenuButtonComponent Text="Playlists" Icon="playlist.png" Margin="0 17 0 0" />
+                    
+                    <components:MenuButtonComponent Text="Account" Icon="user_circle_main.png" Margin="0 174 0 0" />
+                </StackPanel>
             </Border>
+
+            <!--<Border CornerRadius="0 0 10 0">
+                
+            </Border>-->
         </Grid>
     </Border>
 </Window>
