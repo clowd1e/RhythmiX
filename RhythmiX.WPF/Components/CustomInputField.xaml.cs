@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Xml;
 
 namespace RhythmiX.WPF.Components
 {
@@ -11,6 +9,10 @@ namespace RhythmiX.WPF.Components
     /// </summary>
     public partial class CustomInputField : UserControl
     {
+        public CustomInputField()
+        {
+            InitializeComponent();
+        }
 
         public static readonly DependencyProperty LabelTextProperty =
             DependencyProperty.Register("LabelText", typeof(string), typeof(CustomInputField), new PropertyMetadata("Label"));
@@ -37,11 +39,6 @@ namespace RhythmiX.WPF.Components
         {
             get { return (string)GetValue(PlaceholderTextProperty); }
             set { SetValue(PlaceholderTextProperty, value); }
-        }
-
-        public CustomInputField()
-        {
-            InitializeComponent();
         }
 
         private void UpdateLabel()
