@@ -198,6 +198,7 @@
     <None Remove="Images\clock_counter_clockwise.png" />
     <None Remove="Images\compass.png" />
     <None Remove="Images\default.png" />
+    <None Remove="Images\default_main.png" />
     <None Remove="Images\envelope.png" />
     <None Remove="Images\house.png" />
     <None Remove="Images\lock_key.png" />
@@ -409,6 +410,7 @@
     <Resource Include="Images\clock_counter_clockwise.png" />
     <Resource Include="Images\compass.png" />
     <Resource Include="Images\default.png" />
+    <Resource Include="Images\default_main.png" />
     <Resource Include="Images\envelope.png" />
     <Resource Include="Images\house.png" />
     <Resource Include="Images\lock_key.png" />
