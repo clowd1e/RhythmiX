@@ -1,5 +1,7 @@
-﻿using RhythmiX.WPF.ViewModels;
+﻿using RhythmiX.WPF.Services;
+using RhythmiX.WPF.ViewModels;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace RhythmiX.WPF.Views
@@ -31,6 +33,35 @@ namespace RhythmiX.WPF.Views
                 checkbox.IsChecked = false;
             else
                 checkbox.IsChecked = true;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (checkbox.IsChecked is true && IsEmailAndPasswordNotEmpty())
+                AuthenticationSettingsHandler.SaveSettings(EmailField.Text, PasswordField.Password);
+            else
+                AuthenticationSettingsHandler.SaveSettings(string.Empty, string.Empty);
+        }
+
+        private bool IsEmailAndPasswordNotEmpty() => 
+            !string.IsNullOrEmpty(EmailField.Text) && !string.IsNullOrEmpty(PasswordField.Password);
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadUserAuthenticationSettings();
+        }
+
+        private void LoadUserAuthenticationSettings()
+        {
+            string email = string.Empty;
+            string password = string.Empty;
+            if (!IsEmailAndPasswordNotEmpty())
+            {
+                AuthenticationSettingsHandler.LoadSettings(out email, out password);
+                checkbox.IsChecked = true;
+            }
+            EmailField.Text = email;
+            PasswordField.Password = password;
         }
     }
 }

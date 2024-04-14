@@ -7,6 +7,8 @@
         xmlns:viewModels="clr-namespace:RhythmiX.WPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewModels:LoginWindowModel}"
         xmlns:components="clr-namespace:RhythmiX.WPF.Components"
         mc:Ignorable="d"
+        Closing="Window_Closing"
+        Loaded="Window_Loaded"
         Height="410" Width="435"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -37,11 +39,13 @@
                    Height="43"/>
 
             <StackPanel Grid.Row="2" Margin="70 23 70 0">
-                <components:CustomInputField LabelText="Email" TextBoxBackImage="envelope.png" PlaceholderText="Type your email" />
+                <components:CustomInputField x:Name="EmailField"
+                    LabelText="Email" TextBoxBackImage="envelope.png" PlaceholderText="Type your email" />
             </StackPanel>
 
             <StackPanel Grid.Row="3" Margin="70 28 70 0">
-                <components:CustomPasswordField LabelText="Password" PlaceholderText="Type your password" />
+                <components:CustomPasswordField x:Name="PasswordField"
+                    LabelText="Password" PlaceholderText="Type your password" />
             </StackPanel>
 
             <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="70 28 70 0">
