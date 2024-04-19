@@ -214,10 +214,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RhythmiX.ClassLibrary\RhythmiX.ClassLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="SharpVectors" Version="1.8.4" />
   </ItemGroup>
 
