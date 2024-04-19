@@ -1,6 +1,8 @@
-﻿namespace RhythmiX.Storage.Models
+﻿using RhythmiX.Storage.Models.Interfaces;
+
+namespace RhythmiX.Storage.Models
 {
-    public class AlbumModel
+    public class AlbumModel : IHomeObservable, IHistoryObservable
     {
         public long Id { get; set; }
         public string Name { get; set; }
