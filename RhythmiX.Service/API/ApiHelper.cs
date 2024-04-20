@@ -7,7 +7,7 @@ namespace RhythmiX.Service.API
     {
         private const string baseUrl = "https://api.jamendo.com/v3.0";
 
-        private const string filePath = "../../../API/APIKey/ApiKey.json";
+        private const string filePath = "../../../../RhythmiX.Service/API/APIKey/ApiKey.json";
         private static string? clientId = JsonConvert.DeserializeObject<string>(
             new StreamReader(filePath).ReadToEnd()
             );
