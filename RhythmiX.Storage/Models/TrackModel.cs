@@ -4,7 +4,7 @@ namespace RhythmiX.Storage.Models
 {
     public class TrackModel : IHomeObservable, IHistoryObservable
     {
-        public string AlbumId { get; set; }
+        public long AlbumId { get; set; }
         public string AlbumName { get; set; }
         public long Id { get; set; }
         public string Name { get; set; }
