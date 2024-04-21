@@ -12,15 +12,17 @@ namespace RhythmiX.Service.API
             new StreamReader(filePath).ReadToEnd()
             );
 
-        public static async Task<TrackResponseModel?> GetTrackByIdAsync(long id)
+        public static async Task<T?> GetObjectByIdAsync<T>(string catalogue, long id, string parameters = "")
         {
             using (HttpClient client = new HttpClient())
             {
-                string requestUrl = $"{baseUrl}/tracks/?client_id={clientId}&format=jsonpretty&id={id}";
+                string requestUrl = $"{baseUrl}/{catalogue}/?client_id={clientId}{parameters}&format=jsonpretty&id={id}";
                 HttpResponseMessage response = await client.GetAsync(requestUrl);
+                if (response is null)
+                    throw new HttpRequestException("Response is null");
 
                 if (response.IsSuccessStatusCode)
-                    return await ReadResponse<TrackResponseModel>(response);
+                    return await ReadResponse<T>(response);
                 else
                     throw new HttpRequestException(response.ReasonPhrase);
             }
