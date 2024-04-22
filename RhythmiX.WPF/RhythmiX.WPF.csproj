@@ -200,7 +200,10 @@
     <None Remove="Images\default.png" />
     <None Remove="Images\default_main.png" />
     <None Remove="Images\envelope.png" />
+    <None Remove="Images\history_logo.png" />
     <None Remove="Images\house.png" />
+    <None Remove="Images\liked_logo.png" />
+    <None Remove="Images\liked_rect.png" />
     <None Remove="Images\lock_key.png" />
     <None Remove="Images\playlist.png" />
     <None Remove="Images\sound_track.png" />
@@ -408,7 +411,10 @@
     <Resource Include="Images\default.png" />
     <Resource Include="Images\default_main.png" />
     <Resource Include="Images\envelope.png" />
+    <Resource Include="Images\history_logo.png" />
     <Resource Include="Images\house.png" />
+    <Resource Include="Images\liked_logo.png" />
+    <Resource Include="Images\liked_rect.png" />
     <Resource Include="Images\lock_key.png" />
     <Resource Include="Images\playlist.png" />
     <Resource Include="Images\sound_track.png" />
