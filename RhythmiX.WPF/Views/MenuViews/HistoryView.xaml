@@ -3,14 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RhythmiX.WPF.Views.MenuViews"
+             xmlns:local="clr-namespace:RhythmiX.WPF.Views.MenuViews" xmlns:components="clr-namespace:RhythmiX.WPF.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border CornerRadius="0 0 10 0">
-        <TextBlock 
-            Text="History"
-            FontSize="50" Foreground="White"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"></TextBlock>
+        <StackPanel Margin="40 0 40 0">
+            <StackPanel Margin="0 20 0 0"
+                        Orientation="Horizontal">
+                <Image Width="150"
+                       Height="150"
+                    Source="/../Images/history_logo.png"
+                    />
+                <TextBlock Style="{StaticResource ViewBoldText}"
+                           Text="History"
+                           Margin="18 0 0 0"/>
+            </StackPanel>
+            <StackPanel Margin="0 25 0 0">
+                <components:HistoryTrackLayout 
+                    TrackArtist="Igor"
+                    TrackName="Something"
+                    TrackDuration="3:35"
+                    TrackImage="Igor.jpg"
+                    HasBottomBorder="True"/>
+                <components:HistoryTrackLayout 
+                    TrackArtist="Igor"
+                    TrackName="Something"
+                    TrackDuration="5:14"
+                    TrackImage="Igor.jpg"
+                    HasBottomBorder="True"/>
+                <components:HistoryTrackLayout 
+                    TrackArtist="Igor"
+                    TrackName="Something"
+                    TrackDuration="6:43"
+                    TrackImage="Igor.jpg"
+                    HasBottomBorder="True"/>
+                <components:HistoryTrackLayout 
+                     TrackArtist="Igor"
+                     TrackName="Something"
+                     TrackDuration="6:43"
+                     TrackImage="Igor.jpg"
+                     HasBottomBorder="True"/>
+                <components:HistoryTrackLayout 
+                     TrackArtist="Igor"
+                     TrackName="Something"
+                     TrackDuration="6:43"
+                     TrackImage="Igor.jpg"
+                     HasBottomBorder="False"/>
+            </StackPanel>
+        </StackPanel>
     </Border>
 </UserControl>
