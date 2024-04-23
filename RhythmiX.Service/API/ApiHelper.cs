@@ -12,7 +12,8 @@ namespace RhythmiX.Service.API
             new StreamReader(filePath).ReadToEnd()
             );
 
-        public static async Task<T?> GetObjectByIdAsync<T>(string catalogue, long id, string parameters = "")
+        public static async Task<TResponceModel?> GetObjectByIdAsync<TResponceModel>(string catalogue, long id, string parameters = "")
+            where TResponceModel : IResponceModel
         {
             using (HttpClient client = new HttpClient())
             {
@@ -22,16 +23,17 @@ namespace RhythmiX.Service.API
                     throw new HttpRequestException("Response is null");
 
                 if (response.IsSuccessStatusCode)
-                    return await ReadResponse<T>(response);
+                    return await ReadResponse<TResponceModel>(response);
                 else
                     throw new HttpRequestException(response.ReasonPhrase);
             }
         }
 
-        private static async Task<T?> ReadResponse<T>(HttpResponseMessage response)
+        private static async Task<TResponceModel?> ReadResponse<TResponceModel>(HttpResponseMessage response)
+            where TResponceModel : IResponceModel
         {
             string responseBody = await response.Content.ReadAsStringAsync();
-            T? responseModel = JsonConvert.DeserializeObject<T>(responseBody);
+            TResponceModel? responseModel = JsonConvert.DeserializeObject<TResponceModel>(responseBody);
             return responseModel;
         }
     }
