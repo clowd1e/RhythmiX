@@ -9,5 +9,17 @@ namespace RhythmiX.Storage.Entities
     {
         [Required]
         public long Id { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public DateOnly JoinDate { get; set; }
+
+        [Required]
+        public string Website { get; set; }
+
+        [Required]
+        public string Image { get; set; }
     }
 }

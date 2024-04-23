@@ -9,7 +9,7 @@ namespace RhythmiX.Storage.Models
         public string Name { get; set; }
         public DateOnly ReleaseDate { get; set; }
         [JsonProperty("artist_id")]
-        public string ArtistId { get; set; }
+        public long ArtistId { get; set; }
         [JsonProperty("artist_name")]
         public string ArtistName { get; set; }
         public string Image { get; set; }
