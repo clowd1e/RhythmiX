@@ -438,4 +438,9 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="APICallResults\DownloadedAlbums\" />
+    <Folder Include="DownloadedMusic\MusicCovers\" />
+  </ItemGroup>
+
 </Project>
