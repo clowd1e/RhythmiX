@@ -3,6 +3,7 @@
     
     <SolidColorBrush x:Key="MainWindowBack" Color="#171717" />
     <SolidColorBrush x:Key="LoginWindowBack" Color="#090909" />
+    <SolidColorBrush x:Key="TrackLayoutBackHoverColor" Color="#353535" />
 
     <SolidColorBrush x:Key="CommonWhite" Color="#F2F2F2" />
     <SolidColorBrush x:Key="CustomInputFieldGray" Color="#808080" />

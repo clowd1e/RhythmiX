@@ -15,6 +15,7 @@
 
     <Style x:Key="HistoryTrackLayout" TargetType="Button">
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="50" />
         <Setter Property="BorderBrush" Value="{StaticResource TrackLayoutBorderColor}" />
         <Setter Property="Template">
@@ -23,6 +24,11 @@
                     <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource TrackLayoutBackHoverColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
