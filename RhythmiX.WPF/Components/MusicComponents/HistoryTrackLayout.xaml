@@ -29,21 +29,15 @@
 
                 <TextBlock Grid.Column="1"
                            x:Name="trackName"
-                           Style="{StaticResource TrackNameStyle}"
-                           FontWeight="SemiBold"
-                           FontSize="24"/>
+                           Style="{StaticResource TrackNameStyle}" />
 
                 <TextBlock Grid.Column="2"
                            x:Name="trackArtist"
-                           Style="{StaticResource TrackArtistStyle}"
-                           FontWeight="Regular"
-                           FontSize="20"/>
+                           Style="{StaticResource TrackArtistStyle}"/>
 
                 <TextBlock Grid.Column="3"
                             x:Name="trackDuration"
-                           Style="{StaticResource TrackArtistStyle}"
-                           FontWeight="Regular"
-                           FontSize="20"/>
+                           Style="{StaticResource TrackArtistStyle}"/>
             </Grid>
         </Button.Content>
     </Button>
