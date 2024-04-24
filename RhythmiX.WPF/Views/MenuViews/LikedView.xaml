@@ -26,16 +26,16 @@
                 TrackImage="Igor.jpg"
                 HasBottomBorder="True"/>
                 <components:HistoryTrackLayout 
-                TrackArtist="Igor"
-                TrackName="Something"
+                TrackArtist="NIRVANA"
+                TrackName="Really cool song"
                 TrackDuration="5:14"
-                TrackImage="Igor.jpg"
+                TrackImage="Nirvana.jpg"
                 HasBottomBorder="True"/>
                 <components:HistoryTrackLayout 
-                TrackArtist="Igor"
-                TrackName="Something"
-                TrackDuration="6:43"
-                TrackImage="Igor.jpg"
+                TrackArtist="Long group name so that it’s really long"
+                TrackName="I need really long song name to see how"
+                TrackDuration="63:35"
+                TrackImage="NWA.jpg"
                 HasBottomBorder="True"/>
                 <components:HistoryTrackLayout 
                  TrackArtist="Igor"
