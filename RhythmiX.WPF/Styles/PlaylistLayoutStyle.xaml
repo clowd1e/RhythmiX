@@ -1,42 +1,40 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="TrackNameStyle" TargetType="TextBlock">
+    <Style x:Key="PlaylistNameStyle" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource Nunito_Sans}" />
-        <Setter Property="Foreground" Value="{StaticResource CommonWhite}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontWeight" Value="Medium" />
-        <Setter Property="FontSize" Value="24" />
-    </Style>
-
-    <Style x:Key="TrackArtistStyle" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="{StaticResource Nunito_Sans}" />
-        <Setter Property="Foreground" Value="{StaticResource TrackArtistColor}" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontWeight" Value="Regular" />
         <Setter Property="FontSize" Value="20" />
+        <Setter Property="Foreground" Value="{StaticResource CommonWhite}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
 
-    <Style x:Key="HistoryTrackLayout" TargetType="Button">
+    <Style x:Key="PlaylistArtistStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Nunito_Sans}" />
+        <Setter Property="Foreground" Value="{StaticResource PlaylistArtistColor}" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style x:Key="PlaylistLayout" TargetType="Button">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Height" Value="50" />
-        <Setter Property="BorderBrush" Value="{StaticResource TrackLayoutBorderColor}" />
+        <Setter Property="Width" Value="150" />
+        <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{StaticResource TrackLayoutBackHoverColor}" />
+                            <Setter Property="Background" Value="{StaticResource PlaylistLayoutBackHoverColor}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 
 </ResourceDictionary>
