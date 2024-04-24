@@ -49,7 +49,8 @@
             </StackPanel>
 
             <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="70 28 70 0">
-                <CheckBox VerticalAlignment="Center" x:Name="checkbox" />
+                <CheckBox VerticalAlignment="Center" x:Name="checkbox" 
+                          Cursor="Hand"/>
                 <Button Style="{StaticResource labelButtonStyle}"
                         x:Name="labelButton"
                         Click="labelButton_Click"
