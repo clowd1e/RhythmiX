@@ -440,6 +440,7 @@
 
   <ItemGroup>
     <Folder Include="APICallResults\DownloadedAlbums\" />
+    <Folder Include="APICallResults\DownloadedPlaylists\" />
     <Folder Include="DownloadedMusic\MusicCovers\" />
   </ItemGroup>
 
