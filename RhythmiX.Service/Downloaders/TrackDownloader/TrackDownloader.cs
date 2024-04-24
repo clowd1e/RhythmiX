@@ -15,7 +15,7 @@ namespace RhythmiX.Service.Downloaders.TrackDownloader
             Uri url = new Uri(audioPath);
             string trackSavePath = $"{folderPath}/{name}/{name}.mp3";
 
-            if (File.Exists(folderPath))
+            if (File.Exists($"{folderPath}/{name}"))
                 return;
 
             using (WebClient client = new WebClient())
