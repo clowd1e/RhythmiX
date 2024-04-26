@@ -8,7 +8,7 @@ namespace RhythmiX.Storage.Entities
     public class Artist : BaseEntity
     {
         [Required]
-        public long Id { get; set; }
+        public long ApiId { get; set; }
 
         [Required]
         public string Name { get; set; }

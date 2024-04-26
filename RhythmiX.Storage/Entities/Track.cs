@@ -10,7 +10,7 @@ namespace RhythmiX.Storage.Entities
     public class Track : BaseEntity
     {
         [Required]
-        public long Id { get; set; }
+        public long ApiId { get; set; }
 
         [Required]
         public long AlbumId { get; set; }

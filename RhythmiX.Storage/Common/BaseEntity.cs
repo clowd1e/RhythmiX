@@ -5,6 +5,6 @@ namespace RhythmiX.Storage.Common
     public abstract class BaseEntity
     {
         [Key]
-        public long BaseId { get; set; }
+        public long Id { get; set; }
     }
 }

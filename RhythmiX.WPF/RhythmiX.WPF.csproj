@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DownloadedMusic\**" />
+    <EmbeddedResource Remove="DownloadedMusic\**" />
+    <None Remove="DownloadedMusic\**" />
+    <Page Remove="DownloadedMusic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Fonts\Nunito_Sans\NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf" />
     <None Remove="Fonts\Nunito_Sans\NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf" />
     <None Remove="Fonts\Nunito_Sans\static\NunitoSans_10pt-Black.ttf" />
@@ -443,7 +450,6 @@
   <ItemGroup>
     <Folder Include="APICallResults\DownloadedAlbums\" />
     <Folder Include="APICallResults\DownloadedPlaylists\" />
-    <Folder Include="DownloadedMusic\MusicCovers\" />
   </ItemGroup>
 
 </Project>
