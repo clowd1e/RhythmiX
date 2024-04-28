@@ -24,5 +24,14 @@ namespace RhythmiX.Storage.Entities
 
         public List<User> LikedUsers { get; set; }
         public List<User> HistoryUsers { get; set; }
+
+        public Artist(long apiId, string name, DateOnly joinDate, string website, string image)
+        {
+            ApiId = apiId;
+            Name = name;
+            JoinDate = joinDate;
+            Website = website;
+            Image = image;
+        }
     }
 }
