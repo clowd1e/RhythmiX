@@ -27,6 +27,14 @@ namespace RhythmiX.Storage.Repository
         Task AddLikedArtistAsync(long userId, Artist artist);
         Task RemoveLikedArtistAsync(long userId, long artistId);
 
+
+
+        Task AddArtistToHistory(long userId, Artist artist);
+        Task AddTrackToHistory(long userId, Track track);
+        Task AddPlaylistToHistory(long userId, Playlist playlist);
+        Task AddAlbumToHistory(long userId, Album album);
+
+
         Task<bool> IsTrackLiked(long userId, long trackId);
         Task<bool> IsPlaylistLiked(long userId, long playlistId);
         Task<bool> IsAlbumLiked(long userId, long albumId);
