@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace RhythmiX.Service.Command.LikedAlbums.Add
+namespace RhythmiX.Service.Command.LikedAlbum.Add
 {
-    public class AddLikedAlbumValidator : AbstractValidator<AddLikedAlbumCommand>
+    public class AddLikedAlbumCommandValidator : AbstractValidator<AddLikedAlbumCommand>
     {
-        public AddLikedAlbumValidator()
+        public AddLikedAlbumCommandValidator()
         {
             RuleFor(x => x.UserId).NotEmpty();
             RuleFor(x => x.ApiAlbumId).NotEmpty();

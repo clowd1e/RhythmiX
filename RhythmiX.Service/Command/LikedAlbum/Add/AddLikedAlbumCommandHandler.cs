@@ -3,7 +3,7 @@ using FluentValidation.Results;
 using RhythmiX.Storage.Entities;
 using RhythmiX.Storage.Repository;
 
-namespace RhythmiX.Service.Command.LikedAlbums.Add
+namespace RhythmiX.Service.Command.LikedAlbum.Add
 {
     public class AddLikedAlbumCommandHandler : ICommandHandler<AddLikedAlbumCommand>
     {
@@ -16,7 +16,7 @@ namespace RhythmiX.Service.Command.LikedAlbums.Add
 
         public async Task<Result> HandleAsync(AddLikedAlbumCommand command)
         {
-            ValidationResult validationResult = new AddLikedAlbumValidator().Validate(command);
+            ValidationResult validationResult = new AddLikedAlbumCommandValidator().Validate(command);
 
             if (!validationResult.IsValid)
                 return Result.Fail(validationResult);

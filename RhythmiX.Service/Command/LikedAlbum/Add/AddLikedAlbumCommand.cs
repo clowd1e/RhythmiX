@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace RhythmiX.Service.Command.LikedAlbums.Add
+﻿namespace RhythmiX.Service.Command.LikedAlbum.Add
 {
     public class AddLikedAlbumCommand : ICommand
     {

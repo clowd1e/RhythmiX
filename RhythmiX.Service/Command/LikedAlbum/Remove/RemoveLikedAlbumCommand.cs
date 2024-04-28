@@ -1,4 +1,4 @@
-﻿namespace RhythmiX.Service.Command.LikedAlbums.Remove
+﻿namespace RhythmiX.Service.Command.LikedAlbum.Remove
 {
     public class RemoveLikedAlbumCommand : ICommand
     {

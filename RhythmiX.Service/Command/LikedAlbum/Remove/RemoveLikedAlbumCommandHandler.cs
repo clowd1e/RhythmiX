@@ -1,7 +1,7 @@
 ﻿using Cinema.Service;
 using RhythmiX.Storage.Repository;
 
-namespace RhythmiX.Service.Command.LikedAlbums.Remove
+namespace RhythmiX.Service.Command.LikedAlbum.Remove
 {
     public class RemoveLikedAlbumCommandHandler : ICommandHandler<RemoveLikedAlbumCommand>
     {
