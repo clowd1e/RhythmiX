@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
 using RhythmiX.Storage.Common;
-using RhythmiX.Storage.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RhythmiX.Storage.Entities
 {
-    [Table("Tracks", Schema = "RhythmiX")]
+    [Table("Tracks", Schema = "MusicDb")]
     public class Track : BaseEntity
     {
         [Required]
@@ -42,7 +41,21 @@ namespace RhythmiX.Storage.Entities
         [Required]
         public string AudioDownload { get; set; }
 
-        [Required]
-        public MusicInfoModel MusicInfo { get; set; }
+        public List<User> LikedUsers { get; set; }
+
+        public Track(long apiId, long albumId, string albumName, long artistId, string name, int duration, DateOnly releaseDate, string albumImage, string image, string audio, string audioDownload)
+        {
+            ApiId = apiId;
+            AlbumId = albumId;
+            AlbumName = albumName;
+            ArtistId = artistId;
+            Name = name;
+            Duration = duration;
+            ReleaseDate = releaseDate;
+            AlbumImage = albumImage;
+            Image = image;
+            Audio = audio;
+            AudioDownload = audioDownload;
+        }
     }
 }

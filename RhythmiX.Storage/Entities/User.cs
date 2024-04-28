@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RhythmiX.Storage.Entities
 {
-    [Table("Users", Schema = "RhythmiX")]
+    [Table("Users", Schema = "MusicDb")]
     public class User : BaseEntity
     {
         [Required]
@@ -20,5 +20,11 @@ namespace RhythmiX.Storage.Entities
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+        
+
+        public List<Track> LikedTracks { get; set; }
+        public List<Album> LikedAlbums { get; set; }
+        public List<Playlist> LikedPlaylists { get; set; }
+        public List<Artist> LikedArtists { get; set; }
     }
 }

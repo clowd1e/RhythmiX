@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RhythmiX.Storage.Entities
 {
-    [Table("Albums", Schema = "RhythmiX")]
+    [Table("Albums", Schema = "MusicDb")]
     public class Album : BaseEntity
     {
         [Required]
@@ -28,5 +28,8 @@ namespace RhythmiX.Storage.Entities
 
         [Required]
         public string Zip { get; set; }
+
+
+        public List<User> LikedUsers { get; set; }
     }
 }

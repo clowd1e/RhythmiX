@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RhythmiX.Storage.Entities
 {
-    [Table("Artists", Schema = "RhythmiX")]
+    [Table("Artists", Schema = "MusicDb")]
     public class Artist : BaseEntity
     {
         [Required]
@@ -21,5 +21,7 @@ namespace RhythmiX.Storage.Entities
 
         [Required]
         public string Image { get; set; }
+
+        public List<User> LikedUsers { get; set; }
     }
 }
