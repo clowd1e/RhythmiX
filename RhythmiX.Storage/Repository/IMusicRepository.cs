@@ -14,5 +14,22 @@ namespace RhythmiX.Storage.Repository
         Task<PlaylistModel> GetPlaylistByIdAsync(long playlistId);
         Task<ArtistModel> GetArtistByIdAsync(long artistId);
         Task<AlbumModel> GetAlbumByIdAsync(long albumId);
+
+        Task AddLikedTrackAsync(long userId, Track track);
+        Task RemoveLikedTrackAsync(long userId, long trackId);
+
+        Task AddLikedPlaylistAsync(long userId, Playlist playlist);
+        Task RemoveLikedPlaylistAsync(long userId, long playlistId);
+
+        Task AddLikedAlbumAsync(long userId, Album album);
+        Task RemoveLikedAlbumAsync(long userId, long albumId);
+
+        Task AddLikedArtistAsync(long userId, Artist artist);
+        Task RemoveLikedArtistAsync(long userId, long artistId);
+
+        Task<bool> IsTrackLiked(long userId, long trackId);
+        Task<bool> IsPlaylistLiked(long userId, long playlistId);
+        Task<bool> IsAlbumLiked(long userId, long albumId);
+        Task<bool> IsArtistLiked(long userId, long artistId);
     }
 }
