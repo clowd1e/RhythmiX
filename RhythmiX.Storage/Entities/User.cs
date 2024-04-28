@@ -1,4 +1,5 @@
 ﻿using RhythmiX.Storage.Common;
+using RhythmiX.Storage.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,5 +27,6 @@ namespace RhythmiX.Storage.Entities
         public List<Album> LikedAlbums { get; set; }
         public List<Playlist> LikedPlaylists { get; set; }
         public List<Artist> LikedArtists { get; set; }
+        public List<IHistoryObservable> History { get; set; }
     }
 }

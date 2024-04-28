@@ -42,6 +42,7 @@ namespace RhythmiX.Storage.Entities
         public string AudioDownload { get; set; }
 
         public List<User> LikedUsers { get; set; }
+        public List<User> HistoryUsers { get; set; }
 
         public Track(long apiId, long albumId, string albumName, long artistId, string name, int duration, DateOnly releaseDate, string albumImage, string image, string audio, string audioDownload)
         {

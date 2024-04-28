@@ -23,5 +23,6 @@ namespace RhythmiX.Storage.Entities
         public string Image { get; set; }
 
         public List<User> LikedUsers { get; set; }
+        public List<User> HistoryUsers { get; set; }
     }
 }
