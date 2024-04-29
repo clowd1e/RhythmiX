@@ -20,6 +20,6 @@ namespace RhythmiX.Storage.Models
         public string Image { get; set; }
         public string Audio { get; set; }
         public string AudioDownload { get; set; }
-        public MusicInfoModel MusicInfo { get; set; }
+        public MusicInfoModel? MusicInfo { get; set; }
     }
 }
