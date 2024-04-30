@@ -10,6 +10,7 @@
     <SolidColorBrush x:Key="CustomInputFieldGray" Color="#808080" />
     <SolidColorBrush x:Key="TrackArtistColor" Color="#808080" />
     <SolidColorBrush x:Key="PlaylistArtistColor" Color="#808080" />
+    <SolidColorBrush x:Key="AlbumArtistColor" Color="#808080" />
     <SolidColorBrush x:Key="TrackLayoutBorderColor" Color="#808080" />
 
     <SolidColorBrush x:Key="MenuButtonCheckedColor" Color="#1D1D1D" />

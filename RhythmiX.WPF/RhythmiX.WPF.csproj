@@ -452,4 +452,9 @@
     <Folder Include="APICallResults\DownloadedPlaylists\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RhythmiX.Service\RhythmiX.Service.csproj" />
+    <ProjectReference Include="..\RhythmiX.Storage\RhythmiX.Storage.csproj" />
+  </ItemGroup>
+
 </Project>
