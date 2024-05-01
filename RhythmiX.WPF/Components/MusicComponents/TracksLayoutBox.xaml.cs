@@ -56,7 +56,17 @@ namespace RhythmiX.WPF.Components.MusicComponents
 
             for (int i = 0; i < listBox.Items.Count; i++)
             {
-                
+                var item = (ListBoxItem)listBox.ItemContainerGenerator.ContainerFromIndex(i);
+                double horizontal = 4.5;
+                double vertical = 3;
+                if (i % 3 != 0)
+                    item.Margin = new Thickness(horizontal, item.Margin.Top, item.Margin.Right, item.Margin.Bottom);
+                if (i > 2)
+                    item.Margin = new Thickness(item.Margin.Left, vertical, item.Margin.Right, item.Margin.Bottom);
+                if ((i + 1) % 3 != 0)
+                    item.Margin = new Thickness(item.Margin.Left, item.Margin.Top, horizontal, item.Margin.Bottom);
+                if (i < 6)
+                    item.Margin = new Thickness(item.Margin.Left, item.Margin.Top, item.Margin.Right, vertical);
             }
         }
     }
