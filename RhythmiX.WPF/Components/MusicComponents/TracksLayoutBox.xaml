@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="RhythmiX.WPF.Components.MusicComponents.TracksLayoutBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RhythmiX.WPF.Components.MusicComponents"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded">
+    <StackPanel>
+
+        <Grid Width="auto" HorizontalAlignment="Stretch" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Style="{StaticResource AlbumsTitle}"
+                       Margin="0 0 0 8"
+                       x:Name="title" />
+
+            <Button Style="{StaticResource SeeMoreButton}"
+                    Content="See more"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right" />
+        </Grid>
+
+        <ListBox x:Name="listBox" Loaded="listBox_Loaded"
+                 Background="Transparent" BorderThickness="0">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="3" Columns="3"
+                                 HorizontalAlignment="Left" VerticalAlignment="Top" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:TrackLayout TrackName="{Binding TrackName}"
+                                       TrackImage="{Binding Image}"
+                                       TrackArtist="{Binding ArtistName}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Background="Transparent">
+                                    <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            
+            
+        </ListBox>
+        
+    </StackPanel>
+</UserControl>
