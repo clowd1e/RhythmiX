@@ -1,7 +1,5 @@
 ﻿using RhythmiX.WPF.Services;
-using RhythmiX.WPF.ViewModels;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace RhythmiX.WPF.Views
