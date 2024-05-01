@@ -5,6 +5,8 @@
     <SolidColorBrush x:Key="LoginWindowBack" Color="#090909" />
     <SolidColorBrush x:Key="TrackLayoutBackHoverColor" Color="#353535" />
     <SolidColorBrush x:Key="PlaylistLayoutBackHoverColor" Color="#554e4e4e" />
+    
+    <SolidColorBrush x:Key="SeeMoreButtonBackHoverColor" Color="#554e4e4e" />
 
     <SolidColorBrush x:Key="CommonWhite" Color="#F2F2F2" />
     <SolidColorBrush x:Key="CustomInputFieldGray" Color="#808080" />
@@ -12,6 +14,7 @@
     <SolidColorBrush x:Key="PlaylistArtistColor" Color="#808080" />
     <SolidColorBrush x:Key="AlbumArtistColor" Color="#808080" />
     <SolidColorBrush x:Key="TrackLayoutBorderColor" Color="#808080" />
+    <SolidColorBrush x:Key="SeeMoreButtonBorderColor" Color="#808080" />
 
     <SolidColorBrush x:Key="MenuButtonCheckedColor" Color="#1D1D1D" />
     <SolidColorBrush x:Key="MenuButtonHoverColor" Color="#262626" />
