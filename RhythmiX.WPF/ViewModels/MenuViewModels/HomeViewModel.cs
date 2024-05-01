@@ -12,9 +12,27 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
             new AlbumDto() { AlbumName = "Album 4", ArtistName = "Artist 4", Image = "album_image_default.jpg" }
         };
 
+        private ObservableCollection<TrackDto> tracks = new ObservableCollection<TrackDto>()
+        {
+            new TrackDto() { TrackName = "Track 1", ArtistName = "Artist 1", Image = "track_image_default.jpg" },
+            new TrackDto() { TrackName = "Track 2", ArtistName = "Artist 2", Image = "track_image_default.jpg" },
+            new TrackDto() { TrackName = "Track 3", ArtistName = "Artist 3", Image = "track_image_default.jpg" },
+            new TrackDto() { TrackName = "Really cool song", ArtistName = "NIRVANA", Image = "Nirvana.jpg" },
+            new TrackDto() { TrackName = "Track 5", ArtistName = "Artist 5", Image = "track_image_default.jpg" },
+            new TrackDto() { TrackName = "Track 6", ArtistName = "Artist 6", Image = "track_image_default.jpg" },
+            new TrackDto() { TrackName = "I need really long song name", ArtistName = "Long group name so that it's really long", Image = "NWA.jpg" },
+            new TrackDto() { TrackName = "Track 8", ArtistName = "Artist 8", Image = "track_image_default.jpg" },
+            new TrackDto() { TrackName = "Track 9", ArtistName = "Artist 9", Image = "track_image_default.jpg" }
+        };
+
         public ObservableCollection<AlbumDto> Albums
         {
             get => albums;
+        }
+
+        public ObservableCollection<TrackDto> Tracks
+        {
+            get => tracks;
         }
 
         public HomeViewModel()

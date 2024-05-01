@@ -7,7 +7,10 @@
              d:DataContext="{d:DesignInstance Type=menuviewmodels:HomeViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border CornerRadius="0 0 10 0" Margin="45 0 30 0">
-        <musiccomponents:AlbumsLayoutBox Title="Recommended Albums" ItemSource="{Binding Albums}" />
+    <Border CornerRadius="0 0 10 0" Margin="45 0">
+        <StackPanel>
+            <musiccomponents:TracksLayoutBox Title="Popular Songs" ItemSource="{Binding Tracks}" />
+            <musiccomponents:AlbumsLayoutBox Title="Recommended Albums" ItemSource="{Binding Albums}" />
+        </StackPanel>
     </Border>
 </UserControl>
