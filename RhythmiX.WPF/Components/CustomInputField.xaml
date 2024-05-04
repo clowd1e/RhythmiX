@@ -16,6 +16,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
+    
     <StackPanel Orientation="Vertical">
         <TextBlock Style="{StaticResource labelTextStyle}" x:Name="labelText" Text="Label" />
         <Grid>
