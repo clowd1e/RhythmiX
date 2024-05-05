@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="RhythmiX.WPF.Components.MusicComponents.ArtistLayout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RhythmiX.WPF.Components"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d" >
+    <Button x:Name="artistLayout"
+            Style="{StaticResource ArtistLayout}">
+        <Button.Content>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Border Width="100"
+                    Height="100"
+                    CornerRadius="50"
+                    VerticalAlignment="Top">
+                    <Border.Background>
+                        <ImageBrush x:Name="artistImage" ImageSource="/Images/Default/default_artist.png" />
+                    </Border.Background>
+                </Border>
+
+                <TextBlock x:Name="artistName"
+                           Text="Default Artist Name"
+                           Margin="0 10 0 0"
+                           Grid.Row="1"
+                           TextAlignment="Center"
+                           Style="{StaticResource ArtistNameStyle}"/>
+            </Grid>
+        </Button.Content>
+    </Button>
+</UserControl>
