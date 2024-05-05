@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="Styles/ViewsCommonStyle.xaml" />
                 <ResourceDictionary Source="Styles/PlaylistLayoutStyle.xaml" />
                 <ResourceDictionary Source="Styles/AlbumLayoutStyle.xaml" />
+                <ResourceDictionary Source="Styles/ArtistLayoutStyle.xaml" />
                 <ResourceDictionary Source="Styles/FontFamilies.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
