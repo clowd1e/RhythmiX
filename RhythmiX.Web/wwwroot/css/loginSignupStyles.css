@@ -17,7 +17,7 @@ body {
     height: 100%;
 }
 
-.container {
+.login-container {
     width: 35vw;
     height: 70vh;
     display: flex;
@@ -25,7 +25,48 @@ body {
     justify-content: space-between;
 }
 
+.signup-container {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 1vh 3vw;
+    width: 50vw;
+}
+
+.first-row {
+    grid-row: 1;
+}
+
+.second-row {
+    grid-row: 2;
+}
+
+.third-row {
+    grid-row: 3;
+}
+
+.first-column {
+    grid-column: 1;
+}
+
+.second-column {
+    grid-column: 2;
+}
+
+.inpit-grid-div {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    justify-content: space-around;
+}
+
 .app-logo {
+    width: 20vw;
+    margin: 0 auto;
+}
+
+.sound-track {
     width: 20vw;
     margin: 0 auto;
 }
@@ -91,7 +132,7 @@ body {
     align-self: flex-start;
 }
 
-.login-button {
+.submit-button {
     border-radius: 2vw;
     width: 20vw;
     height: 9vh;
@@ -103,6 +144,10 @@ body {
     color: #f2f2f2;
     background: rgb(254,172,94);
     background: linear-gradient(90deg, rgba(254,172,94,1) 0%, rgba(199,121,208,1) 50%, rgba(75,192,200,1) 100%);
+}
+
+.signup-button {
+    margin-top: 3vh;
 }
 
 .bottom-text {
@@ -117,4 +162,10 @@ body {
     text-decoration: none;
     font-size: 1vw;
     font-weight: 700;
+}
+
+.welcome-text {
+    color: #f2f2f2;
+    font-size: 3vw;
+    margin: 0 auto;
 }
