@@ -11,6 +11,7 @@
         <StackPanel>
             <musiccomponents:TracksLayoutBox Title="Popular Songs" ItemSource="{Binding Tracks}" />
             <musiccomponents:AlbumsLayoutBox Title="Recommended Albums" ItemSource="{Binding Albums}" />
+            <musiccomponents:ArtistsLayoutBox Title="Recommended Artists" ItemSource="{Binding Artists}" />
         </StackPanel>
     </Border>
 </UserControl>
