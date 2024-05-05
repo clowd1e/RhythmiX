@@ -205,6 +205,7 @@
     <None Remove="Images\clock_counter_clockwise.png" />
     <None Remove="Images\compass.png" />
     <None Remove="Images\default.png" />
+    <None Remove="Images\Default\default_artist.png" />
     <None Remove="Images\default_main.png" />
     <None Remove="Images\envelope.png" />
     <None Remove="Images\history_logo.png" />
@@ -417,6 +418,7 @@
     <Resource Include="Images\clock_counter_clockwise.png" />
     <Resource Include="Images\compass.png" />
     <Resource Include="Images\default.png" />
+    <Resource Include="Images\Default\default_artist.png" />
     <Resource Include="Images\default_main.png" />
     <Resource Include="Images\envelope.png" />
     <Resource Include="Images\history_logo.png" />
@@ -450,6 +452,7 @@
   <ItemGroup>
     <Folder Include="APICallResults\DownloadedAlbums\" />
     <Folder Include="APICallResults\DownloadedPlaylists\" />
+    <Folder Include="APICallResults\DownloadedArtists\" />
   </ItemGroup>
 
   <ItemGroup>
