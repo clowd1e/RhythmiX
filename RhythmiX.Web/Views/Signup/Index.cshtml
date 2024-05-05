@@ -3,4 +3,50 @@
     Layout = "_LoginLayout";
 }
 
-<h1 style="color:#f2f2f2;">Nothing here yet!</h1>
+<form class="signup-container">
+    <div class="first-row first-column">
+        <h2 class="welcome-text">Welcome to</h2>
+        <img src="~/images/app_logo.png" class="app-logo" />
+    </div>
+
+    <div class="inpit-grid-div second-row first-column">
+        <div class="input-div">
+            <h2 class="input-label">Username</h2>
+            <span class="input-with-icon">
+                <img src="~/images/user_circle.png" />
+                <input type="text" class="input username" placeholder="Type your username" />
+            </span>
+        </div>
+
+        <div class="input-div">
+            <h2 class="input-label">Email</h2>
+            <span class="input-with-icon">
+                <img src="~/images/envelope.png" />
+                <input type="email" class="input email" placeholder="Type your email" />
+            </span>
+        </div>
+    </div>
+
+    <button type="submit" class="submit-button third-row first-column signup-button"
+            asp-controller="login" asp-action="index">Submit</button>
+
+    <img src="~/images/sound_track.png" class="sound-track first-row second-column" />
+
+    <div class="inpit-grid-div second-row second-column">
+        <div class="input-div">
+            <h2 class="input-label">Password</h2>
+            <span class="input-with-icon">
+                <img src="~/images/lock_key.png" />
+                <input type="password" class="input password" placeholder="Type your password" />
+            </span>
+        </div>
+
+        <div class="input-div">
+            <h2 class="input-label">Confirm Password</h2>
+            <span class="input-with-icon">
+                <img src="~/images/lock_key.png" />
+                <input type="password" class="input password" placeholder="Type your password" />
+            </span>
+        </div>
+    </div>
+</form>
