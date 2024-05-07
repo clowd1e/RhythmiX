@@ -25,7 +25,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <components:DragableField Grid.ColumnSpan="2" MouseDown="DragableField_MouseDown" />
