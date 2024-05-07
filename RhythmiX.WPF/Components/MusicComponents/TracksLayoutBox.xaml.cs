@@ -2,6 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace RhythmiX.WPF.Components.MusicComponents
 {
@@ -68,6 +70,37 @@ namespace RhythmiX.WPF.Components.MusicComponents
                 if (i < 6)
                     item.Margin = new Thickness(item.Margin.Left, item.Margin.Top, item.Margin.Right, vertical);
             }
+        }
+
+        private void ListBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollViewer = GetParentScrollViewer((DependencyObject)sender);
+
+            if (scrollViewer != null)
+            {
+                if (e.Delta < 0)
+                {
+                    scrollViewer.LineDown();
+                }
+                else
+                {
+                    scrollViewer.LineUp();
+                }
+
+                e.Handled = true;
+            }
+        }
+
+        private ScrollViewer GetParentScrollViewer(DependencyObject child)
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            while (parent != null && !(parent is ScrollViewer))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            return parent as ScrollViewer;
         }
     }
 }

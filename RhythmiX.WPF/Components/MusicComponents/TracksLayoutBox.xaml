@@ -24,6 +24,7 @@
         </Grid>
 
         <ListBox x:Name="listBox" Loaded="listBox_Loaded"
+                 PreviewMouseWheel="ListBox_PreviewMouseWheel"
                  Background="Transparent" BorderThickness="0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

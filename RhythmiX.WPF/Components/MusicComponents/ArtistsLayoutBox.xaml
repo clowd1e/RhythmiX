@@ -14,6 +14,7 @@
                    x:Name="title" />
 
         <ListBox x:Name="listBox"
+                 PreviewMouseWheel="ListBox_PreviewMouseWheel"
                  Background="Transparent" BorderThickness="0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
