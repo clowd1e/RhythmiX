@@ -33,6 +33,14 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
             new ArtistDto() { ArtistName = "NEFFEX", Image = "Neffex.jpg" }
         };
 
+        private ObservableCollection<PlaylistDto> playlists = new ObservableCollection<PlaylistDto>()
+        {
+            new PlaylistDto() { PlaylistName = "Playlist 1", ArtistName = "User 1", Image = "playlist_image_default.png" },
+            new PlaylistDto() { PlaylistName = "Playlist 2", ArtistName = "Some other user", Image = "playlist_image_default.png" },
+            new PlaylistDto() { PlaylistName = "Playlist 3", ArtistName = "Probably me", Image = "playlist_image_default.png" },
+            new PlaylistDto() { PlaylistName = "Playlist 4", ArtistName = "YEAH", Image = "playlist_image_default.png" }
+        };
+
         public ObservableCollection<AlbumDto> Albums
         {
             get => albums;
@@ -46,6 +54,11 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
         public ObservableCollection<ArtistDto> Artists
         {
             get => artists;
+        }
+
+        public ObservableCollection<PlaylistDto> Playlists
+        {
+            get => playlists;
         }
 
         public HomeViewModel()

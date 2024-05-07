@@ -7,11 +7,15 @@
              d:DataContext="{d:DesignInstance Type=menuviewmodels:HomeViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border CornerRadius="0 0 10 0" Margin="45 0">
-        <StackPanel>
-            <musiccomponents:TracksLayoutBox Title="Popular Songs" ItemSource="{Binding Tracks}" />
-            <musiccomponents:AlbumsLayoutBox Title="Recommended Albums" ItemSource="{Binding Albums}" />
-            <musiccomponents:ArtistsLayoutBox Title="Recommended Artists" ItemSource="{Binding Artists}" />
-        </StackPanel>
+    <Border CornerRadius="0 0 10 0">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="auto">
+            <StackPanel Margin="45 0 45 50">
+                <musiccomponents:TracksLayoutBox Title="Popular Songs" ItemSource="{Binding Tracks}" />
+                <musiccomponents:AlbumsLayoutBox Title="Recommended Albums" ItemSource="{Binding Albums}" />
+                <musiccomponents:ArtistsLayoutBox Title="Recommended Artists" ItemSource="{Binding Artists}" />
+                <musiccomponents:PlaylistsLayoutBox Title="Recommended Playlists" ItemSource="{Binding Playlists}" />
+            </StackPanel>
+        </ScrollViewer>
     </Border>
 </UserControl>
