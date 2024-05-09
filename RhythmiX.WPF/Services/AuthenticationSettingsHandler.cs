@@ -2,16 +2,16 @@
 {
     public static class AuthenticationSettingsHandler
     {
-        public static void SaveSettings(string email, string password)
+        public static void SaveSettings(string username, string password)
         {
-            Properties.Settings.Default.Email = email;
+            Properties.Settings.Default.Username = username;
             Properties.Settings.Default.Password = password;
             Properties.Settings.Default.Save();
         }
 
-        public static void LoadSettings(out string email, out string password)
+        public static void LoadSettings(out string username, out string password)
         {
-            email = Properties.Settings.Default.Email;
+            username = Properties.Settings.Default.Username;
             password = Properties.Settings.Default.Password;
         }
     }

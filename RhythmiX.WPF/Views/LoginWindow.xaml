@@ -39,8 +39,8 @@
                    Height="43"/>
 
             <StackPanel Grid.Row="2" Margin="70 23 70 0">
-                <components:CustomInputField x:Name="EmailField"
-                    LabelText="Email" TextBoxBackImage="envelope.png" PlaceholderText="Type your email" />
+                <components:CustomInputField x:Name="UsernameField"
+                    LabelText="Username" TextBoxBackImage="user_circle_main.png" PlaceholderText="Type your username" />
             </StackPanel>
 
             <StackPanel Grid.Row="3" Margin="70 28 70 0">

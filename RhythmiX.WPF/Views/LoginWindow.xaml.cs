@@ -35,14 +35,14 @@ namespace RhythmiX.WPF.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (checkbox.IsChecked is true && IsEmailAndPasswordNotEmpty(EmailField.Text, PasswordField.Password))
-                AuthenticationSettingsHandler.SaveSettings(EmailField.Text, PasswordField.Password);
+            if (checkbox.IsChecked is true && IsUsernameAndPasswordNotEmpty(UsernameField.Text, PasswordField.Password))
+                AuthenticationSettingsHandler.SaveSettings(UsernameField.Text, PasswordField.Password);
             else
                 AuthenticationSettingsHandler.SaveSettings(string.Empty, string.Empty);
         }
 
-        private bool IsEmailAndPasswordNotEmpty(string email, string password) =>
-            !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password);
+        private bool IsUsernameAndPasswordNotEmpty(string username, string password) =>
+            !string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password);
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -52,15 +52,15 @@ namespace RhythmiX.WPF.Views
         private void LoadUserAuthenticationSettings()
         {
             checkbox.IsChecked = false;
-            string email = string.Empty;
+            string username = string.Empty;
             string password = string.Empty;
 
-            AuthenticationSettingsHandler.LoadSettings(out email, out password);
+            AuthenticationSettingsHandler.LoadSettings(out username, out password);
 
-            if (IsEmailAndPasswordNotEmpty(email, password))
+            if (IsUsernameAndPasswordNotEmpty(username, password))
                 checkbox.IsChecked = true;
 
-            EmailField.Text = email;
+            UsernameField.Text = username;
             PasswordField.Password = password;
         }
     }

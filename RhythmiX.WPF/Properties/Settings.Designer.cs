@@ -26,12 +26,12 @@ namespace RhythmiX.WPF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Email {
+        public string Username {
             get {
-                return ((string)(this["Email"]));
+                return ((string)(this["Username"]));
             }
             set {
-                this["Email"] = value;
+                this["Username"] = value;
             }
         }
         
