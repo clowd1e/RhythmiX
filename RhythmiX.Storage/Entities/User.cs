@@ -8,6 +8,13 @@ namespace RhythmiX.Storage.Entities
     [Table("Users", Schema = "MusicDb")]
     public class User : BaseEntity
     {
+        public User(string username, string password, string email)
+        {
+            Username = username;
+            Password = password;
+            Email = email;
+        }
+
         [Required]
         [MinLength(3)]
         [MaxLength(50)]
