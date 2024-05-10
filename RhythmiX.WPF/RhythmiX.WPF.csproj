@@ -215,10 +215,15 @@
     <None Remove="Images\lock_key.png" />
     <None Remove="Images\playlist.png" />
     <None Remove="Images\playlists_logo.png" />
+    <None Remove="Images\play_back.png" />
+    <None Remove="Images\play_button.png" />
+    <None Remove="Images\play_next.png" />
     <None Remove="Images\sound_track.png" />
+    <None Remove="Images\speaker.png" />
     <None Remove="Images\thumbs_up.png" />
     <None Remove="Images\user_circle.png" />
     <None Remove="Images\user_circle_main.png" />
+    <None Remove="Images\volume.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -428,10 +433,15 @@
     <Resource Include="Images\lock_key.png" />
     <Resource Include="Images\playlist.png" />
     <Resource Include="Images\playlists_logo.png" />
+    <Resource Include="Images\play_back.png" />
+    <Resource Include="Images\play_button.png" />
+    <Resource Include="Images\play_next.png" />
     <Resource Include="Images\sound_track.png" />
+    <Resource Include="Images\speaker.png" />
     <Resource Include="Images\thumbs_up.png" />
     <Resource Include="Images\user_circle.png" />
     <Resource Include="Images\user_circle_main.png" />
+    <Resource Include="Images\volume.png" />
   </ItemGroup>
 
   <ItemGroup>
