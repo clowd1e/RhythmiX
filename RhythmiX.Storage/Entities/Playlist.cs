@@ -26,9 +26,10 @@ namespace RhythmiX.Storage.Entities
         [Required]
         public string Zip { get; set; }
 
-        public List<User> LikedUsers { get; set; }
-        public List<User> HistoryUsers { get; set; }
+        public List<User> LikedUsers { get; set; } = new List<User>();
+        public List<User> HistoryUsers { get; set; } = new List<User>();
 
+        protected Playlist() { }
         public Playlist(long apiId, string name, DateOnly creationDate, string userId, string userName, string zip)
         {
             ApiId = apiId;

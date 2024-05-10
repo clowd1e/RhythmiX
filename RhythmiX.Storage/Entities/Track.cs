@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RhythmiX.Storage.Common;
+using RhythmiX.Storage.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -41,8 +42,10 @@ namespace RhythmiX.Storage.Entities
         [Required]
         public string AudioDownload { get; set; }
 
-        public List<User> LikedUsers { get; set; }
-        public List<User> HistoryUsers { get; set; }
+        public List<User> LikedUsers { get; set; } = new List<User>();
+        public List<User> HistoryUsers { get; set; } = new List<User>();
+
+        protected Track() { }
 
         public Track(long apiId, long albumId, string albumName, long artistId, string name, int duration, DateOnly releaseDate, string albumImage, string image, string audio, string audioDownload)
         {

@@ -8,6 +8,7 @@ namespace RhythmiX.Storage.Entities
     [Table("Users", Schema = "MusicDb")]
     public class User : BaseEntity
     {
+        protected User() { }
         public User(string username, string password, string email)
         {
             Username = username;
@@ -30,10 +31,13 @@ namespace RhythmiX.Storage.Entities
         public string Email { get; set; }
         
 
-        public List<Track> LikedTracks { get; set; }
-        public List<Album> LikedAlbums { get; set; }
-        public List<Playlist> LikedPlaylists { get; set; }
-        public List<Artist> LikedArtists { get; set; }
-        public List<IHistoryObservable> History { get; set; }
+        public List<Track> LikedTracks { get; set; } = new List<Track>();
+        public List<Album> LikedAlbums { get; set; } = new List<Album>();
+        public List<Playlist> LikedPlaylists { get; set; } = new List<Playlist>();
+        public List<Artist> LikedArtists { get; set; } = new List<Artist>();
+        public List<Track> HistoryTracks { get; set; } = new List<Track>();
+        public List<Album> HistoryAlbums { get; set; } = new List<Album>();
+        public List<Playlist> HistoryPlaylists { get; set; } = new List<Playlist>();
+        public List<Artist> HistoryArtists { get; set; } = new List<Artist>(); 
     }
 }
