@@ -19,5 +19,7 @@
     <SolidColorBrush x:Key="MenuButtonCheckedColor" Color="#1D1D1D" />
     <SolidColorBrush x:Key="MenuButtonHoverColor" Color="#262626" />
 
+    <SolidColorBrush x:Key="MusicPlayerBarBack" Color="#2C2363" />
+
     <SolidColorBrush x:Key="MenuBackColor" Color="#090909" />
 </ResourceDictionary>
