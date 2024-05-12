@@ -46,7 +46,7 @@ namespace RhythmiX.WPF.Components.MusicComponents
 
         private void UpdateTrackImage()
         {
-            BitmapImage image = new BitmapImage(new Uri($"../../../APICallResults/DownloadedMusic/{TrackImage}", UriKind.Relative));
+            BitmapImage image = new BitmapImage(new Uri($"../../../APICallResults/DownloadedMusic/{TrackName}/{TrackImage}", UriKind.Relative));
             image.CacheOption = BitmapCacheOption.OnLoad;
 
             trackImage.ImageSource = image;

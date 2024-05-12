@@ -22,7 +22,7 @@ namespace RhythmiX.Service.Downloaders.ZipDownloader
             using (WebClient client = new WebClient())
             {
                 await client.DownloadFileTaskAsync(url, zipSavePath);
-                await ImageDownloader.ImageDownloader.DownoladImageAsync(name, imagePath, folderPath);
+                await ImageDownloader.ImageDownloader.DownloadImageAsync(name, imagePath, folderPath);
             }
 
             ZipFile.ExtractToDirectory(zipSavePath, $"{folderPath}/{name}");
