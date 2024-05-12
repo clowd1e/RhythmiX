@@ -1,6 +1,6 @@
 ﻿namespace RhythmiX.Service.API.ResponseModels
 {
-    public abstract class ResponseModelBase : IResponceModel
+    public abstract class ResponseModelBase : IResponseModel
     {
         public ResponseHeader Headers { get; set; }
     }
