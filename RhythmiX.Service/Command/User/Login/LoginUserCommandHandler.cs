@@ -18,12 +18,10 @@ namespace RhythmiX.Service.Command.User.Login
                 return Result.Fail(validationResult);
 
             if (!await _userRepository.IsUserExistsAsync(command.Username))
-                return Result.Fail("User does not exist");
+                return Result.Fail("User does not exist", nameof(command.Username));
 
             if (!await _userRepository.IsPasswordCorrectAsync(command.Username, command.Password))
-                return Result.Fail("Password is incorrect");
-
-            await _userRepository.LoginUserAsync(command.Username);
+                return Result.Fail("Password is incorrect", nameof(command.Password));
 
             return Result.Ok();
         }
