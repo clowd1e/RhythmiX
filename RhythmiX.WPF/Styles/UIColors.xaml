@@ -7,6 +7,9 @@
     <SolidColorBrush x:Key="PlaylistLayoutBackHoverColor" Color="#554e4e4e" />
     
     <SolidColorBrush x:Key="SeeMoreButtonBackHoverColor" Color="#554e4e4e" />
+    
+    
+    <SolidColorBrush x:Key="ErrorTextColor" Color="#ff0000" />
 
     <SolidColorBrush x:Key="CommonWhite" Color="#F2F2F2" />
     <SolidColorBrush x:Key="CustomInputFieldGray" Color="#808080" />
