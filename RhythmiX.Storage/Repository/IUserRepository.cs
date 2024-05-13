@@ -8,6 +8,6 @@ namespace RhythmiX.Storage.Repository
         Task AddUserAsync(User user);
         Task<bool> IsUserExistsAsync(string username);
         Task<bool> IsPasswordCorrectAsync(string username, string password);
-        Task LoginUserAsync(string username);
+        Task<User> LoginUserAsync(string username, string password);
     }
 }
