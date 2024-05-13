@@ -16,6 +16,10 @@
         Background="Transparent"
         AllowsTransparency="True">
 
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    
     <Border CornerRadius="10" Background="{StaticResource LoginWindowBack}">
         <Grid>
             <Grid.RowDefinitions>
@@ -40,15 +44,31 @@
 
             <StackPanel Grid.Row="2" Margin="70 23 70 0">
                 <components:CustomInputField x:Name="UsernameField"
-                    LabelText="Username" TextBoxBackImage="user_circle_main.png" PlaceholderText="Type your username" />
+                    LabelText="Username" TextBoxBackImage="user_circle_main.png" PlaceholderText="Type your username"
+                    Text="{Binding Username}"/>
+
+                <TextBlock Margin="0 5 0 0"
+                    Visibility="{Binding HasUsernameError, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Text="{Binding UsernameErrorMessage}"
+                    Style="{StaticResource ErrorTextStyle}"
+                    FontSize="12" />
+
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Margin="70 28 70 0">
+            <StackPanel Grid.Row="3" Margin="70 16 70 0">
                 <components:CustomPasswordField x:Name="PasswordField"
-                    LabelText="Password" PlaceholderText="Type your password" />
+                    LabelText="Password" PlaceholderText="Type your password"
+                    Password="{Binding Password}"/>
+
+                <TextBlock Margin="0 5 0 0"
+                    Visibility="{Binding HasPasswordError, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Text="{Binding PasswordErrorMessage}"
+                    Style="{StaticResource ErrorTextStyle}"
+                    FontSize="12" />
+
             </StackPanel>
 
-            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="70 28 70 0">
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="70 16 70 0">
                 <CheckBox VerticalAlignment="Center" x:Name="checkbox" 
                           Cursor="Hand"/>
                 <Button Style="{StaticResource labelButtonStyle}"
@@ -58,7 +78,7 @@
             </StackPanel>
 
             <Button Grid.Row="5" 
-                    Command="{Binding ChangeToMainWindow}"
+                    Command="{Binding Login}"
                     Margin="0 32 0 0" Style="{StaticResource LoginButtonStyle}"
                     Width="210" Height="48" Content="Login">
             </Button>

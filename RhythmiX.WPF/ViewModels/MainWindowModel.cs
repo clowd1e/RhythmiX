@@ -1,4 +1,5 @@
-﻿using RhythmiX.WPF.Commands;
+﻿using RhythmiX.Storage.Entities;
+using RhythmiX.WPF.Commands;
 using RhythmiX.WPF.Stores;
 using RhythmiX.WPF.ViewModels.MenuViewModels;
 using System.Windows.Input;
@@ -7,6 +8,7 @@ namespace RhythmiX.WPF.ViewModels
 {
     public class MainWindowModel : ViewModelBase
     {
+        private readonly User _user;
         private readonly NavigationStore navigationStore;
         public ViewModelBase CurrentViewModel => navigationStore.CurrentViewModel;
 
@@ -21,6 +23,17 @@ namespace RhythmiX.WPF.ViewModels
 
         public MainWindowModel()
         {
+            navigationStore = new NavigationStore();
+            navigationStore.CurrentViewModel = new HomeViewModel();
+
+            InitializeMenuButtons();
+            navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
+
+        public MainWindowModel(User user)
+        {
+            _user = user;
+
             navigationStore = new NavigationStore();
             navigationStore.CurrentViewModel = new HomeViewModel();
 
