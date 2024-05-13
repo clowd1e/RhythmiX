@@ -31,6 +31,9 @@ namespace Cinema.Service
         public static Result Fail(string message)
             => new Result(false, message, Enumerable.Empty<Error>());
 
+        public static Result Fail(string message, string propertyName)
+            => new Result(false, message, [new Error(propertyName, message)]);
+
         public static Result Fail(ValidationResult validationResult)
             => new Result(
                 false,
