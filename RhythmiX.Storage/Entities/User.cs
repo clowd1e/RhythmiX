@@ -16,6 +16,12 @@ namespace RhythmiX.Storage.Entities
             Email = email;
         }
 
+        public User(string username, string password)
+        {
+            Username = username;
+            Password = password;
+        }
+
         [Required]
         [MinLength(3)]
         [MaxLength(50)]
