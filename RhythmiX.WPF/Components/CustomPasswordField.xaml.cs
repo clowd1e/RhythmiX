@@ -65,7 +65,7 @@ namespace RhythmiX.WPF.Components
 
 
         public static readonly DependencyProperty PasswordProperty =
-            DependencyProperty.Register("Password", typeof(string), typeof(CustomPasswordField), new PropertyMetadata(string.Empty, PasswordPropertyChanged));
+            DependencyProperty.Register("Password", typeof(string), typeof(CustomPasswordField), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, PasswordPropertyChanged));
 
         private static void PasswordPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

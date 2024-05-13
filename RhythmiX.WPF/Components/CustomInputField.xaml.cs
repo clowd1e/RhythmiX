@@ -85,7 +85,7 @@ namespace RhythmiX.WPF.Components
         }
 
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(CustomInputField), new PropertyMetadata(string.Empty, TextPropertyChanged));
+            DependencyProperty.Register("Text", typeof(string), typeof(CustomInputField), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, TextPropertyChanged));
 
         private static void TextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
