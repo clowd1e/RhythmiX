@@ -10,29 +10,30 @@ namespace RhythmiX.Storage.Repository
             _context = context;
         }
 
-        public Task AddUserAsync(User user)
+        public async Task AddUserAsync(User user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+        }
+
+        public async Task<bool> IsPasswordCorrectAsync(string username, string password)
+        {
+            return _context.Users.Any(u => u.Username == username && u.Password == password);
+        }
+
+        public async Task<bool> IsUserExistsAsync(string username)
+        {
+            return _context.Users.Any(u => u.Username == username);
+        }
+
+        public async Task<bool> IsUsernameTakenAsync(string username)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> IsPasswordCorrectAsync(string username, string password)
+        public async Task<User> LoginUserAsync(string username, string password)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> IsUserExistsAsync(string username)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> IsUsernameTakenAsync(string username)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task LoginUserAsync(string username)
-        {
-            throw new NotImplementedException();
+            return _context.Users.SingleOrDefault(u => u.Username == username && u.Password == password);
         }
     }
 }
