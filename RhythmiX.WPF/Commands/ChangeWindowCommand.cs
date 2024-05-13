@@ -1,16 +1,19 @@
-﻿using System.Windows;
+﻿using Entity = RhythmiX.Storage.Entities;
+using System.Windows;
 
 namespace RhythmiX.WPF.Commands
 {
     public class ChangeWindowCommand : CommandBase
     {
-        private readonly Window window;
-        private readonly Type type;
+        private readonly Window _window;
+        private readonly Type _type;
+        private readonly Entity.User _user;
 
-        public ChangeWindowCommand(Window window, Type type)
+        public ChangeWindowCommand(Window window, Type type, Entity.User user = null)
         {
-            this.window = window;
-            this.type = type;
+            _window = window;
+            _type = type;
+            _user = user;
         }
 
         public override void Execute(object? parameter)
@@ -20,10 +23,10 @@ namespace RhythmiX.WPF.Commands
 
         private void ChangeWindow()
         {
-            window.DataContext = Activator.CreateInstance(type);
+            _window.DataContext = Activator.CreateInstance(_type, _user);
             Application.Current.MainWindow.Close();
-            Application.Current.MainWindow = window;
-            window.Show();
+            Application.Current.MainWindow = _window;
+            _window.Show();
         }
     }
 }
