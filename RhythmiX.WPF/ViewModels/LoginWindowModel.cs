@@ -1,4 +1,5 @@
-﻿using RhythmiX.Storage.Entities;
+﻿using RhythmiX.Service.Queries.Dtos;
+using RhythmiX.Storage.Entities;
 using RhythmiX.WPF.Commands;
 using RhythmiX.WPF.Views;
 using System.Windows.Input;
@@ -31,7 +32,7 @@ namespace RhythmiX.WPF.ViewModels
             }
         }
 
-        private readonly User _user;
+        private readonly UserDto _user;
 
         private string usernameErrorMessage;
         public string UsernameErrorMessage
@@ -67,7 +68,14 @@ namespace RhythmiX.WPF.ViewModels
         public ICommand Login { get; }
         public LoginWindowModel()
         {
-            _user = new User("", "");
+            _user = new UserDto();
+            ChangeToSignupForm = new ChangeWindowCommand(new SignupWindow(), typeof(SignupWindowModel));
+            Login = new AsyncLoginCommand(_user, this);
+        }
+
+        public LoginWindowModel(UserDto userDto)
+        {
+            _user = userDto;
             ChangeToSignupForm = new ChangeWindowCommand(new SignupWindow(), typeof(SignupWindowModel));
             Login = new AsyncLoginCommand(_user, this);
         }
