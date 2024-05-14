@@ -16,6 +16,8 @@ namespace RhythmiX.Service.Command.User.Register
             RuleFor(x => x.Password).MaximumLength(30);
             RuleFor(x => x.Password).Matches(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,30}$")
                 .WithMessage("Password must contain at least one uppercase letter, one lowercase letter and one digit");
+            RuleFor(x => x.Email).MinimumLength(5);
+            RuleFor(x => x.Email).MaximumLength(50);
             RuleFor(x => x.Email).EmailAddress();
             RuleFor(x => x.RepeatPassword).Equal(x => x.Password);
         }
