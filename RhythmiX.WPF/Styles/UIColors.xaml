@@ -3,6 +3,8 @@
     
     <SolidColorBrush x:Key="MainWindowBack" Color="#171717" />
     <SolidColorBrush x:Key="LoginWindowBack" Color="#090909" />
+    <SolidColorBrush x:Key="ConfirmWindowBack" Color="#090909" />
+    
     <SolidColorBrush x:Key="TrackLayoutBackHoverColor" Color="#353535" />
     <SolidColorBrush x:Key="PlaylistLayoutBackHoverColor" Color="#554e4e4e" />
     
@@ -25,4 +27,6 @@
     <SolidColorBrush x:Key="MusicPlayerBarBack" Color="#2C2363" />
 
     <SolidColorBrush x:Key="MenuBackColor" Color="#090909" />
+
+    <SolidColorBrush x:Key="TranslusentBackColor" Color="#737373" Opacity="0.47" />
 </ResourceDictionary>
