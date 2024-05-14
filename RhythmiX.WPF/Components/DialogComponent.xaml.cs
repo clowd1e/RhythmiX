@@ -15,10 +15,10 @@ namespace RhythmiX.WPF.Components
         }
 
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(ConfirmComponent), new PropertyMetadata("Title"));
+            DependencyProperty.Register("Title", typeof(string), typeof(DialogComponent), new PropertyMetadata("Title"));
 
-        public static readonly DependencyProperty ConfirmCommandProperty =
-            DependencyProperty.Register("ConfirmCommand", typeof(ICommand), typeof(ConfirmComponent), new PropertyMetadata(null));
+        public static readonly DependencyProperty CloseCommandProperty =
+            DependencyProperty.Register("CloseCommand", typeof(ICommand), typeof(DialogComponent), new PropertyMetadata(null));
 
         public string Title
         {
@@ -26,10 +26,10 @@ namespace RhythmiX.WPF.Components
             set { SetValue(TitleProperty, value); }
         }
 
-        public ICommand ConfirmCommand
+        public ICommand CloseCommand
         {
-            get { return (ICommand)GetValue(ConfirmCommandProperty); }
-            set { SetValue(ConfirmCommandProperty, value); }
+            get { return (ICommand)GetValue(CloseCommandProperty); }
+            set { SetValue(CloseCommandProperty, value); }
         }
 
         private void UpdateText()
@@ -39,7 +39,7 @@ namespace RhythmiX.WPF.Components
 
         private void UpdateCommand()
         {
-            confirm.Command = ConfirmCommand;
+            close.Command = CloseCommand;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

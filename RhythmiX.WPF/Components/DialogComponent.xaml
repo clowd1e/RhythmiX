@@ -15,7 +15,7 @@
                    Margin="0 38 0 0"
                    Style="{StaticResource ConfirmTextStyle}"/>
             
-            <Button x:Name="confirm"
+            <Button x:Name="close"
                         Margin="0 42 0 0"
                         HorizontalAlignment="Center"
                         Style="{StaticResource ConfirmButtonStyle}"
