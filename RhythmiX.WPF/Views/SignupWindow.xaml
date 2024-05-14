@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RhythmiX.WPF.Views" xmlns:components="clr-namespace:RhythmiX.WPF.Components" xmlns:wpfmodalcontrol="clr-namespace:WPFModalControl;assembly=WPFModalControl"
+        xmlns:local="clr-namespace:RhythmiX.WPF.Views" xmlns:components="clr-namespace:RhythmiX.WPF.Components"
+        xmlns:wpfmodalcontrol="clr-namespace:WPFModalControl;assembly=WPFModalControl" xmlns:viewmodels="clr-namespace:RhythmiX.WPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SignupWindowModel}"
         mc:Ignorable="d"
         Height="410" Width="600"
         WindowStartupLocation="CenterScreen"
@@ -11,16 +12,30 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    
     <Border CornerRadius="10" Background="{StaticResource LoginWindowBack}">
         <Grid>
 
-            <wpfmodalcontrol:Modal IsOpen="{Binding IsModalOpen}"
+            <!--Confirm Modal-->
+            <wpfmodalcontrol:Modal IsOpen="{Binding IsConfirmModalOpen}"
                                    CornerRadius="10"
                                    Panel.ZIndex="2"
                                    Background="{StaticResource TranslusentBackColor}">
                 <components:ConfirmComponent Title="Do you want to continue?"
                                              CancelCommand="{Binding Cancel}"
                                              ConfirmCommand="{Binding Confirm}" />
+            </wpfmodalcontrol:Modal>
+
+            <!--Success and Error Modal-->
+            <wpfmodalcontrol:Modal IsOpen="{Binding IsResultModalOpen}"
+                                   CornerRadius="10"
+                                   Panel.ZIndex="2"
+                                   Background="{StaticResource TranslusentBackColor}">
+                <components:DialogComponent Title="{Binding ResultTitle}"
+                                            CloseCommand="{Binding CloseResultModal}" />
             </wpfmodalcontrol:Modal>
             
             <Grid>
@@ -59,20 +74,48 @@
                        Height="100"
                        VerticalAlignment="Center" HorizontalAlignment="Left" />
 
-                <StackPanel Grid.Row="2" Grid.Column="0" Margin="30 47 20 0">
-                    <components:CustomInputField LabelText="Username" TextBoxBackImage="user_circle.png" PlaceholderText="Type your username" />
+                <StackPanel Grid.Row="2" Grid.Column="0" Margin="30 37 20 0">
+                    <components:CustomInputField Text="{Binding Username}"
+                        LabelText="Username" TextBoxBackImage="user_circle.png" PlaceholderText="Type your username" />
+
+                    <TextBlock Margin="0 5 0 0"
+                               Visibility="{Binding HasUsernameError, Converter={StaticResource BooleanToVisibilityConverter}}"
+                               Text="{Binding UsernameErrorMessage}"
+                               Style="{StaticResource ErrorTextStyle}"
+                               FontSize="12" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="3" Grid.Column="0" Margin="30 28 20 0">
-                    <components:CustomInputField LabelText="Email" TextBoxBackImage="envelope.png" PlaceholderText="Type your email" />
+                <StackPanel Grid.Row="3" Grid.Column="0" Margin="30 18 20 0">
+                    <components:CustomInputField Text="{Binding Email}"
+                        LabelText="Email" TextBoxBackImage="envelope.png" PlaceholderText="Type your email" />
+
+                    <TextBlock Margin="0 5 0 0"
+                               Visibility="{Binding HasEmailError, Converter={StaticResource BooleanToVisibilityConverter}}"
+                               Text="{Binding EmailErrorMessage}"
+                               Style="{StaticResource ErrorTextStyle}"
+                               FontSize="12" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="2" Grid.Column="1" Margin="20 47 30 0">
-                    <components:CustomPasswordField LabelText="Password" PlaceholderText="Type your password" />
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="20 37 30 0">
+                    <components:CustomPasswordField Password="{Binding Password}"
+                        LabelText="Password" PlaceholderText="Type your password" />
+
+                    <TextBlock Margin="0 5 0 0"
+                               Visibility="{Binding HasPasswordError, Converter={StaticResource BooleanToVisibilityConverter}}"
+                               Text="{Binding PasswordErrorMessage}"
+                               Style="{StaticResource ErrorTextStyle}"
+                               FontSize="12" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="3" Grid.Column="1" Margin="20 28 30 0">
-                    <components:CustomPasswordField LabelText="Confirm Password" PlaceholderText="Type your password" />
+                <StackPanel Grid.Row="3" Grid.Column="1" Margin="20 18 30 0">
+                    <components:CustomPasswordField Password="{Binding RepeatPassword}"
+                        LabelText="Confirm Password" PlaceholderText="Type your password" />
+
+                    <TextBlock Margin="0 5 0 0"
+                               Visibility="{Binding HasRepeatPasswordError, Converter={StaticResource BooleanToVisibilityConverter}}"
+                               Text="{Binding RepeatPasswordErrorMessage}"
+                               Style="{StaticResource ErrorTextStyle}"
+                               FontSize="12" />
                 </StackPanel>
 
                 <Button Grid.Column="0" Grid.Row="4"
@@ -80,7 +123,7 @@
                     Command="{Binding Signup}"
                     Content="Submit"
                     Width="210" Height="48" 
-                    Margin="0 47 0 0"/>
+                    Margin="0 27 0 0"/>
             </Grid>
         </Grid>
     </Border>
