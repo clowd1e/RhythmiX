@@ -1,5 +1,6 @@
 ﻿using Cinema.Service;
 using RhythmiX.Service.Command.User.Login;
+using RhythmiX.Service.Queries.Dtos;
 using RhythmiX.Service.Queries.User;
 using RhythmiX.Storage;
 using RhythmiX.Storage.Entities;
@@ -11,9 +12,9 @@ namespace RhythmiX.WPF.Commands
 {
     public class AsyncLoginCommand : AsyncCommandBase
     {
-        private readonly User _userInitials;
+        private readonly UserDto _userInitials;
         private readonly LoginWindowModel _loginWindowModel;
-        public AsyncLoginCommand(User userInitials, LoginWindowModel loginWindowModel)
+        public AsyncLoginCommand(UserDto userInitials, LoginWindowModel loginWindowModel)
         {
             _userInitials = userInitials;
             _loginWindowModel = loginWindowModel;
