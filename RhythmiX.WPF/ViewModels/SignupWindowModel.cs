@@ -165,6 +165,10 @@ namespace RhythmiX.WPF.ViewModels
             registerData = new RegisterDto();
             Signup = new RelayCommand(obj => IsConfirmModalOpen = true);
 
+            // Ensure that the fields are empty when the window is opened
+            Password = string.Empty;
+            RepeatPassword = string.Empty;
+
             Cancel = new RelayCommand(obj => IsConfirmModalOpen = false);
             Confirm = new AsyncRelayCommand(new Func<object, Task>(OnConfirm));
 
