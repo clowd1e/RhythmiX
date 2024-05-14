@@ -19,7 +19,7 @@ namespace RhythmiX.Service.Command.User.Register
             RuleFor(x => x.Email).MinimumLength(5);
             RuleFor(x => x.Email).MaximumLength(50);
             RuleFor(x => x.Email).EmailAddress();
-            RuleFor(x => x.RepeatPassword).Equal(x => x.Password);
+            RuleFor(x => x.RepeatPassword).Equal(x => x.Password).WithMessage("Passwords do not match");
         }
     }
 }
