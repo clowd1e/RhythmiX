@@ -7,17 +7,50 @@ namespace RhythmiX.WPF.ViewModels
 {
     public class SignupWindowModel : ViewModelBase
     {
-        private bool isModalOpen;
-        public bool IsModalOpen
+        #region ConfirmModal
+        private bool isConfirmModalOpen;
+        public bool IsConfirmModalOpen
         {
-            get => isModalOpen;
+            get => isConfirmModalOpen;
             set
             {
-                isModalOpen = value;
-                OnPropertyChanged(nameof(IsModalOpen));
+                isConfirmModalOpen = value;
+                OnPropertyChanged(nameof(IsConfirmModalOpen));
             }
         }
 
+        public ICommand Cancel { get; }
+        public ICommand Confirm { get; }
+        #endregion
+
+        #region ResultModal
+
+        private bool isResultModalOpen;
+        public bool IsResultModalOpen
+        {
+            get => isResultModalOpen;
+            set
+            {
+                isResultModalOpen = value;
+                OnPropertyChanged(nameof(IsResultModalOpen));
+            }
+        }
+
+        private string resultTitle;
+        public string ResultTitle
+        {
+            get => resultTitle;
+            set
+            {
+                resultTitle = value;
+                OnPropertyChanged(nameof(ResultTitle));
+            }
+        }
+
+        public ICommand CloseResultModal { get; }
+        #endregion
+
+        #region RegisterData
         private string username;
         public string Username
         {
@@ -67,19 +100,75 @@ namespace RhythmiX.WPF.ViewModels
         }
 
         private RegisterDto registerData;
+        #endregion
+
+        #region ErrorMessages
+        private string usernameErrorMessage;
+        public string UsernameErrorMessage
+        {
+            get => usernameErrorMessage;
+            set
+            {
+                usernameErrorMessage = value;
+                OnPropertyChanged(nameof(UsernameErrorMessage));
+                OnPropertyChanged(nameof(HasUsernameError));
+            }
+        }
+
+        private string emailErrorMessage;
+        public string EmailErrorMessage
+        {
+            get => emailErrorMessage;
+            set
+            {
+                emailErrorMessage = value;
+                OnPropertyChanged(nameof(EmailErrorMessage));
+                OnPropertyChanged(nameof(HasEmailError));
+            }
+        }
+
+        private string passwordErrorMessage;
+        public string PasswordErrorMessage
+        {
+            get => passwordErrorMessage;
+            set
+            {
+                passwordErrorMessage = value;
+                OnPropertyChanged(nameof(PasswordErrorMessage));
+                OnPropertyChanged(nameof(HasPasswordError));
+            }
+        }
+
+        private string repeatPasswordErrorMessage;
+        public string RepeatPasswordErrorMessage
+        {
+            get => repeatPasswordErrorMessage;
+            set
+            {
+                repeatPasswordErrorMessage = value;
+                OnPropertyChanged(nameof(RepeatPasswordErrorMessage));
+                OnPropertyChanged(nameof(HasRepeatPasswordError));
+            }
+        }
+
+
+        public bool HasUsernameError => !string.IsNullOrEmpty(UsernameErrorMessage);
+        public bool HasEmailError => !string.IsNullOrEmpty(EmailErrorMessage);
+        public bool HasPasswordError => !string.IsNullOrEmpty(PasswordErrorMessage);
+        public bool HasRepeatPasswordError => !string.IsNullOrEmpty(RepeatPasswordErrorMessage);
+        #endregion
 
         public ICommand Signup { get; }
-        public ICommand Cancel { get; }
-        public ICommand Confirm { get; }
 
         public SignupWindowModel()
         {
             registerData = new RegisterDto();
-            Signup = new RelayCommand(obj => IsModalOpen = true);
+            Signup = new RelayCommand(obj => IsConfirmModalOpen = true);
 
-            Cancel = new RelayCommand(obj => IsModalOpen = false);
-
+            Cancel = new RelayCommand(obj => IsConfirmModalOpen = false);
             Confirm = new AsyncRelayCommand(new Func<object, Task>(OnConfirm));
+
+            CloseResultModal = new ChangeWindowCommand(new LoginWindow(), typeof(LoginWindowModel), new UserDto(registerData.Username, registerData.Password));
         }
 
         private async Task OnConfirm(object obj)
