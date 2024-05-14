@@ -28,7 +28,7 @@ namespace RhythmiX.Storage.Repository
 
         public async Task<bool> IsUsernameTakenAsync(string username)
         {
-            throw new NotImplementedException();
+            return _context.Users.Any(u => u.Username == username);
         }
 
         public async Task<User> LoginUserAsync(string username, string password)
