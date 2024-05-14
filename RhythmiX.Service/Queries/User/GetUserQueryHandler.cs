@@ -1,4 +1,5 @@
-﻿using RhythmiX.Storage.Repository;
+﻿using RhythmiX.Service.Queries.Dtos;
+using RhythmiX.Storage.Repository;
 using Entity = RhythmiX.Storage.Entities;
 
 namespace RhythmiX.Service.Queries.User
@@ -6,8 +7,8 @@ namespace RhythmiX.Service.Queries.User
     public class GetUserQueryHandler : IQueryHandler<GetUserQuery, Entity.User>
     {
         private readonly IUserRepository _userRepository;
-        private readonly Entity.User _user;
-        public GetUserQueryHandler(IUserRepository userRepository, Entity.User user)
+        private readonly UserDto _user;
+        public GetUserQueryHandler(IUserRepository userRepository, UserDto user)
         {
             _userRepository = userRepository;
             _user = user;
