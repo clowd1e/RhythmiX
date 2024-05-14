@@ -30,7 +30,7 @@ namespace RhythmiX.WPF.Commands
                 if (result.IsSuccess)
                 {
                     _signupWindow.IsConfirmModalOpen = false;
-                    _signupWindow.ResultTitle = "Success";
+                    _signupWindow.ResultTitle = "Success!";
                     _signupWindow.IsResultModalOpen = true;
                 }
                 else
