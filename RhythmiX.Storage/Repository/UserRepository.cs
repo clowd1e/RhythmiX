@@ -16,6 +16,11 @@ namespace RhythmiX.Storage.Repository
             _context.SaveChanges();
         }
 
+        public async Task<bool> IsEmailTakenAsync(string email)
+        {
+            return _context.Users.Any(u => u.Email == email);
+        }
+
         public async Task<bool> IsPasswordCorrectAsync(string username, string password)
         {
             return _context.Users.Any(u => u.Username == username && u.Password == password);

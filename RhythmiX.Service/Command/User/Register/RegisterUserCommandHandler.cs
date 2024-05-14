@@ -22,6 +22,9 @@ namespace RhythmiX.Service.Command.User.Register
             if (await _userRepository.IsUsernameTakenAsync(command.Username))
                 return Result.Fail("Username is already taken", nameof(command.Username));
 
+            if (await _userRepository.IsEmailTakenAsync(command.Email))
+                return Result.Fail("Email is already taken", nameof(command.Email));
+
             Entity.User user = new Entity.User(command.Username, command.Password, command.Email);
             await _userRepository.AddUserAsync(user);
 
