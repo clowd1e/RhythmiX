@@ -469,6 +469,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RhythmiX.Service\RhythmiX.Service.csproj" />
     <ProjectReference Include="..\RhythmiX.Storage\RhythmiX.Storage.csproj" />
+    <ProjectReference Include="..\WPFModalControl\WPFModalControl.csproj" />
   </ItemGroup>
 
 </Project>
