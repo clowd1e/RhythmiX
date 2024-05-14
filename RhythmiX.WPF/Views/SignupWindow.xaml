@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RhythmiX.WPF.Views" xmlns:components="clr-namespace:RhythmiX.WPF.Components"
+        xmlns:local="clr-namespace:RhythmiX.WPF.Views" xmlns:components="clr-namespace:RhythmiX.WPF.Components" xmlns:wpfmodalcontrol="clr-namespace:WPFModalControl;assembly=WPFModalControl"
         mc:Ignorable="d"
         Height="410" Width="600"
         WindowStartupLocation="CenterScreen"
@@ -13,63 +13,75 @@
         AllowsTransparency="True">
     <Border CornerRadius="10" Background="{StaticResource LoginWindowBack}">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="26" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
 
-            <components:DragableField Grid.ColumnSpan="2" MouseDown="DragableField_MouseDown" />
+            <wpfmodalcontrol:Modal IsOpen="{Binding IsModalOpen}"
+                                   CornerRadius="10"
+                                   Panel.ZIndex="2"
+                                   Background="{StaticResource TranslusentBackColor}">
+                <components:ConfirmComponent Title="Do you want to continue?"
+                                             CancelCommand="{Binding Cancel}"
+                                             ConfirmCommand="{Binding Confirm}" />
+            </wpfmodalcontrol:Modal>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="2"
-                Orientation="Horizontal"
-                HorizontalAlignment="Right" VerticalAlignment="Center">
-                <components:WindowControlButtons MinimizeClicked="WindowControlButtons_MinimizeClicked" />
-            </StackPanel>
+                <components:DragableField Grid.ColumnSpan="2" MouseDown="DragableField_MouseDown" />
 
-            <StackPanel Margin="31 0 0 0" Grid.Row="1" Grid.Column="0">
-                <TextBlock Text="Welcome to"
-                           Style="{StaticResource WelcomeTextStyle}"/>
-                <Image Source="../Images/app_logo.png"
-                       VerticalAlignment="Center" HorizontalAlignment="Left"
-                       Height="43"/>
-            </StackPanel>
+                <StackPanel Grid.Column="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <components:WindowControlButtons MinimizeClicked="WindowControlButtons_MinimizeClicked" />
+                </StackPanel>
 
-            <Image Grid.Row="1" Grid.Column="1" 
-                Source="../Images/sound_track.png"
-                   Margin="20 0 0 0"
-                   Height="100"
-                   VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <StackPanel Margin="31 0 0 0" Grid.Row="1" Grid.Column="0">
+                    <TextBlock Text="Welcome to"
+                               Style="{StaticResource WelcomeTextStyle}"/>
+                    <Image Source="../Images/app_logo.png"
+                           VerticalAlignment="Center" HorizontalAlignment="Left"
+                           Height="43"/>
+                </StackPanel>
 
-            <StackPanel Grid.Row="2" Grid.Column="0" Margin="30 47 20 0">
-                <components:CustomInputField LabelText="Username" TextBoxBackImage="user_circle.png" PlaceholderText="Type your username" />
-            </StackPanel>
+                <Image Grid.Row="1" Grid.Column="1" 
+                    Source="../Images/sound_track.png"
+                       Margin="20 0 0 0"
+                       Height="100"
+                       VerticalAlignment="Center" HorizontalAlignment="Left" />
 
-            <StackPanel Grid.Row="3" Grid.Column="0" Margin="30 28 20 0">
-                <components:CustomInputField LabelText="Email" TextBoxBackImage="envelope.png" PlaceholderText="Type your email" />
-            </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0" Margin="30 47 20 0">
+                    <components:CustomInputField LabelText="Username" TextBoxBackImage="user_circle.png" PlaceholderText="Type your username" />
+                </StackPanel>
 
-            <StackPanel Grid.Row="2" Grid.Column="1" Margin="20 47 30 0">
-                <components:CustomPasswordField LabelText="Password" PlaceholderText="Type your password" />
-            </StackPanel>
+                <StackPanel Grid.Row="3" Grid.Column="0" Margin="30 28 20 0">
+                    <components:CustomInputField LabelText="Email" TextBoxBackImage="envelope.png" PlaceholderText="Type your email" />
+                </StackPanel>
 
-            <StackPanel Grid.Row="3" Grid.Column="1" Margin="20 28 30 0">
-                <components:CustomPasswordField LabelText="Confirm Password" PlaceholderText="Type your password" />
-            </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="20 47 30 0">
+                    <components:CustomPasswordField LabelText="Password" PlaceholderText="Type your password" />
+                </StackPanel>
 
-            <Button Grid.Column="0" Grid.Row="4"
-                Style="{StaticResource LoginButtonStyle}"
-                Content="Submit"
-                    Command="{Binding ChangeToLoginForm}"
-                    Width="210" Height="48"
+                <StackPanel Grid.Row="3" Grid.Column="1" Margin="20 28 30 0">
+                    <components:CustomPasswordField LabelText="Confirm Password" PlaceholderText="Type your password" />
+                </StackPanel>
+
+                <Button Grid.Column="0" Grid.Row="4"
+                    Style="{StaticResource LoginButtonStyle}"
+                    Command="{Binding Signup}"
+                    Content="Submit"
+                    Width="210" Height="48" 
                     Margin="0 47 0 0"/>
+            </Grid>
         </Grid>
     </Border>
 </Window>
