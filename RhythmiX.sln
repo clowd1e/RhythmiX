@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhythmiX.Service", "Rhythmi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhythmiX.ConsoleApp", "RhythmiX.ConsoleApp\RhythmiX.ConsoleApp.csproj", "{7A36253F-6F9B-41AC-BD13-3FA2BBDC67D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmiX.Web", "RhythmiX.Web\RhythmiX.Web.csproj", "{18FE7460-7FEB-4E19-BD5C-4129D6846164}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhythmiX.Web", "RhythmiX.Web\RhythmiX.Web.csproj", "{18FE7460-7FEB-4E19-BD5C-4129D6846164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFModalControl", "WPFModalControl\WPFModalControl.csproj", "{B77D5DF2-0876-48BB-BEFB-110023CA4BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{18FE7460-7FEB-4E19-BD5C-4129D6846164}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18FE7460-7FEB-4E19-BD5C-4129D6846164}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18FE7460-7FEB-4E19-BD5C-4129D6846164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77D5DF2-0876-48BB-BEFB-110023CA4BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77D5DF2-0876-48BB-BEFB-110023CA4BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77D5DF2-0876-48BB-BEFB-110023CA4BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77D5DF2-0876-48BB-BEFB-110023CA4BA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
