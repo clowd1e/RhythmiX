@@ -29,7 +29,7 @@ namespace RhythmiX.Storage.Entities
 
         [Required]
         [MinLength(8)]
-        [MaxLength(30)]
+        [MaxLength(100)]
         public string Password { get; set; }
 
         [Required]
