@@ -1,52 +1,54 @@
 ﻿@{
     ViewData["Title"] = "Signup";
-    Layout = "_LoginLayout";
+    ViewData["StyleLink"] = "signup.css";
+    Layout = "_AuthzLayout";
 }
 
-<form class="signup-container">
-    <div class="first-row first-column">
-        <h2 class="welcome-text">Welcome to</h2>
-        <img src="~/images/app_logo.png" class="app-logo" />
+<div class="singup-container">
+    <div class="signup-box">
+        <div class="signup-logo">
+            <h2 class="welcome-text">Welcome to</h2>
+            <img src="~/images/app_logo.png" class="app-logo" />
+        </div>
+
+        <div class="sound-track">
+            <img src="~/images/sound_track.png" />
+        </div>
+
+        <form class="form">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <div class="input-icon">
+                    <img src="~/images/user_circle.png" class="icon" />
+                    <input type="text" name="username" placeholder="Type your username" />
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <div class="input-icon">
+                    <img src="~/images/envelope.png" class="icon" />
+                    <input type="email" name="email" placeholder="Type your email" />
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-icon">
+                    <img src="~/images/lock_key.png" class="icon" />
+                    <input type="password" name="password" placeholder="Type your password" />
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="repeat-password">Confirm Password</label>
+                <div class="input-icon">
+                    <img src="~/images/lock_key.png" class="icon" />
+                    <input type="password" name="repeat-password" placeholder="Type your password" />
+                </div>
+            </div>
+
+            <button type="submit" class="signup-button" asp-controller="login" asp-action="index">Submit</button>
+        </form>
     </div>
-
-    <div class="inpit-grid-div second-row first-column">
-        <div class="input-div">
-            <h2 class="input-label">Username</h2>
-            <span class="input-with-icon">
-                <img src="~/images/user_circle.png" />
-                <input type="text" class="input username" placeholder="Type your username" />
-            </span>
-        </div>
-
-        <div class="input-div">
-            <h2 class="input-label">Email</h2>
-            <span class="input-with-icon">
-                <img src="~/images/envelope.png" />
-                <input type="email" class="input email" placeholder="Type your email" />
-            </span>
-        </div>
-    </div>
-
-    <button type="submit" class="submit-button third-row first-column signup-button"
-            asp-controller="login" asp-action="index">Submit</button>
-
-    <img src="~/images/sound_track.png" class="sound-track first-row second-column" />
-
-    <div class="inpit-grid-div second-row second-column">
-        <div class="input-div">
-            <h2 class="input-label">Password</h2>
-            <span class="input-with-icon">
-                <img src="~/images/lock_key.png" />
-                <input type="password" class="input password" placeholder="Type your password" />
-            </span>
-        </div>
-
-        <div class="input-div">
-            <h2 class="input-label">Confirm Password</h2>
-            <span class="input-with-icon">
-                <img src="~/images/lock_key.png" />
-                <input type="password" class="input password" placeholder="Type your password" />
-            </span>
-        </div>
-    </div>
-</form>
+</div>

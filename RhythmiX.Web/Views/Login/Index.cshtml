@@ -1,31 +1,37 @@
 ﻿@{
     ViewData["Title"] = "Login";
-    Layout = "_LoginLayout";
+    ViewData["StyleLink"] = "login.css";
+    Layout = "_AuthzLayout";
 }
 
-<form class="login-container">
-    <img src="~/images/app_logo.png" class="app-logo">
-    <div class="input-div">
-        <h2 class="input-label">Email</h2>
-        <span class="input-with-icon">
-            <img src="~/images/envelope.png" />
-            <input type="email" class="input email" placeholder="Type your email" />
-        </span>
+<div class="login-container">
+    <div class="login-box">
+        <div class="logo">
+            <img src="~/images/app_logo.png" alt="RhythmiX Logo">
+        </div>
+        <form>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <div class="input-icon">
+                    <input type="text" id="username" name="username" placeholder="Type your username">
+                    <img src="~/images/user_circle.png" class="icon" alt="Username Icon">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-icon">
+                    <input type="password" id="password" name="password" placeholder="Type your password">
+                    <img src="~/images/lock_key.png" class="icon" alt="Password Icon">
+                </div>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <div class="signup-link">
+                <p>Don't have an account yet? <a asp-controller="signup" asp-action="index">Sign up</a></p>
+            </div>
+        </form>
     </div>
-    <div class="input-div">
-        <h2 class="input-label">Password</h2>
-        <span class="input-with-icon">
-            <img src="~/images/lock_key.png" />
-            <input type="password" class="input password" placeholder="Type your password" />
-        </span>
-    </div>
-
-    <div class="checkbox-div">
-        <input type="checkbox" id="checkbox" />
-        <label for="checkbox" class="checkbox-label">Remember me</label>
-    </div>
-
-    <button type="submit" class="submit-button">Login</button>
-
-    <p class="bottom-text">Don't have account yet? <a class="sing-up-link" asp-controller="signup" asp-action="index">Sing up</a></p>
-</form>
+</div>
