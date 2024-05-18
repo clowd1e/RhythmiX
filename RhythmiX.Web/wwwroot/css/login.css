@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    background-color: #090909;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.login-box {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 70%;
+    height: 70%;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    color: #fff;
+    display: block;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon input {
+    width: 100%;
+    padding: 5px 10px 5px 30px;
+    border: none;
+    font-size: 1rem;
+    border-bottom: 2px solid #f2f2f2;
+    border-radius: 0;
+    caret-color: #f2f2f2;
+    background-color: transparent;
+    outline: none;
+    color: #f2f2f2;
+}
+
+.input-icon input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #1a1a1a inset;
+    -webkit-text-fill-color: #f2f2f2;
+}
+
+.input-icon input::placeholder {
+    color:#808080;
+}
+
+.input-icon input:focus {
+    border-bottom-color: #725BFF;
+}
+
+.input-icon .icon {
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-me input {
+    width: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.remember-me label {
+    cursor: pointer;
+    color: #f2f2f2;
+}
+
+.login-button {
+    background: rgb(254,172,94);
+    background: linear-gradient(90deg, rgba(254,172,94,1) 0%, rgba(199,121,208,1) 50%, rgba(75,192,200,1) 100%);
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: #f2f2f2;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.login-button:hover {
+    opacity: 0.9;
+}
+
+.signup-link {
+    margin-top: 20px;
+}
+
+.signup-link p {
+    color: #fff;
+}
+
+.signup-link a {
+    color: #725BFF;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (max-width: 500px) {
+    .login-box {
+        padding: 20px;
+    }
+}
+
