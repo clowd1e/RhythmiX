@@ -28,7 +28,8 @@
                 <input type="checkbox" id="remember" name="remember">
                 <label for="remember">Remember me</label>
             </div>
-            <button type="submit" class="login-button">Login</button>
+            <button type="submit" class="login-button"
+                asp-controller="main" asp-action="home">Login</button>
             <div class="signup-link">
                 <p>Don't have an account yet? <a asp-controller="signup" asp-action="index">Sign up</a></p>
             </div>
