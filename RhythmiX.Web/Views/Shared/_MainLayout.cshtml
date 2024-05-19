@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/main.css">
+    <title>RhythmiX - @ViewData["Title"]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="~/images/app_logo.png" alt="RhythmiX Logo">
+            </div>
+            <ul class="nav-links">
+                <a asp-controller="main" asp-action="home">
+                    <label for="home"><img src="~/images/house.png" alt="Home Icon"><span>Home</span></label>
+                </a> 
+                <a asp-controller="main" asp-action="explore">
+                    <label for="explore"><img src="~/images/compass.png" alt="Explore Icon"><span>Explore</span></label>
+                </a>
+                <a asp-controller="main" asp-action="liked">
+                    <label for="liked"><img src="~/images/thumbs_up.png" alt="Liked Icon"><span>Liked</span></label>
+                </a>
+                <a asp-controller="main" asp-action="history">
+                    <label for="history"><img src="~/images/clock_counter_clockwise.png" alt="History Icon"><span>History</span></label>
+                </a>
+
+                <hr />
+
+                <a asp-controller="main" asp-action="playlists">
+                    <label for="playlists"><img src="~/images/playlist.png" alt="Playlists Icon"><span>Playlists</span></label>
+                </a>
+                <a asp-controller="main" asp-action="account">
+                    <label for="account"><img src="~/images/user_circle_main.png" alt="Account Icon"><span>Account</span></label>
+                </a>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <div class="search-bar">
+                <input type="text" placeholder="Search songs">
+            </div>
+
+            @RenderBody()
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.nav-link').click(function() {
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
