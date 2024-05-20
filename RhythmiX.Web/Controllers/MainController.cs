@@ -33,7 +33,9 @@ namespace RhythmiX.Web.Controllers
 
         public IActionResult History()
         {
-            return View();
+            List<TrackDto> tracks = new List<TrackDto>();
+
+            return View(tracks);
         }
 
         public IActionResult Playlists()

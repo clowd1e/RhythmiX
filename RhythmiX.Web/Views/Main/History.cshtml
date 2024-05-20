@@ -1,4 +1,48 @@
-﻿@{
+﻿@using RhythmiX.Service.Queries.Dtos
+
+@model IEnumerable<TrackDto>
+
+@{
     ViewData["Title"] = "History";
+    ViewData["StyleLink"] = "liked.css";
     Layout = "_MainLayout";
 }
+
+<div class="content">
+    <div class="table-header">
+        <img src="~/images/history_logo.png" />
+        <div>
+            <h2>History</h2>
+            @if (Model.Any())
+            {
+                <p>@Model.Count() songs</p>
+            }
+            else
+            {
+                <p>0 songs</p>
+            }
+        </div>
+    </div>
+
+    @if (Model.Any())
+    {
+        <table>
+            @foreach (var track in Model)
+            {
+                <tr>
+                    <td><img src="~/images/@track.Image"></td>
+                    <td><p class="track-name">@track.TrackName</p></td>
+                    <td><p class="track-artist">@track.ArtistName</p></td>
+                    <td><p class="track-time">@track.Duration</p></td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="no-elems-div">
+            <h2>There is nothing here yet</h2>
+            <h2>Check out some songs in Explore tab</h2>
+        </div>
+    }
+</div>
