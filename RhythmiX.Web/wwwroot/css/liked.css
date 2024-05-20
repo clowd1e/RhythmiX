@@ -1,0 +1,91 @@
+﻿.table-header {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.table-header img {
+    width: 20%;
+    margin-right: 20px;
+}
+
+.table-header div {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-header h2 {
+    color: #f2f2f2;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.table-header p {
+    color: #808080;
+    font-size: 24px;
+}
+
+.no-elems-div h2 {
+    color: #808080;
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.content {
+    margin-top: 100px;
+    padding: 20px 40px 30px;
+}
+
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.content table tr {
+    border-bottom: 2px solid #808080;
+}
+
+.content table tr:last-child {
+    border-bottom: none;
+}
+
+.content table td {
+    width: 40%;
+    padding: 10px 0px;
+}
+
+.track-name {
+    font-weight: 600;
+    color: #f2f2f2;
+    font-size: 24px;
+    white-space: nowrap;
+}
+
+.track-artist {
+    white-space: nowrap;
+}
+
+.track-artist, .track-time {
+    color: #808080;
+    font-size: 20px;
+}
+
+.content table td:first-child {
+    width: 8%;
+}
+
+.content table td:last-child {
+    width: 10%;
+}
+
+.content table img {
+    vertical-align: middle;
+    width: 50%;
+    border-radius: 5px;
+}
+
+@media (max-width: 605px) {
+    .table-header h2 {
+        font-size: 30px;
+    }
+}
