@@ -1,4 +1,5 @@
-﻿using RhythmiX.Storage.Models;
+﻿using RhythmiX.Storage.Entities;
+using RhythmiX.Storage.Models;
 
 namespace RhythmiX.Service.Queries.Dtos
 {
@@ -10,6 +11,15 @@ namespace RhythmiX.Service.Queries.Dtos
         public string ArtistName { get; set; }
         public string Image { get; set; }
         public string Duration { get; set; }
+
+        public TrackDto(Track track)
+        {
+            Id = track.Id;
+            TrackName = track.Name;
+            ArtistName = track.ArtistName;
+            Image = $"{TrackName}.jpg";
+            Duration = $"{track.Duration / SECONDS_IN_MINUTE}:{track.Duration % SECONDS_IN_MINUTE}";
+        }
 
         public TrackDto(TrackModel trackModel)
         {
