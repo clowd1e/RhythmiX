@@ -1,4 +1,5 @@
-﻿using RhythmiX.Storage.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using RhythmiX.Storage.Entities;
 
 namespace RhythmiX.Storage.Repository
 {
@@ -16,13 +17,13 @@ namespace RhythmiX.Storage.Repository
         public async Task AddUserAsync(User user)
         {
             user.Password = BCrypt.Net.BCrypt.EnhancedHashPassword(user.Password, BCRYPT_WORK_FACTOR);
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<bool> IsEmailTakenAsync(string email)
         {
-            return _context.Users.Any(u => u.Email == email);
+            return await _context.Users.AnyAsync(u => u.Email == email);
         }
 
         public async Task<bool> IsPasswordCorrectAsync(string username, string password)
@@ -33,17 +34,17 @@ namespace RhythmiX.Storage.Repository
 
         public async Task<bool> IsUserExistsAsync(string username)
         {
-            return _context.Users.Any(u => u.Username == username);
+            return await _context.Users.AnyAsync(u => u.Username == username);
         }
 
         public async Task<bool> IsUsernameTakenAsync(string username)
         {
-            return _context.Users.Any(u => u.Username == username);
+            return await _context.Users.AnyAsync(u => u.Username == username);
         }
 
         public async Task<User> LoginUserAsync(string username, string password)
         {
-            User user = _context.Users.SingleOrDefault(u => u.Username == username);
+            User user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
             if (BCrypt.Net.BCrypt.EnhancedVerify(password, user.Password))
                 return user;
 
