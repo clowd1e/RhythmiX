@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using RhythmiX.Storage.Common;
-using RhythmiX.Storage.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,6 +19,8 @@ namespace RhythmiX.Storage.Entities
 
         [Required]
         public long ArtistId { get; set; }
+        [Required]
+        public string ArtistName { get; set; }
 
         [Required]
         public string Name { get; set; }
