@@ -1,4 +1,5 @@
-﻿using RhythmiX.Storage.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using RhythmiX.Storage.Entities;
 using RhythmiX.Storage.Models;
 using RhythmiX.Storage.Models.Interfaces;
 
@@ -72,24 +73,24 @@ namespace RhythmiX.Storage.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<List<IHistoryObservable>> GetUserHistoryAsync(long userId)
+        public async Task<IEnumerable<IHistoryObservable>> GetUserHistoryAsync(long userId)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<IHomeObservable>> GetUserHomePageContentAsync(long userId)
+        public async Task<IEnumerable<IHomeObservable>> GetUserHomePageContentAsync(long userId)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<PlaylistModel>> GetUserLikedPlaylistsAsync(long userId)
+        public async Task<IEnumerable<Playlist>> GetUserLikedPlaylistsAsync(long userId)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<TrackModel>> GetUserLikedTracksAsync(long userId)
+        public async Task<IEnumerable<Track>> GetUserLikedTracksAsync(long userId)
         {
-            throw new NotImplementedException();
+            return await _context.Tracks.Include(t => t.LikedUsers).Where(t => t.LikedUsers.Any(u => u.Id == userId)).ToListAsync();
         }
 
         public async Task<bool> IsAlbumLiked(long userId, long albumId)

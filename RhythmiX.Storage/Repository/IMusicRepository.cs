@@ -6,10 +6,10 @@ namespace RhythmiX.Storage.Repository
 {
     public interface IMusicRepository
     {
-        Task<List<IHomeObservable>> GetUserHomePageContentAsync(long userId);
-        Task<List<TrackModel>> GetUserLikedTracksAsync(long userId);
-        Task<List<PlaylistModel>> GetUserLikedPlaylistsAsync(long userId);
-        Task<List<IHistoryObservable>> GetUserHistoryAsync(long userId);
+        Task<IEnumerable<IHomeObservable>> GetUserHomePageContentAsync(long userId);
+        Task<IEnumerable<Track>> GetUserLikedTracksAsync(long userId);
+        Task<IEnumerable<Playlist>> GetUserLikedPlaylistsAsync(long userId);
+        Task<IEnumerable<IHistoryObservable>> GetUserHistoryAsync(long userId);
         Task<TrackModel> GetTrackByIdAsync(long trackId);
         Task<PlaylistModel> GetPlaylistByIdAsync(long playlistId);
         Task<ArtistModel> GetArtistByIdAsync(long artistId);
