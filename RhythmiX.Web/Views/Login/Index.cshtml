@@ -1,4 +1,6 @@
-﻿@{
+﻿@model RhythmiX.Service.Queries.Dtos.UserDto
+
+@{
     ViewData["Title"] = "Login";
     ViewData["StyleLink"] = "login.css";
     Layout = "_AuthzLayout";
@@ -9,7 +11,7 @@
         <div class="logo">
             <img src="~/images/app_logo.png" alt="RhythmiX Logo">
         </div>
-        <form>
+        <form asp-controller="login" asp-action="index" method="post">
             <div class="input-group">
                 <label for="username">Username</label>
                 <div class="input-icon">
@@ -28,11 +30,12 @@
                 <input type="checkbox" id="remember" name="remember">
                 <label for="remember">Remember me</label>
             </div>
-            <button type="submit" class="login-button"
-                asp-controller="main" asp-action="home">Login</button>
+            <button type="submit" class="login-button" id="login">Login</button>
             <div class="signup-link">
                 <p>Don't have an account yet? <a asp-controller="signup" asp-action="index">Sign up</a></p>
             </div>
         </form>
     </div>
 </div>
+
+<script src="~/js/rememberMe.js"></script>

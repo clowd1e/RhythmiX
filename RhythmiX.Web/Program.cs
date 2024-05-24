@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using RhythmiX.Web.Extensions;
 
 namespace RhythmiX.Web
@@ -11,6 +12,11 @@ namespace RhythmiX.Web
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddMusicServices();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Login/Index";
+                });
 
 
             var app = builder.Build();
@@ -28,6 +34,7 @@ namespace RhythmiX.Web
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(

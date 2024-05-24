@@ -8,6 +8,7 @@ using RhythmiX.Storage.Repository;
 
 namespace RhythmiX.Web.Controllers
 {
+    [Authorize]
     public class MainController : Controller
     {
         public IActionResult Home()
