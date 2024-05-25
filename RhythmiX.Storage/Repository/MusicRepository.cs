@@ -51,9 +51,14 @@ namespace RhythmiX.Storage.Repository
             throw new NotImplementedException();
         }
 
+        public async Task<IEnumerable<Track>> GetUserHistoryTracksAsync(long userId)
+        {
+            return await _context.Tracks.Include(t => t.HistoryUsers).Where(t => t.HistoryUsers.Any(u => u.Id == userId)).ToListAsync();
+        }
+
         public async Task<IEnumerable<Playlist>> GetUserLikedPlaylistsAsync(long userId)
         {
-            throw new NotImplementedException();
+            return await _context.Playlists.Include(p => p.LikedUsers).Where(p => p.LikedUsers.Any(u => u.Id == userId)).ToListAsync();
         }
 
         public async Task<IEnumerable<Track>> GetUserLikedTracksAsync(long userId)
@@ -63,42 +68,82 @@ namespace RhythmiX.Storage.Repository
 
         public async Task<bool> IsAlbumLiked(long userId, long albumId)
         {
-            throw new NotImplementedException();
+            return await _context.Albums.Include(a => a.LikedUsers).AnyAsync(a => a.Id == albumId && a.LikedUsers.Any(u => u.Id == userId));
         }
 
         public async Task<bool> IsArtistLiked(long userId, long artistId)
         {
-            throw new NotImplementedException();
+            return await _context.Artists.Include(a => a.LikedUsers).AnyAsync(a => a.Id == artistId && a.LikedUsers.Any(u => u.Id == userId));
         }
 
         public async Task<bool> IsPlaylistLiked(long userId, long playlistId)
         {
-            throw new NotImplementedException();
+            return await _context.Playlists.Include(p => p.LikedUsers).AnyAsync(p => p.Id == playlistId && p.LikedUsers.Any(u => u.Id == userId));
         }
 
         public async Task<bool> IsTrackLiked(long userId, long trackId)
         {
-            throw new NotImplementedException();
+            return await _context.Tracks.Include(t => t.LikedUsers).AnyAsync(t => t.Id == trackId && t.LikedUsers.Any(u => u.Id == userId));
         }
 
         public async Task RemoveLikedAlbumAsync(long userId, long albumId)
         {
-            throw new NotImplementedException();
+            User user = await _context.Users.FindAsync(userId);
+            Album album = await _context.Albums.Include(a => a.LikedUsers).FirstOrDefaultAsync(a => a.Id == albumId);
+
+            if (user is null || album is null)
+                return;
+
+            album.LikedUsers.Remove(user);
+            if (!album.LikedUsers.Any())
+                _context.Albums.Remove(album);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task RemoveLikedArtistAsync(long userId, long artistId)
         {
-            throw new NotImplementedException();
+            User user = await _context.Users.FindAsync(userId);
+            Artist artist = await _context.Artists.Include(a => a.LikedUsers).FirstOrDefaultAsync(a => a.Id == artistId);
+
+            if (user is null || artist is null)
+                return;
+
+            artist.LikedUsers.Remove(user);
+            if (!artist.LikedUsers.Any())
+                _context.Artists.Remove(artist);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task RemoveLikedPlaylistAsync(long userId, long playlistId)
         {
-            throw new NotImplementedException();
+            User user = await _context.Users.FindAsync(userId);
+            Playlist playlist = await _context.Playlists.Include(a => a.LikedUsers).FirstOrDefaultAsync(a => a.Id == playlistId);
+
+            if (user is null || playlist is null)
+                return;
+
+            playlist.LikedUsers.Remove(user);
+            if (!playlist.LikedUsers.Any())
+                _context.Playlists.Remove(playlist);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task RemoveLikedTrackAsync(long userId, long trackId)
         {
-            throw new NotImplementedException();
+            User user = await _context.Users.FindAsync(userId);
+            Track track = await _context.Tracks.Include(a => a.LikedUsers).FirstOrDefaultAsync(a => a.Id == trackId);
+
+            if (user is null || track is null)
+                return;
+
+            track.LikedUsers.Remove(user);
+            if (!track.LikedUsers.Any())
+                _context.Tracks.Remove(track);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

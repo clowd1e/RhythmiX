@@ -7,6 +7,8 @@ namespace RhythmiX.Storage.Repository
         Task<IEnumerable<Track>> GetUserLikedTracksAsync(long userId);
         Task<IEnumerable<Playlist>> GetUserLikedPlaylistsAsync(long userId);
 
+        Task<IEnumerable<Track>> GetUserHistoryTracksAsync(long userId);
+
         Task AddLikedTrackAsync(long userId, Track track);
         Task RemoveLikedTrackAsync(long userId, long trackId);
 
