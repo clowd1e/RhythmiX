@@ -1,4 +1,5 @@
 ﻿using RhythmiX.Service.API.ResponseModels;
+using RhythmiX.Storage.Entities;
 using System.Net;
 
 namespace RhythmiX.Service.Downloaders.ImageDownloader
@@ -25,6 +26,16 @@ namespace RhythmiX.Service.Downloaders.ImageDownloader
         public static async Task DownloadImagesAsync(TrackResponseModel response, string folderPath)
         {
             foreach (var track in response.Results)
+            {
+                string name = track.Name;
+                string imagePath = track.Image;
+
+                await DownloadImageAsync(name, imagePath, folderPath);
+            }
+        }
+        public static async Task DownloadImagesAsync(IEnumerable<Track> tracks, string folderPath)
+        {
+            foreach (var track in tracks)
             {
                 string name = track.Name;
                 string imagePath = track.Image;
