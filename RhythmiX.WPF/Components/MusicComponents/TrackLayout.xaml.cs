@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using RhythmiX.WPF.Services;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -46,10 +48,20 @@ namespace RhythmiX.WPF.Components.MusicComponents
 
         private void UpdateTrackImage()
         {
-            BitmapImage image = new BitmapImage(new Uri($"../../../APICallResults/DownloadedMusic/{TrackName}/{TrackImage}", UriKind.Relative));
-            image.CacheOption = BitmapCacheOption.OnLoad;
+            if (!File.Exists($"{PathService.DownloadedTracksPath}/{TrackName}/{TrackImage}"))
+            {
+                BitmapImage image = new BitmapImage(new Uri(PathService.TrackDefaultImagePath, UriKind.Relative));
+                image.CacheOption = BitmapCacheOption.OnLoad;
 
-            trackImage.ImageSource = image;
+                trackImage.ImageSource = image;
+            }
+            else
+            {
+                BitmapImage image = new BitmapImage(new Uri($"{PathService.DownloadedTracksPath}/{TrackName}/{TrackImage}", UriKind.Relative));
+                image.CacheOption = BitmapCacheOption.OnLoad;
+
+                trackImage.ImageSource = image;
+            }
         }
 
         private void UpdateTrackArtist()
