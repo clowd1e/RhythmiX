@@ -1,9 +1,10 @@
-﻿using RhythmiX.Storage.Entities;
-using RhythmiX.Storage.Models;
+﻿using RhythmiX.Service.API.Models;
+using RhythmiX.Service.API.Models.Interfaces;
+using RhythmiX.Storage.Entities;
 
 namespace RhythmiX.Service.Queries.Dtos
 {
-    public class TrackDto
+    public class TrackDto : IHomeObservable
     {
         private const int SECONDS_IN_MINUTE = 60;
         public long Id { get; set; }
@@ -14,7 +15,7 @@ namespace RhythmiX.Service.Queries.Dtos
 
         public TrackDto(Track track)
         {
-            Id = track.Id;
+            Id = track.ApiId;
             TrackName = track.Name;
             ArtistName = track.ArtistName;
             Image = $"{TrackName}.jpg";
