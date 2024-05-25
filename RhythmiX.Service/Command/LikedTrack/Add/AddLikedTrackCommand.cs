@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using RhythmiX.Storage.Models;
-
-namespace RhythmiX.Service.Command.LikedTrack.Add
+﻿namespace RhythmiX.Service.Command.LikedTrack.Add
 {
     public class AddLikedTrackCommand : ICommand
     {

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using RhythmiX.Storage.Models.Interfaces;
+using RhythmiX.Service.API.Models.Interfaces;
 
-namespace RhythmiX.Storage.Models
+namespace RhythmiX.Service.API.Models
 {
     public class PlaylistModel : IHomeObservable, IHistoryObservable
     {

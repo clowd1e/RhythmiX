@@ -1,4 +1,4 @@
-﻿using RhythmiX.Storage.Models;
+﻿using RhythmiX.Service.API.Models;
 
 namespace RhythmiX.Service.API.ResponseModels
 {

@@ -1,4 +1,4 @@
-﻿namespace RhythmiX.Storage.Models
+﻿namespace RhythmiX.Service.API.Models
 {
     public class TagModel
     {

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using RhythmiX.Service.API.ResponseModels;
+using RhythmiX.Service.API.ResponseModels.Interfaces;
 
 namespace RhythmiX.Service.API
 {
