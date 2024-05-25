@@ -1,35 +1,34 @@
 ﻿using RhythmiX.WPF.Services;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace RhythmiX.WPF.Components
+namespace RhythmiX.WPF.Components.MusicComponents
 {
     /// <summary>
-    /// Interaction logic for HistoryTrackLayout.xaml
+    /// Interaction logic for LikedHistoryTrackLayout.xaml
     /// </summary>
-    public partial class HistoryTrackLayout : UserControl
+    public partial class LikedHistoryTrackLayout : UserControl
     {
-        public HistoryTrackLayout()
+        public LikedHistoryTrackLayout()
         {
             InitializeComponent();
         }
 
         public static readonly DependencyProperty TrackNameProperty =
-            DependencyProperty.Register("TrackName", typeof(string), typeof(HistoryTrackLayout), new PropertyMetadata("TrackName"));
+            DependencyProperty.Register("TrackName", typeof(string), typeof(LikedHistoryTrackLayout), new PropertyMetadata("TrackName"));
 
         public static readonly DependencyProperty TrackArtistProperty =
-            DependencyProperty.Register("TrackArtist", typeof(string), typeof(HistoryTrackLayout), new PropertyMetadata("TrackArtist"));
+            DependencyProperty.Register("TrackArtist", typeof(string), typeof(LikedHistoryTrackLayout), new PropertyMetadata("TrackArtist"));
 
         public static readonly DependencyProperty TrackDurationProperty =
-            DependencyProperty.Register("TrackDuration", typeof(string), typeof(HistoryTrackLayout), new PropertyMetadata("TrackDuration"));
+            DependencyProperty.Register("TrackDuration", typeof(string), typeof(LikedHistoryTrackLayout), new PropertyMetadata("TrackDuration"));
 
         public static readonly DependencyProperty TrackImageProperty =
-            DependencyProperty.Register("TrackImage", typeof(string), typeof(HistoryTrackLayout), new PropertyMetadata("track_image_default.png"));
+            DependencyProperty.Register("TrackImage", typeof(string), typeof(LikedHistoryTrackLayout), new PropertyMetadata("track_image_default.png"));
 
         public static readonly DependencyProperty HasBottomBorderProperty =
-            DependencyProperty.Register("HasBottomBorder", typeof(bool), typeof(HistoryTrackLayout), new PropertyMetadata(true));
+            DependencyProperty.Register("HasBottomBorder", typeof(bool), typeof(LikedHistoryTrackLayout), new PropertyMetadata(true));
 
         public string TrackName
         {
@@ -78,7 +77,7 @@ namespace RhythmiX.WPF.Components
 
         private void UpdateTrackImage()
         {
-            BitmapImage image = new BitmapImage(new Uri($"{PathService.DownloadedTracksPath}/{TrackImage}", UriKind.Relative));
+            BitmapImage image = new BitmapImage(new Uri($"{PathService.DownloadedTracksPath}/{TrackName}/{TrackImage}", UriKind.Relative));
             image.CacheOption = BitmapCacheOption.OnLoad;
 
             trackImage.ImageSource = image;
