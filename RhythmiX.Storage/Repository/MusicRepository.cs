@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RhythmiX.Storage.Entities;
-using RhythmiX.Storage.Models;
-using RhythmiX.Storage.Models.Interfaces;
 
 namespace RhythmiX.Storage.Repository
 {
@@ -49,36 +47,6 @@ namespace RhythmiX.Storage.Repository
         }
 
         public async Task AddTrackToHistory(long userId, Track track)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<AlbumModel> GetAlbumByIdAsync(long albumId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<ArtistModel> GetArtistByIdAsync(long artistId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<PlaylistModel> GetPlaylistByIdAsync(long playlistId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<TrackModel> GetTrackByIdAsync(long trackId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<IHistoryObservable>> GetUserHistoryAsync(long userId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<IHomeObservable>> GetUserHomePageContentAsync(long userId)
         {
             throw new NotImplementedException();
         }

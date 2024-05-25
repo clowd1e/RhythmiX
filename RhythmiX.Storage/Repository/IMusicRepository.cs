@@ -1,19 +1,11 @@
 ﻿using RhythmiX.Storage.Entities;
-using RhythmiX.Storage.Models;
-using RhythmiX.Storage.Models.Interfaces;
 
 namespace RhythmiX.Storage.Repository
 {
     public interface IMusicRepository
     {
-        Task<IEnumerable<IHomeObservable>> GetUserHomePageContentAsync(long userId);
         Task<IEnumerable<Track>> GetUserLikedTracksAsync(long userId);
         Task<IEnumerable<Playlist>> GetUserLikedPlaylistsAsync(long userId);
-        Task<IEnumerable<IHistoryObservable>> GetUserHistoryAsync(long userId);
-        Task<TrackModel> GetTrackByIdAsync(long trackId);
-        Task<PlaylistModel> GetPlaylistByIdAsync(long playlistId);
-        Task<ArtistModel> GetArtistByIdAsync(long artistId);
-        Task<AlbumModel> GetAlbumByIdAsync(long albumId);
 
         Task AddLikedTrackAsync(long userId, Track track);
         Task RemoveLikedTrackAsync(long userId, long trackId);
