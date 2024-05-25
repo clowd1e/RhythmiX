@@ -231,6 +231,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LoadingSpinner.WPF" Version="1.0.0" />
     <PackageReference Include="SharpVectors" Version="1.8.4" />
   </ItemGroup>
 
