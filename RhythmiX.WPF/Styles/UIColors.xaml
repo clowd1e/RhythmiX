@@ -20,6 +20,9 @@
     <SolidColorBrush x:Key="AlbumArtistColor" Color="#808080" />
     <SolidColorBrush x:Key="TrackLayoutBorderColor" Color="#808080" />
     <SolidColorBrush x:Key="SeeMoreButtonBorderColor" Color="#808080" />
+    
+    
+    <SolidColorBrush x:Key="TextGrayColor" Color="#808080" />
 
     <SolidColorBrush x:Key="MenuButtonCheckedColor" Color="#1D1D1D" />
     <SolidColorBrush x:Key="MenuButtonHoverColor" Color="#262626" />

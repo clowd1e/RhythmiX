@@ -8,6 +8,20 @@
         <Setter Property="Foreground" Value="{StaticResource CommonWhite}" />
     </Style>
 
+    <Style x:Key="ViewRegularText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Nunito_Sans}" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Foreground" Value="{StaticResource TextGrayColor}" />
+    </Style>
+
+    <Style x:Key="ViewExtraBoldText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource Nunito_Sans}" />
+        <Setter Property="FontWeight" Value="ExtraBold" />
+        <Setter Property="FontSize" Value="40" />
+        <Setter Property="Foreground" Value="{StaticResource TextGrayColor}" />
+    </Style>
+
     <Style x:Key="ErrorTextStyle" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource Nunito_Sans}" />
         <Setter Property="FontWeight" Value="Bold" />
