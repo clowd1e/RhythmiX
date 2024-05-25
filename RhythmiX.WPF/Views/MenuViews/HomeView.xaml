@@ -6,22 +6,61 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              xmlns:local="clr-namespace:RhythmiX.WPF.Views.MenuViews" xmlns:musiccomponents="clr-namespace:RhythmiX.WPF.Components.MusicComponents" xmlns:menuviewmodels="clr-namespace:RhythmiX.WPF.ViewModels.MenuViewModels" 
+             xmlns:converters="clr-namespace:RhythmiX.WPF.Converters" 
+             xmlns:loadingspinnercontrol="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
              d:DataContext="{d:DesignInstance Type=menuviewmodels:HomeViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
     <Border CornerRadius="0 0 10 0">
         <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="auto">
-            <StackPanel Margin="45 0 45 50">
+            
+            <Grid Margin="45 0 45 50">
+                <loadingspinnercontrol:LoadingSpinner 
+                    Diameter="50"
+                    Thickness="3"
+                    Color="{StaticResource CommonWhite}"
+                    IsLoading="{Binding IsLoading}"/>
 
-                <musiccomponents:TracksLayoutBox Title="Rock music" ItemSource="{Binding TrackDtos}" />
+                <Grid Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                    <ItemsControl ItemsSource="{Binding TrackDtos}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <musiccomponents:TracksLayoutBox Title="{Binding Title}" ItemSource="{Binding Items}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
 
-                <!--<musiccomponents:TracksLayoutBox Title="Popular Songs" ItemSource="{Binding Tracks}" />
-                <musiccomponents:AlbumsLayoutBox Title="Recommended Albums" ItemSource="{Binding Albums}" />
-                <musiccomponents:ArtistsLayoutBox Title="Recommended Artists" ItemSource="{Binding Artists}" />
-                <musiccomponents:PlaylistsLayoutBox Title="Recommended Playlists" ItemSource="{Binding Playlists}" />-->
-            </StackPanel>
+                    <ItemsControl ItemsSource="{Binding AlbumDtos}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <musiccomponents:AlbumsLayoutBox Title="{Binding Title}" ItemSource="{Binding Items}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <ItemsControl ItemsSource="{Binding ArtistDtos}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <musiccomponents:ArtistsLayoutBox Title="{Binding Title}" ItemSource="{Binding Items}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <ItemsControl ItemsSource="{Binding PlaylistDtos}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <musiccomponents:PlaylistsLayoutBox Title="{Binding Title}" ItemSource="{Binding Items}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Grid>
         </ScrollViewer>
     </Border>
 </UserControl>
