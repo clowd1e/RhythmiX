@@ -19,11 +19,6 @@
         AllowsTransparency="True">
     <Border CornerRadius="10" Background="{StaticResource MainWindowBack}">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            
             <!--Main Content-->
             <Grid SnapsToDevicePixels="True">
                 <Grid.ColumnDefinitions>
@@ -98,10 +93,9 @@
                     </Grid>
                 </Border>
             </Grid>
-        
-        
+
             <!--Place for music player-->
-            <components:MusicPlayerBar Grid.Row="1" />
+            <components:MusicPlayerBar Visibility="Hidden" VerticalAlignment="Bottom" />
         </Grid>
     </Border>
 </Window>
