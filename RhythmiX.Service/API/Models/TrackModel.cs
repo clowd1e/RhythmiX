@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RhythmiX.Service.API.Models.Interfaces;
+using RhythmiX.Storage.Entities;
 
 namespace RhythmiX.Service.API.Models
 {
