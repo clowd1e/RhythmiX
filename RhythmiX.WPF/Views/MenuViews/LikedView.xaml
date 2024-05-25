@@ -3,53 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RhythmiX.WPF.Views.MenuViews" xmlns:components="clr-namespace:RhythmiX.WPF.Components"
+             xmlns:local="clr-namespace:RhythmiX.WPF.Views.MenuViews" xmlns:components="clr-namespace:RhythmiX.WPF.Components.MusicComponents" xmlns:loadingSpiner="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl" xmlns:converters="clr-namespace:RhythmiX.WPF.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
     <Border CornerRadius="0 0 10 0">
         <StackPanel Margin="40 0 40 0">
-            <StackPanel Margin="0 20 0 0"
+            <StackPanel Margin="0 20 0 25"
                     Orientation="Horizontal">
                 <Image Width="150"
                    Height="150"
-                Source="/../Images/liked_logo.png"
-                />
-                <TextBlock Style="{StaticResource ViewBoldText}"
-                       Text="Liked music"
-                       Margin="18 0 0 0"/>
+                   Source="/../Images/liked_logo.png" />
+                <StackPanel Margin="18 0 0 0">
+                    <TextBlock Style="{StaticResource ViewBoldText}"
+                        Text="Liked music"/>
+                    <TextBlock Style="{StaticResource ViewRegularText}"
+                        Text="{Binding CountText}"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Margin="0 25 0 0">
-                <components:HistoryTrackLayout 
-                TrackArtist="Igor"
-                TrackName="Something"
-                TrackDuration="3:35"
-                TrackImage="Igor.jpg"
-                HasBottomBorder="True"/>
-                <components:HistoryTrackLayout 
-                TrackArtist="NIRVANA"
-                TrackName="Really cool song"
-                TrackDuration="5:14"
-                TrackImage="Nirvana.jpg"
-                HasBottomBorder="True"/>
-                <components:HistoryTrackLayout 
-                TrackArtist="Long group name so that it’s really long"
-                TrackName="I need really long song name to see how"
-                TrackDuration="63:35"
-                TrackImage="NWA.jpg"
-                HasBottomBorder="True"/>
-                <components:HistoryTrackLayout 
-                 TrackArtist="Igor"
-                 TrackName="Something"
-                 TrackDuration="6:43"
-                 TrackImage="Igor.jpg"
-                 HasBottomBorder="True"/>
-                <components:HistoryTrackLayout 
-                 TrackArtist="Igor"
-                 TrackName="Something"
-                 TrackDuration="6:43"
-                 TrackImage="Igor.jpg"
-                 HasBottomBorder="False"/>
-            </StackPanel>
+            <Grid>
+                <loadingSpiner:LoadingSpinner
+                    Diameter="50"
+                    Thickness="3"
+                    Color="{StaticResource CommonWhite}"
+                    IsLoading="{Binding IsLoading}"/>
+
+                <Grid Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                    <StackPanel Visibility="{Binding HasTracks, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <TextBlock Style="{StaticResource ViewExtraBoldText}"
+                            Text="There is nothing here yet" />
+                        <TextBlock Style="{StaticResource ViewExtraBoldText}"
+                            Text="Check out some songs in Explore tab" />
+                    </StackPanel>
+                    
+                    <components:LikedHistoryTrackLayoutBox 
+                        Visibility="{Binding HasTracks, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        ItemSource="{Binding LikedTrackDtos}" />
+                </Grid>
+            </Grid>
         </StackPanel>
     </Border>
 </UserControl>
