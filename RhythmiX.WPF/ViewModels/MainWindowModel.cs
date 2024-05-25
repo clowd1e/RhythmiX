@@ -45,8 +45,8 @@ namespace RhythmiX.WPF.ViewModels
         {
             ChangeToHome = new NavigateCommand(navigationStore, new HomeViewModel());
             ChangeToExplore = new NavigateCommand(navigationStore, new ExploreViewModel());
-            ChangeToLiked = new NavigateCommand(navigationStore, new LikedViewModel());
-            ChangeToHistory = new NavigateCommand(navigationStore, new HistoryViewModel());
+            ChangeToLiked = new NavigateCommand(navigationStore, new LikedViewModel(_user));
+            ChangeToHistory = new NavigateCommand(navigationStore, new HistoryViewModel(_user));
             ChangeToPlaylists = new NavigateCommand(navigationStore, new PlaylistsViewModel());
             ChangeToAccount = new NavigateCommand(navigationStore, new AccountViewModel());
         }
