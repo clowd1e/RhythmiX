@@ -1,7 +1,9 @@
 ﻿using RhythmiX.Service.API;
+using RhythmiX.Service.API.Models.Interfaces;
 using RhythmiX.Service.API.ResponseModels;
 using RhythmiX.Service.Downloaders.ImageDownloader;
-using RhythmiX.Storage.Models.Interfaces;
+using RhythmiX.WPF.Services;
+using RhythmiX.WPF.Stores;
 using RhythmiX.WPF.ViewModels.MenuViewModels;
 
 namespace RhythmiX.WPF.Commands
@@ -17,11 +19,24 @@ namespace RhythmiX.WPF.Commands
 
         public async override Task ExecuteAsync(object? parameter)
         {
-            TrackResponseModel response = await ApiHelper.GetTracksByTags<TrackResponseModel>("rock");
-            response.Results = response.Results.Where(r => r.AudioDownloadAllowed).ToList();
+            _viewModel.IsLoading = true;
 
-            await ImageDownloader.DownloadImagesAsync(response, "../../../APICallResults/DownloadedMusic");
-            _viewModel.UpdateContent(response.Results.Cast<IHomeObservable>().ToList());
+            List<MusicGroupStore<IHomeObservable>> content = new List<MusicGroupStore<IHomeObservable>>();
+
+            TrackResponseModel response = await ApiHelper.GetTracksByTags<TrackResponseModel>("rock", "&limit=15");
+            response.Results = response.Results.Where(r => r.AudioDownloadAllowed).ToList();
+            content.Add(new MusicGroupStore<IHomeObservable>("Rock music", response.Results.Cast<IHomeObservable>().ToList()));
+
+            TrackResponseModel response2 = await ApiHelper.GetTracksByTags<TrackResponseModel>("rap", "&limit=15");
+            response2.Results = response2.Results.Where(r => r.AudioDownloadAllowed).ToList();
+            content.Add(new MusicGroupStore<IHomeObservable>("Pop music", response2.Results.Cast<IHomeObservable>().ToList()));
+
+            await ImageDownloader.DownloadImagesAsync(response, PathService.DownloadedTracksPath);
+            await ImageDownloader.DownloadImagesAsync(response2, PathService.DownloadedTracksPath);
+
+            _viewModel.UpdateContent(content);
+
+            _viewModel.IsLoading = false;
         }
     }
 }
