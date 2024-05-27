@@ -11,6 +11,12 @@ namespace RhythmiX.Web.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly IUserRepository _userRepository;
+        public LoginController(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -21,11 +27,8 @@ namespace RhythmiX.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                using MusicDbContext context = new MusicDbContext();
-                UserRepository userRepository = new UserRepository(context);
-
                 LoginUserCommand command = new LoginUserCommand(model.Username, model.Password);
-                LoginUserCommandHandler handler = new LoginUserCommandHandler(userRepository);
+                LoginUserCommandHandler handler = new LoginUserCommandHandler(_userRepository);
                 var result = await handler.HandleAsync(command);
                 if (result.IsSuccess)
                 {
