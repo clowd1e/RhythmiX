@@ -1,6 +1,7 @@
 ﻿using RhythmiX.Service.Queries.Dtos;
 using RhythmiX.Storage.Entities;
 using RhythmiX.WPF.Commands;
+using RhythmiX.WPF.Stores;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -8,6 +9,8 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
 {
     public class HistoryViewModel : ViewModelBase
     {
+        private readonly NavigationStore _navigationStore;
+
         private List<Track> _historyTracks;
 
         private int count;
@@ -57,8 +60,11 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
         }
 
         public ICommand LoadContent;
-        public HistoryViewModel(User user)
+        public ICommand LoadMusic { get; private set; }
+
+        public HistoryViewModel(User user, NavigationStore navigationStore)
         {
+            _navigationStore = navigationStore;
             LoadContent = new LoadHistoryContentCommand(this, user);
             LoadContent.Execute(null);
         }
@@ -66,6 +72,7 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
         public void UpdateContent(IEnumerable<Track> historyTracks)
         {
             _historyTracks = historyTracks.ToList();
+            LoadMusic = new AsyncLoadMusicCommand(_navigationStore, _historyTracks);
 
             count = historyTracks.ToList().Count;
             HasTracks = count > 0;
