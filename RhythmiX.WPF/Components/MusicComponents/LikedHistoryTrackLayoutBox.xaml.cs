@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace RhythmiX.WPF.Components.MusicComponents
@@ -18,11 +19,19 @@ namespace RhythmiX.WPF.Components.MusicComponents
 
         public static readonly DependencyProperty ItemSourceProperty =
             DependencyProperty.Register("ItemSource", typeof(ObservableCollection<TrackDto>), typeof(LikedHistoryTrackLayoutBox), new PropertyMetadata(null));
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(LikedHistoryTrackLayoutBox), new PropertyMetadata(null));
 
         public ObservableCollection<TrackDto> ItemSource
         {
             get { return (ObservableCollection<TrackDto>)GetValue(ItemSourceProperty); }
             set { SetValue(ItemSourceProperty, value); }
+        }
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
         }
 
         private void UpdateItemSource()
@@ -37,18 +46,18 @@ namespace RhythmiX.WPF.Components.MusicComponents
 
         private void listBox_Loaded(object sender, RoutedEventArgs e)
         {
-            if (listBox.Items.Count <= 1)
-                return;
+            //if (listBox.Items.Count <= 1)
+            //    return;
 
-            var lastItem = (ListBoxItem)listBox.ItemContainerGenerator.ContainerFromIndex(listBox.Items.Count - 1);
-            if (lastItem is null)
-                return;
+            //var lastItem = (ListBoxItem)listBox.ItemContainerGenerator.ContainerFromIndex(listBox.Items.Count - 1);
+            //if (lastItem is null)
+            //    return;
 
-            var lastItemLayout = (LikedHistoryTrackLayout)lastItem.Content;
-            if (lastItemLayout is null)
-                return;
+            //var lastItemLayout = (LikedHistoryTrackLayout)lastItem.Content;
+            //if (lastItemLayout is null)
+            //    return;
 
-            lastItemLayout.HasBottomBorder = false;
+            //lastItemLayout.HasBottomBorder = false;
         }
 
         private void listBox_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)

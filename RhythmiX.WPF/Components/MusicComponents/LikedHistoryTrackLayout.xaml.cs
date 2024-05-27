@@ -1,6 +1,7 @@
 ﻿using RhythmiX.WPF.Services;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace RhythmiX.WPF.Components.MusicComponents
@@ -30,6 +31,9 @@ namespace RhythmiX.WPF.Components.MusicComponents
         public static readonly DependencyProperty HasBottomBorderProperty =
             DependencyProperty.Register("HasBottomBorder", typeof(bool), typeof(LikedHistoryTrackLayout), new PropertyMetadata(true));
 
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(LikedHistoryTrackLayout), new PropertyMetadata(null));
+
         public string TrackName
         {
             get { return (string)GetValue(TrackNameProperty); }
@@ -58,6 +62,12 @@ namespace RhythmiX.WPF.Components.MusicComponents
         {
             get { return (bool)GetValue(HasBottomBorderProperty); }
             set { SetValue(HasBottomBorderProperty, value); }
+        }
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
         }
 
         private void UpdateTrackName()
@@ -91,6 +101,11 @@ namespace RhythmiX.WPF.Components.MusicComponents
                 trackLayout.BorderThickness = new Thickness(0);
         }
 
+        private void UpdateCommand()
+        {
+            trackLayout.Command = Command;
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateTrackName();
@@ -98,6 +113,7 @@ namespace RhythmiX.WPF.Components.MusicComponents
             UpdateTrackDuration();
             UpdateTrackImage();
             UpdateHasBottomBorder();
+            UpdateCommand();
         }
     }
 }

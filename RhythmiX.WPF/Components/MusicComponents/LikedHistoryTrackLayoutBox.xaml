@@ -21,7 +21,8 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:LikedHistoryTrackLayout TrackName="{Binding TrackName}" TrackArtist="{Binding ArtistName}"
-                                                   TrackDuration="{Binding Duration}" TrackImage="{Binding Image}"/>
+                                                   TrackDuration="{Binding Duration}" TrackImage="{Binding Image}"
+                                                   Command="{Binding Command, RelativeSource={RelativeSource AncestorType={x:Type local:LikedHistoryTrackLayoutBox}}}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
 
