@@ -9,8 +9,8 @@ namespace RhythmiX.WPF.ViewModels
     public class MainWindowModel : ViewModelBase
     {
         private readonly User _user;
-        private readonly NavigationStore navigationStore;
-        public ViewModelBase CurrentViewModel => navigationStore.CurrentViewModel;
+        private readonly NavigationStore _navigationStore;
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
 
         public ICommand ChangeToHome { get; private set; }
@@ -23,32 +23,32 @@ namespace RhythmiX.WPF.ViewModels
 
         public MainWindowModel()
         {
-            navigationStore = new NavigationStore();
-            navigationStore.CurrentViewModel = new HomeViewModel();
+            _navigationStore = new NavigationStore();
+            _navigationStore.CurrentViewModel = new HomeViewModel();
 
             InitializeMenuButtons();
-            navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
         public MainWindowModel(User user)
         {
             _user = user;
 
-            navigationStore = new NavigationStore();
-            navigationStore.CurrentViewModel = new HomeViewModel();
+            _navigationStore = new NavigationStore();
+            _navigationStore.CurrentViewModel = new HomeViewModel();
 
             InitializeMenuButtons();
-            navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
         private void InitializeMenuButtons()
         {
-            ChangeToHome = new NavigateCommand(navigationStore, new HomeViewModel());
-            ChangeToExplore = new NavigateCommand(navigationStore, new ExploreViewModel());
-            ChangeToLiked = new NavigateCommand(navigationStore, new LikedViewModel(_user));
-            ChangeToHistory = new NavigateCommand(navigationStore, new HistoryViewModel(_user));
-            ChangeToPlaylists = new NavigateCommand(navigationStore, new PlaylistsViewModel());
-            ChangeToAccount = new NavigateCommand(navigationStore, new AccountViewModel());
+            ChangeToHome = new NavigateCommand(_navigationStore, new HomeViewModel());
+            ChangeToExplore = new NavigateCommand(_navigationStore, new ExploreViewModel());
+            ChangeToLiked = new NavigateCommand(_navigationStore, new LikedViewModel(_user));
+            ChangeToHistory = new NavigateCommand(_navigationStore, new HistoryViewModel(_user, _navigationStore));
+            ChangeToPlaylists = new NavigateCommand(_navigationStore, new PlaylistsViewModel());
+            ChangeToAccount = new NavigateCommand(_navigationStore, new AccountViewModel());
         }
 
         private void OnCurrentViewModelChanged()
