@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RhythmiX.WPF"
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+        xmlns:views="clr-namespace:RhythmiX.WPF.Views"
         xmlns:viewModels="clr-namespace:RhythmiX.WPF.ViewModels"
         xmlns:components="clr-namespace:RhythmiX.WPF.Components"
         xmlns:menuViewModels="clr-namespace:RhythmiX.WPF.ViewModels.MenuViewModels"
@@ -87,6 +88,9 @@
                             <DataTemplate DataType="{x:Type menuViewModels:AccountViewModel}">
                                 <menuViews:AccountView />
                             </DataTemplate>
+                            <DataTemplate DataType="{x:Type viewModels:MusicControlViewModel}">
+                                <views:MusicControlView />
+                            </DataTemplate>
                         </Grid.Resources>
 
                         <ContentControl Content="{Binding CurrentViewModel}" />
@@ -95,7 +99,7 @@
             </Grid>
 
             <!--Place for music player-->
-            <components:MusicPlayerBar Visibility="Hidden" VerticalAlignment="Bottom" />
+            <components:MusicPlayerBar Visibility="Collapsed" VerticalAlignment="Bottom" />
         </Grid>
     </Border>
 </Window>
