@@ -1,4 +1,5 @@
 ﻿using RhythmiX.Service.API.ResponseModels;
+using RhythmiX.Storage.Entities;
 using System.Net;
 
 namespace RhythmiX.Service.Downloaders.TrackDownloader
@@ -45,6 +46,28 @@ namespace RhythmiX.Service.Downloaders.TrackDownloader
                 {
                     await client.DownloadFileTaskAsync(url, trackSavePath);
                     await ImageDownloader.ImageDownloader.DownloadImageAsync(name, imagePath, folderPath);
+                }
+            }
+        }
+
+        public static async Task DownloadTracksAsync(List<Track> tracks, string folderPath)
+        {
+            foreach (var track in tracks)
+            {
+                string name = track.Name;
+                string audioPath = track.AudioDownload;
+                string imagePath = track.AlbumImage;
+
+                Directory.CreateDirectory($"{folderPath}/{name}");
+                Uri url = new Uri(audioPath);
+                string trackSavePath = $"{folderPath}/{name}/{name}{audioFormat}";
+
+                if (File.Exists($"{folderPath}/{name}/{name}{audioFormat}"))
+                    continue;
+
+                using (WebClient client = new WebClient())
+                {
+                    await client.DownloadFileTaskAsync(url, trackSavePath);
                 }
             }
         }
