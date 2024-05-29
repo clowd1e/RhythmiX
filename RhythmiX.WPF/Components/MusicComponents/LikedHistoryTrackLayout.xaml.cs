@@ -18,21 +18,18 @@ namespace RhythmiX.WPF.Components.MusicComponents
 
         public static readonly DependencyProperty TrackNameProperty =
             DependencyProperty.Register("TrackName", typeof(string), typeof(LikedHistoryTrackLayout), new PropertyMetadata("TrackName"));
-
         public static readonly DependencyProperty TrackArtistProperty =
             DependencyProperty.Register("TrackArtist", typeof(string), typeof(LikedHistoryTrackLayout), new PropertyMetadata("TrackArtist"));
-
         public static readonly DependencyProperty TrackDurationProperty =
             DependencyProperty.Register("TrackDuration", typeof(string), typeof(LikedHistoryTrackLayout), new PropertyMetadata("TrackDuration"));
-
         public static readonly DependencyProperty TrackImageProperty =
             DependencyProperty.Register("TrackImage", typeof(string), typeof(LikedHistoryTrackLayout), new PropertyMetadata("track_image_default.png"));
-
         public static readonly DependencyProperty HasBottomBorderProperty =
             DependencyProperty.Register("HasBottomBorder", typeof(bool), typeof(LikedHistoryTrackLayout), new PropertyMetadata(true));
-
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register("Command", typeof(ICommand), typeof(LikedHistoryTrackLayout), new PropertyMetadata(null));
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register("CommandParameter", typeof(object), typeof(LikedHistoryTrackLayout), new PropertyMetadata(null));
 
         public string TrackName
         {
@@ -68,6 +65,12 @@ namespace RhythmiX.WPF.Components.MusicComponents
         {
             get { return (ICommand)GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
+        }
+
+        public object CommandParameter
+        {
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
         }
 
         private void UpdateTrackName()
@@ -106,6 +109,11 @@ namespace RhythmiX.WPF.Components.MusicComponents
             trackLayout.Command = Command;
         }
 
+        private void UpdateCommandParameter()
+        {
+            trackLayout.CommandParameter = CommandParameter;
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateTrackName();
@@ -114,6 +122,7 @@ namespace RhythmiX.WPF.Components.MusicComponents
             UpdateTrackImage();
             UpdateHasBottomBorder();
             UpdateCommand();
+            UpdateCommandParameter();
         }
     }
 }

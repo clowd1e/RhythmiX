@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Styles/ArtistLayoutStyle.xaml" />
                 <ResourceDictionary Source="Styles/MusicPlayerBarStyle.xaml" />
                 <ResourceDictionary Source="Styles/ConfirmComponentStyle.xaml" />
+                <ResourceDictionary Source="Styles/MusicControlTrackLayoutStyle.xaml" />
                 <ResourceDictionary Source="Styles/FontFamilies.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

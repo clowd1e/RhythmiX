@@ -18,6 +18,11 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    
     <Border CornerRadius="10" Background="{StaticResource MainWindowBack}">
         <Grid>
             <!--Main Content-->
@@ -99,7 +104,8 @@
             </Grid>
 
             <!--Place for music player-->
-            <components:MusicPlayerBar Visibility="Collapsed" VerticalAlignment="Bottom" />
+            <components:MusicPlayerBar Visibility="{Binding IsPlayerBarShown, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                       VerticalAlignment="Bottom" />
         </Grid>
     </Border>
 </Window>

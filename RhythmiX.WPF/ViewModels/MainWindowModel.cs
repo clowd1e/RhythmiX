@@ -13,6 +13,17 @@ namespace RhythmiX.WPF.ViewModels
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
 
+        private bool isPlayerBarShown;
+        public bool IsPlayerBarShown
+        {
+            get => isPlayerBarShown;
+            set
+            {
+                isPlayerBarShown = value;
+                OnPropertyChanged(nameof(IsPlayerBarShown));
+            }
+        }
+
         public ICommand ChangeToHome { get; private set; }
         public ICommand ChangeToExplore { get; private set; }
         public ICommand ChangeToLiked { get; private set; }
@@ -46,7 +57,7 @@ namespace RhythmiX.WPF.ViewModels
             ChangeToHome = new NavigateCommand(_navigationStore, new HomeViewModel());
             ChangeToExplore = new NavigateCommand(_navigationStore, new ExploreViewModel());
             ChangeToLiked = new NavigateCommand(_navigationStore, new LikedViewModel(_user));
-            ChangeToHistory = new NavigateCommand(_navigationStore, new HistoryViewModel(_user, _navigationStore));
+            ChangeToHistory = new NavigateCommand(_navigationStore, new HistoryViewModel(_user, this, _navigationStore));
             ChangeToPlaylists = new NavigateCommand(_navigationStore, new PlaylistsViewModel());
             ChangeToAccount = new NavigateCommand(_navigationStore, new AccountViewModel());
         }

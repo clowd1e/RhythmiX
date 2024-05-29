@@ -4,7 +4,6 @@ using RhythmiX.Service.Queries.Dtos;
 using RhythmiX.WPF.Commands;
 using RhythmiX.WPF.Stores;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace RhythmiX.WPF.ViewModels.MenuViewModels
@@ -77,11 +76,10 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
 
         public ICommand LoadContentCommand { get; }
 
-
         public HomeViewModel()
         {
-            LoadContentCommand = new LoadHomeContentCommand(this);
-            LoadContentCommand.Execute(null);
+            //LoadContentCommand = new LoadHomeContentCommand(this);
+            //LoadContentCommand.Execute(null);
         }
 
         public void UpdateContent(List<MusicGroupStore<IHomeObservable>> content)

@@ -9,6 +9,7 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
 {
     public class HistoryViewModel : ViewModelBase
     {
+        private readonly MainWindowModel _mainWindowModel;
         private readonly NavigationStore _navigationStore;
 
         private List<Track> _historyTracks;
@@ -62,8 +63,9 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
         public ICommand LoadContent;
         public ICommand LoadMusic { get; private set; }
 
-        public HistoryViewModel(User user, NavigationStore navigationStore)
+        public HistoryViewModel(User user, MainWindowModel mainWindowModel, NavigationStore navigationStore)
         {
+            _mainWindowModel = mainWindowModel;
             _navigationStore = navigationStore;
             LoadContent = new LoadHistoryContentCommand(this, user);
             LoadContent.Execute(null);
@@ -72,7 +74,7 @@ namespace RhythmiX.WPF.ViewModels.MenuViewModels
         public void UpdateContent(IEnumerable<Track> historyTracks)
         {
             _historyTracks = historyTracks.ToList();
-            LoadMusic = new AsyncLoadMusicCommand(_navigationStore, _historyTracks);
+            LoadMusic = new AsyncLoadMusicCommand(_mainWindowModel, _navigationStore, _historyTracks);
 
             count = historyTracks.ToList().Count;
             HasTracks = count > 0;
