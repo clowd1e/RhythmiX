@@ -43,10 +43,15 @@
 
 .content table tr {
     border-bottom: 2px solid #808080;
+    cursor: pointer;
 }
 
 .content table tr:last-child {
     border-bottom: none;
+}
+
+.content table tr:hover {
+    background-color: #262626;
 }
 
 .content table td {
