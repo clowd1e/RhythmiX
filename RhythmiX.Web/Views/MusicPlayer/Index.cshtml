@@ -1,0 +1,115 @@
+﻿@using Newtonsoft.Json
+@using RhythmiX.Web.ViewModels
+
+@model TrackViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["StyleLink"] = "player.css";
+    Layout = "_PlayerLayout";
+}
+
+<div class="main-container">
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="~/images/app_logo.png" alt="RhythmiX Logo">
+        </div>
+        <ul class="nav-links">
+            <a asp-controller="main" asp-action="home">
+                <label for="home"><img src="~/images/house.png" alt="Home Icon"><span>Home</span></label>
+            </a>
+            <a asp-controller="main" asp-action="explore">
+                <label for="explore"><img src="~/images/compass.png" alt="Explore Icon"><span>Explore</span></label>
+            </a>
+            <a asp-controller="main" asp-action="liked">
+                <label for="liked"><img src="~/images/thumbs_up.png" alt="Liked Icon"><span>Liked</span></label>
+            </a>
+            <a asp-controller="main" asp-action="history">
+                <label for="history"><img src="~/images/clock_counter_clockwise.png" alt="History Icon"><span>History</span></label>
+            </a>
+
+            <hr />
+
+            <a asp-controller="main" asp-action="playlists">
+                <label for="playlists"><img src="~/images/playlist.png" alt="Playlists Icon"><span>Playlists</span></label>
+            </a>
+            <a asp-controller="main" asp-action="account">
+                <label for="account"><img src="~/images/user_circle_main.png" alt="Account Icon"><span>Account</span></label>
+            </a>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="search-bar" id="search-bar">
+            <input type="text" placeholder="Search songs">
+        </div>
+        <div class="content">
+
+            <div>
+                <img class="current-image" src="track_image_default.jpg" />
+            </div>
+            <div class="track-list">
+                <h2>@Model.Title</h2>
+
+                <div class="scroll-div">
+                    <table id="trackList">
+                        @foreach(var track in Model.TrackDtos)
+                        {
+                            <tr>
+                                <td><img src="@track.Image"></td>
+                                <td><p class="track-name">@track.TrackName</p></td>
+                                <td><p class="track-artist">@track.ArtistName</p></td>
+                                <td><p class="track-time">@track.Duration</p></td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player-bar-container">
+        <div class="slider-bar" id="sliderBar">
+            <div class="progress-bar" id="trackProgress"></div>
+            <div class="slider-knob" id="trackKnob"></div>
+        </div>
+
+        <div class="music-group">
+            <div class="music-control-div">
+                <div class="play-button-common play-back-button" id="playBack">
+                    <img src="~/images/play_back.png" alt="Play Back Button">
+                </div>
+                <div class="play-button-common play-pause-button">
+                    <div id="play">
+                        <img src="~/images/play_button.png" alt="Play Button">
+                    </div>
+                    <div id="pause">
+                        <img src="~/images/pause_button.png" alt="Pause Button">
+                    </div>
+                </div>
+                <div class="play-button-common play-next-button" id="playNext">
+                    <img src="~/images/play_next.png" alt="Play Forward Button">
+                </div>
+            </div>
+
+            <div class="music-info">
+                <h3 class="track-name" id="trackName">Something</h3>
+                <h3 class="track-artist" id="trackArtist">Igor</h3>
+            </div>
+
+            <div class="music-timer">
+                <h3 class="track-time" id="trackTime">0:00</h3>
+                <h3 class="track-time" id="trackDuration"> / 0:00</h3>
+            </div>
+
+            <div class="space">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let trackViewModel = @Html.Raw(JsonConvert.SerializeObject(Model.TrackDtos));
+    </script>
+}
