@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Newtonsoft.Json;
 using RhythmiX.Web.Extensions;
 
 namespace RhythmiX.Web
@@ -17,6 +18,12 @@ namespace RhythmiX.Web
                 {
                     options.LoginPath = "/Login/Index";
                 });
+
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
 
 
             var app = builder.Build();
