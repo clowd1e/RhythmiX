@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using RhythmiX.Service.Queries.Dtos;
 using RhythmiX.Service.Queries.LikedTrack;
-using RhythmiX.Storage;
 using RhythmiX.Storage.Entities;
 using RhythmiX.Storage.Repository;
+using RhythmiX.Web.ViewModels;
 
 namespace RhythmiX.Web.Controllers
 {
@@ -37,8 +37,13 @@ namespace RhythmiX.Web.Controllers
                 return View(new List<TrackDto>());
 
             IEnumerable<TrackDto> trackDtos = tracks.Select(t => new TrackDto(t));
+            TrackViewModel model = new TrackViewModel
+            {
+                UserId = user.Id,
+                TrackDtos = trackDtos
+            };
 
-            return View(trackDtos);
+            return View(model);
         }
 
         public IActionResult History()
