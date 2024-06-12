@@ -29,7 +29,7 @@
         <table>
             @foreach (var track in Model.TrackDtos)
             {
-                <tr class="clickable-row" data-url="@Url.Action("Index", "MusicPlayer", new { userId = Model.UserId, id = track.Id })">
+                <tr class="clickable-row" data-url="@Url.Action("Liked", "MusicPlayer", new { userId = Model.UserId, trackId = track.Id })">
                     <td><img src="~/images/@track.Image"></td>
                     <td><p class="track-name">@track.TrackName</p></td>
                     <td><p class="track-artist">@track.ArtistName</p></td>
@@ -48,15 +48,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var rows = document.querySelectorAll(".clickable-row");
-            rows.forEach(function (row) {
-                row.addEventListener("click", function () {
-                    var url = this.dataset.url;
-                    window.location.href = url;
-                });
-            });
-        });
-    </script>
+    <script src="~/js/trOnClick.js"></script>
 }
