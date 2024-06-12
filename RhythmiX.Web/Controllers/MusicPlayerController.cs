@@ -15,7 +15,7 @@ namespace RhythmiX.Web.Controllers
             _musicRepository = musicRepository;
         }
 
-        public async Task<IActionResult> IndexAsync(long userId, long trackId)
+        public async Task<IActionResult> LikedAsync(long userId, long trackId)
         {
             GetUserLikedTracksQuery query = new GetUserLikedTracksQuery();
             GetUserLikedTracksQueryHandler handler = new GetUserLikedTracksQueryHandler(_musicRepository, userId);
@@ -30,11 +30,12 @@ namespace RhythmiX.Web.Controllers
                 Title = "Liked",
                 UserId = userId,
                 TrackId = trackId,
+                CurrentTrackIndex = likedTrackDtos.ToList().FindIndex(t => t.Id == trackId),
                 Tracks = likedTracks,
                 TrackDtos = likedTrackDtos
             };
 
-            return View(model);
+            return View("Index", model);
         }
     }
 }
