@@ -55,7 +55,7 @@
                     <table id="trackList">
                         @foreach(var track in Model.TrackDtos)
                         {
-                            <tr>
+                            <tr class="clickable-row" data-url="@Url.Action(Model.Title, "MusicPlayer", new { userId = Model.UserId, trackId = track.Id })">
                                 <td><img src="@track.Image"></td>
                                 <td><p class="track-name">@track.TrackName</p></td>
                                 <td><p class="track-artist">@track.ArtistName</p></td>
@@ -109,7 +109,8 @@
 </div>
 
 @section Scripts {
+    <script src="~/js/trOnClick.js"></script>
     <script>
-        let trackViewModel = @Html.Raw(JsonConvert.SerializeObject(Model.TrackDtos));
+        let trackViewModel = @Html.Raw(JsonConvert.SerializeObject(Model));
     </script>
 }
