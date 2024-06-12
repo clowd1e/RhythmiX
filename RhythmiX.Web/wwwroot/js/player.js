@@ -3,12 +3,15 @@ elms.forEach(function (elm) {
     window[elm] = document.getElementById(elm);
 });
 
+let playlist = trackViewModel.TrackDtos;
+let currentTrackIndex = trackViewModel.CurrentTrackIndex;
+
 let Player = function (playlist, index) {
     this.playlist = playlist;
     this.index = index;
 
     trackName.innerHTML = playlist[index].TrackName;
-    trackArtist.innerHTML = playlist[index].TrackArtist;
+    trackArtist.innerHTML = playlist[index].ArtistName;
     trackTime.innerHTML = '0:00';
     trackDuration.innerHTML = ' / ' + playlist[index].Duration;
 }
@@ -29,8 +32,6 @@ Player.prototype = {
                 src: [`/APICallResults/DownloadedTracks/${data.TrackName}/${data.TrackName}.mp3`],
                 html5: true,
                 onplay: function () {
-                    console.log(self.index);
-                    console.log('onplay');
                     trackDuration.innerHTML = ' / ' + self.formatTime(Math.round(track.duration()));
 
                     requestAnimationFrame(self.step.bind(self));
@@ -39,10 +40,11 @@ Player.prototype = {
                     pause.style.display = 'flex';
                 },
                 onload: function () {
-
+                    
                 },
                 onend: function () {
-                    self.skip('next');
+                    let nextTrackId = (currentTrackIndex + 1) >= playlist.length ? playlist[0].Id : playlist[currentTrackIndex + 1].Id;
+                    window.location.href = `/MusicPlayer/${trackViewModel.Title}?userId=${trackViewModel.UserId}&trackId=${nextTrackId}`;
                 },
                 onpause: function () {
 
@@ -59,7 +61,7 @@ Player.prototype = {
         track.play();
 
         trackName.innerHTML = data.TrackName;
-        trackArtist.innerHTML = data.TrackArtist;
+        trackArtist.innerHTML = data.ArtistName;
         trackDuration.innerHTML = ' / ' + data.Duration;
 
         if (track.state() === 'loaded') {
@@ -159,9 +161,11 @@ Player.prototype = {
     }
 }
 
-console.log(trackViewModel);
+let player = new Player(playlist, currentTrackIndex);
 
-let player = new Player(trackViewModel, 1);
+window.addEventListener('load', function () {
+    player.play();
+})
 
 play.addEventListener('click', function () {
     player.play();
