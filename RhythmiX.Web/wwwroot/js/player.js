@@ -1,4 +1,7 @@
-﻿const elms = ['trackProgress', 'trackKnob', 'playBack', 'play', 'pause', 'playNext', 'trackName', 'trackArtist', 'trackTime', 'trackDuration', 'sliderBar', 'trackList'];
+﻿const elms = ['trackProgress', 'trackKnob', 'playBack',
+    'play', 'pause', 'playNext', 'trackName', 'trackArtist',
+    'trackTime', 'trackDuration', 'sliderBar', 'trackList',
+    'volumeBar', 'volumeKnob', 'volumeProgress', 'volumeOn', 'volumeOff'];
 elms.forEach(function (elm) {
     window[elm] = document.getElementById(elm);
 });
@@ -118,11 +121,19 @@ Player.prototype = {
     },
 
     volume: function (val) {
-        let self = this;
-
         Howler.volume(val);
 
+        if (val == 0) {
+            volumeOff.style.display = 'flex';
+            volumeOn.style.display = 'none';
+        }
+        else {
+            volumeOff.style.display = 'none';
+            volumeOn.style.display = 'flex';
+        }
 
+        volumeKnob.style.left = (val * 100) + 'px';
+        volumeProgress.style.width = (val * 100) + 10 + 'px';
     },
 
     seek: function (per) {
@@ -186,3 +197,19 @@ playBack.addEventListener('click', function () {
 sliderBar.addEventListener('click', function (event) {
     player.seek(event.clientX / window.innerWidth);
 });
+
+volumeBar.addEventListener('click', function (event) {
+    let per = event.offsetX / parseFloat(volumeBar.scrollWidth);
+    player.volume(per);
+});
+
+volumeOn.addEventListener('click', function () {
+    player.volume(0);
+});
+
+let move = function (event) {
+    let per = event.offsetX / parseFloat(volumeBar.scrollWidth);
+    player.volume(per);
+};
+
+volumeBar.addEventListener('touchmove', move);

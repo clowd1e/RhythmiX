@@ -222,6 +222,68 @@ table .track-artist, table .track-time {
     font-size: 20px;
 }
 
+.music-volume {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.volume-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volume-bar {
+    width: 100px;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 5px;
+    background-color: #aaaaaa;
+}
+
+.volume-progress {
+    background-color: #f2f2f2;
+    height: 5px;
+    width: 100px;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.volume-knob {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    background-color: #F2F2F2;
+    border-radius: 100%;
+    top: -2.5px;
+    left: 90%;
+}
+
+.volume-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volume-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.volume-icons div {
+    position: absolute;
+}
+
+.volume-on {
+    cursor: pointer;
+}
+
+.volume-off {
+    display: none;
+}
+
 /* temporary */
 .space {
     width: 50%;
