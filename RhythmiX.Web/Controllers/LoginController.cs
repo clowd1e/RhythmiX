@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using RhythmiX.Service.Command.User.Login;
 using RhythmiX.Service.Queries.Dtos;
+using RhythmiX.Service.Queries.User;
+using RhythmiX.Storage.Entities;
 using RhythmiX.Storage.Repository;
+using RhythmiX.Web.Services.UserService;
 using System.Security.Claims;
 
 namespace RhythmiX.Web.Controllers
@@ -11,9 +14,12 @@ namespace RhythmiX.Web.Controllers
     public class LoginController : Controller
     {
         private readonly IUserRepository _userRepository;
-        public LoginController(IUserRepository userRepository)
+        private readonly IUserService _userService;
+
+        public LoginController(IUserRepository userRepository, IUserService userService)
         {
             _userRepository = userRepository;
+            _userService = userService;
         }
 
         public IActionResult Index()
@@ -45,6 +51,12 @@ namespace RhythmiX.Web.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
+
+                    GetUserQuery query = new GetUserQuery();
+                    GetUserQueryHandler userHandler = new GetUserQueryHandler(_userRepository, new UserDto(model.Username, model.Password));
+                    User user = await userHandler.HandleAsync(query);
+                    
+                    _userService.SetUser(user);
 
                     return RedirectToAction("Home", "Main");
                 }
