@@ -1,5 +1,6 @@
 ﻿using RhythmiX.Storage;
 using RhythmiX.Storage.Repository;
+using RhythmiX.Web.Services.UserService;
 
 namespace RhythmiX.Web.Extensions
 {
@@ -10,6 +11,9 @@ namespace RhythmiX.Web.Extensions
             serviceCollection.AddTransient<IMusicRepository, MusicRepository>();
             serviceCollection.AddTransient<IUserRepository, UserRepository>();
             serviceCollection.AddDbContext<MusicDbContext, MusicDbContext>();
+
+            serviceCollection.AddSingleton<IUserService, UserService>();
+
             return serviceCollection;
         }
     }
