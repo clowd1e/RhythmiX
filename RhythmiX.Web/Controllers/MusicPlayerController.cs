@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RhythmiX.Service.Queries.Dtos;
+using RhythmiX.Service.Queries.HistoryTrack;
 using RhythmiX.Service.Queries.LikedTrack;
 using RhythmiX.Storage.Entities;
 using RhythmiX.Storage.Repository;
@@ -33,6 +34,29 @@ namespace RhythmiX.Web.Controllers
                 CurrentTrackIndex = likedTrackDtos.ToList().FindIndex(t => t.Id == trackId),
                 Tracks = likedTracks,
                 TrackDtos = likedTrackDtos
+            };
+
+            return View("Index", model);
+        }
+
+        public async Task<IActionResult> HistoryAsync(long userId, long trackId)
+        {
+            GetUserHistoryTracksQuery query = new GetUserHistoryTracksQuery();
+            GetUserHistoryTracksQueryHandler handler = new GetUserHistoryTracksQueryHandler(_musicRepository, userId);
+
+            IEnumerable<Track> historyTracks = await handler.HandleAsync(query);
+            if (historyTracks is null)
+                RedirectToAction("History", "Main");
+
+            IEnumerable<TrackDto> historyTrackDtos = historyTracks.Select(t => new TrackDto(t));
+            TrackViewModel model = new TrackViewModel
+            {
+                Title = "History",
+                UserId = userId,
+                TrackId = trackId,
+                CurrentTrackIndex = historyTrackDtos.ToList().FindIndex(t => t.Id == trackId),
+                Tracks = historyTracks,
+                TrackDtos = historyTrackDtos
             };
 
             return View("Index", model);
