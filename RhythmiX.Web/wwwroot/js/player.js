@@ -89,35 +89,15 @@ Player.prototype = {
     },
 
     skip: function (direction) {
-        let self = this;
+        let nextTrackId = 0;
 
-        let index = self.index;
         if (direction === 'back') {
-            index--;
-            if (index < 0) {
-                index = self.playlist.length - 1;
-            }
+            nextTrackId = (currentTrackIndex - 1) < 0 ? playlist[playlist.length - 1].Id : playlist[currentTrackIndex - 1].Id;
         } else {
-            index++;
-            if (index >= self.playlist.length) {
-                index = 0;
-            }
+            nextTrackId = (currentTrackIndex + 1) >= playlist.length ? playlist[0].Id : playlist[currentTrackIndex + 1].Id;
         }
 
-        self.skipTo(index);
-    },
-
-    skipTo: function (index) {
-        let self = this;
-
-        if (self.playlist[self.index].howl) {
-            self.playlist[self.index].howl.stop();
-        }
-
-        trackProgress.style.width = '0%';
-        trackKnob.style.left = '0%';
-
-        self.play(index);
+        window.location.href = `/MusicPlayer/${trackViewModel.Title}?userId=${trackViewModel.UserId}&trackId=${nextTrackId}`;
     },
 
     volume: function (val) {
