@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RhythmiX.Service.Downloaders.TrackDownloader;
 using RhythmiX.Service.Queries.Dtos;
 using RhythmiX.Service.Queries.HistoryTrack;
 using RhythmiX.Service.Queries.LikedTrack;
 using RhythmiX.Storage.Entities;
 using RhythmiX.Storage.Repository;
+using RhythmiX.Web.Services;
 using RhythmiX.Web.ViewModels;
 
 namespace RhythmiX.Web.Controllers
@@ -25,13 +27,17 @@ namespace RhythmiX.Web.Controllers
             if (likedTracks is null)
                 RedirectToAction("Liked", "Main");
 
+            int currentTrackIndex = likedTracks.ToList().FindIndex(t => t.ApiId == trackId);
+
+            await TrackDownloader.DownloadTrackAsync(likedTracks.ToList()[currentTrackIndex], PathService.DownloadedTracksPath);
+
             IEnumerable<TrackDto> likedTrackDtos = likedTracks.Select(t => new TrackDto(t));
             TrackViewModel model = new TrackViewModel
             {
                 Title = "Liked",
                 UserId = userId,
                 TrackId = trackId,
-                CurrentTrackIndex = likedTrackDtos.ToList().FindIndex(t => t.Id == trackId),
+                CurrentTrackIndex = currentTrackIndex,
                 Tracks = likedTracks,
                 TrackDtos = likedTrackDtos
             };
@@ -48,13 +54,17 @@ namespace RhythmiX.Web.Controllers
             if (historyTracks is null)
                 RedirectToAction("History", "Main");
 
+            int currentTrackIndex = historyTracks.ToList().FindIndex(t => t.ApiId == trackId);
+
+            await TrackDownloader.DownloadTrackAsync(historyTracks.ToList()[currentTrackIndex], PathService.DownloadedTracksPath);
+
             IEnumerable<TrackDto> historyTrackDtos = historyTracks.Select(t => new TrackDto(t));
             TrackViewModel model = new TrackViewModel
             {
                 Title = "History",
                 UserId = userId,
                 TrackId = trackId,
-                CurrentTrackIndex = historyTrackDtos.ToList().FindIndex(t => t.Id == trackId),
+                CurrentTrackIndex = currentTrackIndex,
                 Tracks = historyTracks,
                 TrackDtos = historyTrackDtos
             };
