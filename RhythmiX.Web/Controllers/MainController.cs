@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RhythmiX.Service.Downloaders.ImageDownloader;
 using RhythmiX.Service.Queries.Dtos;
 using RhythmiX.Service.Queries.HistoryTrack;
 using RhythmiX.Service.Queries.LikedTrack;
 using RhythmiX.Storage.Entities;
 using RhythmiX.Storage.Repository;
+using RhythmiX.Web.Services;
 using RhythmiX.Web.Services.UserService;
 using RhythmiX.Web.ViewModels;
 
@@ -39,6 +41,8 @@ namespace RhythmiX.Web.Controllers
             if (tracks is null)
                 return View(new List<TrackDto>());
 
+            await ImageDownloader.DownloadImagesAsync(tracks, PathService.DownloadedTracksPath);
+
             IEnumerable<TrackDto> trackDtos = tracks.Select(t => new TrackDto(t));
             TrackViewModel model = new TrackViewModel
             {
@@ -56,6 +60,8 @@ namespace RhythmiX.Web.Controllers
             IEnumerable<Track> tracks = await handler.HandleAsync(query);
             if (tracks is null)
                 return View(new List<TrackDto>());
+
+            await ImageDownloader.DownloadImagesAsync(tracks, PathService.DownloadedTracksPath);
 
             IEnumerable<TrackDto> trackDtos = tracks.Select(t => new TrackDto(t));
             TrackViewModel model = new TrackViewModel
