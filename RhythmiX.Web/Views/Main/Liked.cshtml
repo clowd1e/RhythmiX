@@ -1,4 +1,5 @@
-﻿@using RhythmiX.Web.ViewModels
+﻿@using RhythmiX.Web.Services
+@using RhythmiX.Web.ViewModels
 
 @model TrackViewModel
 
@@ -30,7 +31,9 @@
             @foreach (var track in Model.TrackDtos)
             {
                 <tr class="clickable-row" data-url="@Url.Action("Liked", "MusicPlayer", new { userId = Model.UserId, trackId = track.Id })">
-                    <td><img src="~/images/@track.Image"></td>
+                    <td>
+                        <img src="@Url.Content($"{PathService.DownloadedTracksRazorPath}/{track.TrackName}/{track.Image}")" />
+                    </td>
                     <td><p class="track-name">@track.TrackName</p></td>
                     <td><p class="track-artist">@track.ArtistName</p></td>
                     <td><p class="track-time">@track.Duration</p></td>
