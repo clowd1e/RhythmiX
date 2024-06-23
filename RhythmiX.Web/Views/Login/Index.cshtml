@@ -1,4 +1,6 @@
-﻿@model RhythmiX.Service.Queries.Dtos.UserDto
+﻿@using RhythmiX.Service.Command.User.Login
+
+@model LoginUserCommand
 
 @{
     ViewData["Title"] = "Login";
@@ -13,18 +15,20 @@
         </div>
         <form asp-controller="login" asp-action="index" method="post">
             <div class="input-group">
-                <label for="username">Username</label>
+                <label asp-for="Username">Username</label>
                 <div class="input-icon">
-                    <input type="text" id="username" name="username" placeholder="Type your username">
+                    <input asp-for="Username" type="text" id="username" placeholder="Type your username">
                     <img src="~/images/user_circle.png" class="icon" alt="Username Icon">
                 </div>
+                <span asp-validation-for="Username"></span>
             </div>
             <div class="input-group">
-                <label for="password">Password</label>
+                <label asp-for="Password">Password</label>
                 <div class="input-icon">
-                    <input type="password" id="password" name="password" placeholder="Type your password">
+                    <input asp-for="Password" type="password" id="password" placeholder="Type your password">
                     <img src="~/images/lock_key.png" class="icon" alt="Password Icon">
                 </div>
+                <span asp-validation-for="Password"></span>
             </div>
             <div class="remember-me">
                 <input type="checkbox" id="remember" name="remember">

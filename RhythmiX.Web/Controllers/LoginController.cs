@@ -28,45 +28,37 @@ namespace RhythmiX.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(UserDto model)
+        public async Task<IActionResult> Index(LoginUserCommand command)
         {
-            if (ModelState.IsValid)
+            LoginUserCommandHandler handler = new LoginUserCommandHandler(_userRepository);
+            var result = await handler.HandleAsync(command);
+            if (result.IsSuccess)
             {
-                LoginUserCommand command = new LoginUserCommand(model.Username, model.Password);
-                LoginUserCommandHandler handler = new LoginUserCommandHandler(_userRepository);
-                var result = await handler.HandleAsync(command);
-                if (result.IsSuccess)
+                var claims = new List<Claim>
                 {
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, model.Username)
-                    };
+                    new Claim(ClaimTypes.Name, command.Username)
+                };
 
-                    var claimsIdentity = new ClaimsIdentity(
-                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var claimsIdentity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-                    var authProperties = new AuthenticationProperties();
+                var authProperties = new AuthenticationProperties();
 
-                    await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(claimsIdentity),
-                        authProperties);
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
 
-                    GetUserQuery query = new GetUserQuery();
-                    GetUserQueryHandler userHandler = new GetUserQueryHandler(_userRepository, new UserDto(model.Username, model.Password));
-                    User user = await userHandler.HandleAsync(query);
-                    
-                    _userService.SetUser(user);
+                GetUserQuery query = new GetUserQuery();
+                GetUserQueryHandler userHandler = new GetUserQueryHandler(_userRepository, new UserDto(command.Username, command.Password));
+                User user = await userHandler.HandleAsync(query);
 
-                    return RedirectToAction("Home", "Main");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View(model);
-                }
+                _userService.SetUser(user);
+
+                return RedirectToAction("Home", "Main");
             }
-            return View(model);
+
+            return View(command);
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿@{
+﻿@using RhythmiX.Service.Command.User.Register
+
+@model RegisterUserCommand
+
+@{
     ViewData["Title"] = "Signup";
     ViewData["StyleLink"] = "signup.css";
     Layout = "_AuthzLayout";
@@ -15,40 +19,44 @@
             <img src="~/images/sound_track.png" />
         </div>
 
-        <form class="form">
+        <form class="form" asp-controller="signup" asp-action="index" method="post">
             <div class="input-group">
-                <label for="username">Username</label>
+                <label asp-for="Username">Username</label>
                 <div class="input-icon">
                     <img src="~/images/user_circle.png" class="icon" />
-                    <input type="text" name="username" placeholder="Type your username" />
+                    <input type="text" asp-for="Username" placeholder="Type your username" />
                 </div>
+                <span asp-validation-for="Username"></span>
             </div>
 
             <div class="input-group">
-                <label for="email">Email</label>
+                <label asp-for="Email">Email</label>
                 <div class="input-icon">
                     <img src="~/images/envelope.png" class="icon" />
-                    <input type="email" name="email" placeholder="Type your email" />
+                    <input type="email" asp-for="Email" placeholder="Type your email" />
                 </div>
+                <span asp-validation-for="Email"></span>
             </div>
 
             <div class="input-group">
-                <label for="password">Password</label>
+                <label asp-for="Password">Password</label>
                 <div class="input-icon">
                     <img src="~/images/lock_key.png" class="icon" />
-                    <input type="password" name="password" placeholder="Type your password" />
+                    <input type="password" asp-for="Password" placeholder="Type your password" />
                 </div>
+                <span asp-validation-for="Password"></span>
             </div>
 
             <div class="input-group">
-                <label for="repeat-password">Confirm Password</label>
+                <label asp-for="RepeatPassword">Confirm Password</label>
                 <div class="input-icon">
                     <img src="~/images/lock_key.png" class="icon" />
-                    <input type="password" name="repeat-password" placeholder="Type your password" />
+                    <input type="password" asp-for="RepeatPassword" placeholder="Type your password" />
                 </div>
+                <span asp-validation-for="RepeatPassword"></span>
             </div>
 
-            <button type="submit" class="signup-button" asp-controller="login" asp-action="index">Submit</button>
+            <button type="submit" class="signup-button">Submit</button>
         </form>
     </div>
 </div>
