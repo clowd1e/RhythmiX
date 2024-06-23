@@ -2,6 +2,7 @@
 {
     public class LoginUserCommand : ICommand
     {
+        public LoginUserCommand() { }
         public LoginUserCommand(string username, string password)
         {
             Username = username;
