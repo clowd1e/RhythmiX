@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RhythmiX.Service.Command.HistoryTrack.Add;
 using RhythmiX.Service.Downloaders.TrackDownloader;
 using RhythmiX.Service.Queries.Dtos;
 using RhythmiX.Service.Queries.HistoryTrack;
@@ -41,6 +42,10 @@ namespace RhythmiX.Web.Controllers
                 Tracks = likedTracks,
                 TrackDtos = likedTrackDtos
             };
+
+            AddHistoryTrackCommand command = new AddHistoryTrackCommand(userId, likedTracks.ToList()[currentTrackIndex]);
+            AddHistoryTrackCommandHandler commandHandler = new AddHistoryTrackCommandHandler(_musicRepository);
+            await commandHandler.HandleAsync(command);
 
             return View("Index", model);
         }
