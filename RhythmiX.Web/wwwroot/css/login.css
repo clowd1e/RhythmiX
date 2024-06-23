@@ -94,6 +94,12 @@ body {
     pointer-events: none;
 }
 
+.input-group span {
+    color: #ff0000;
+    font-size: 12px;
+    font-weight: 700;
+}
+
 .remember-me {
     display: flex;
     align-items: center;

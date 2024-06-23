@@ -112,6 +112,12 @@ body {
     pointer-events: none;
 }
 
+.input-group span {
+    color: #ff0000;
+    font-size: 12px;
+    font-weight: 700;
+}
+
 .form {
     margin-top: 10px;
     display: flex;
