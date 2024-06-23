@@ -74,6 +74,10 @@ namespace RhythmiX.Web.Controllers
                 TrackDtos = historyTrackDtos
             };
 
+            AddHistoryTrackCommand command = new AddHistoryTrackCommand(userId, historyTracks.ToList()[currentTrackIndex]);
+            AddHistoryTrackCommandHandler commandHandler = new AddHistoryTrackCommandHandler(_musicRepository);
+            await commandHandler.HandleAsync(command);
+
             return View("Index", model);
         }
     }
