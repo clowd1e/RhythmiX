@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RhythmiX.Storage.Common;
+using RhythmiX.Storage.Entities.ManyToMany;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -30,8 +31,8 @@ namespace RhythmiX.Storage.Entities
         public string Zip { get; set; }
 
 
-        public List<User> LikedUsers { get; set; } = new List<User>();
-        public List<User> HistoryUsers { get; set; } = new List<User>();
+        public List<UserLikedAlbums> UserLikedAlbums { get; set; }
+        public List<UserHistoryAlbums> UserHistoryAlbums { get; set; }
 
         protected Album() { }
         public Album(long apiId, string name, DateOnly releaseDate, long artistId, string artistName, string image, string zip)

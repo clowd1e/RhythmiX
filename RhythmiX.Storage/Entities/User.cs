@@ -1,4 +1,5 @@
 ﻿using RhythmiX.Storage.Common;
+using RhythmiX.Storage.Entities.ManyToMany;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -36,13 +37,13 @@ namespace RhythmiX.Storage.Entities
         public string Email { get; set; }
         
 
-        public List<Track> LikedTracks { get; set; } = new List<Track>();
-        public List<Album> LikedAlbums { get; set; } = new List<Album>();
-        public List<Playlist> LikedPlaylists { get; set; } = new List<Playlist>();
-        public List<Artist> LikedArtists { get; set; } = new List<Artist>();
-        public List<Track> HistoryTracks { get; set; } = new List<Track>();
-        public List<Album> HistoryAlbums { get; set; } = new List<Album>();
-        public List<Playlist> HistoryPlaylists { get; set; } = new List<Playlist>();
-        public List<Artist> HistoryArtists { get; set; } = new List<Artist>(); 
+        public List<UserLikedTracks> UserLikedTracks { get; set; }
+        public List<UserLikedAlbums> UserLikedAlbums { get; set; }
+        public List<UserLikedPlaylists> UserLikedPlaylists { get; set; }
+        public List<UserLikedArtists> UserLikedArtists { get; set; }
+        public List<UserHistoryTracks> UserHistoryTracks { get; set; }
+        public List<UserHistoryAlbums> UserHistoryAlbums { get; set; }
+        public List<UserHistoryPlaylists> UserHistoryPlaylists { get; set; }
+        public List<UserHistoryArtists> UserHistoryArtists { get; set; }
     }
 }
