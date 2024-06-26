@@ -19,7 +19,9 @@ namespace RhythmiX.Service.Queries.Dtos
             TrackName = track.Name;
             ArtistName = track.ArtistName;
             Image = $"{TrackName}.jpg";
-            Duration = $"{track.Duration / SECONDS_IN_MINUTE}:{track.Duration % SECONDS_IN_MINUTE}";
+            string minutes = (track.Duration / SECONDS_IN_MINUTE).ToString();
+            string seconds = (track.Duration % SECONDS_IN_MINUTE).ToString();
+            Duration = $"{minutes}:{(seconds.Length == 1 ? "0" + seconds : seconds)}";
         }
 
         public TrackDto(TrackModel trackModel)
@@ -28,7 +30,9 @@ namespace RhythmiX.Service.Queries.Dtos
             TrackName = trackModel.Name;
             ArtistName = trackModel.ArtistName;
             Image = $"{TrackName}.jpg";
-            Duration = $"{trackModel.Duration / SECONDS_IN_MINUTE}:{trackModel.Duration % SECONDS_IN_MINUTE}";
+            string minutes = (trackModel.Duration / SECONDS_IN_MINUTE).ToString();
+            string seconds = (trackModel.Duration % SECONDS_IN_MINUTE).ToString();
+            Duration = $"{minutes}:{(seconds.Length == 1 ? "0" + seconds : seconds)}";
         }
 
         public TrackDto() { }
