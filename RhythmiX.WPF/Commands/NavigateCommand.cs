@@ -5,18 +5,25 @@ namespace RhythmiX.WPF.Commands
 {
     public class NavigateCommand : CommandBase
     {
-        private readonly NavigationStore navigateStore;
-        private readonly ViewModelBase viewModel;
+        private readonly NavigationStore _navigateStore;
+        private readonly ViewModelBase _viewModel;
+        private readonly MainWindowModel _mainWindowModel;
 
-        public NavigateCommand(NavigationStore navigationStore, ViewModelBase viewModel)
+        public NavigateCommand(NavigationStore navigationStore, ViewModelBase viewModel, MainWindowModel mainWindowModel)
         {
-            this.navigateStore = navigationStore;
-            this.viewModel = viewModel;
+            _navigateStore = navigationStore;
+            _viewModel = viewModel;
+            _mainWindowModel = mainWindowModel;
         }
 
         public override void Execute(object? parameter)
         {
-            navigateStore.CurrentViewModel = viewModel;
+            if (_viewModel is MusicControlViewModel)
+                _mainWindowModel.IsPlayerBarShown = true;
+            else
+                _mainWindowModel.IsPlayerBarShown = false;
+
+            _navigateStore.CurrentViewModel = _viewModel;
         }
     }
 }

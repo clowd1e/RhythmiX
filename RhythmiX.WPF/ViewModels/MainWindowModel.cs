@@ -54,12 +54,12 @@ namespace RhythmiX.WPF.ViewModels
 
         private void InitializeMenuButtons()
         {
-            ChangeToHome = new NavigateCommand(_navigationStore, new HomeViewModel());
-            ChangeToExplore = new NavigateCommand(_navigationStore, new ExploreViewModel());
-            ChangeToLiked = new NavigateCommand(_navigationStore, new LikedViewModel(_user));
-            ChangeToHistory = new NavigateCommand(_navigationStore, new HistoryViewModel(_user, this, _navigationStore));
-            ChangeToPlaylists = new NavigateCommand(_navigationStore, new PlaylistsViewModel());
-            ChangeToAccount = new NavigateCommand(_navigationStore, new AccountViewModel());
+            ChangeToHome = new NavigateCommand(_navigationStore, new HomeViewModel(), this);
+            ChangeToExplore = new NavigateCommand(_navigationStore, new ExploreViewModel(), this);
+            ChangeToLiked = new NavigateCommand(_navigationStore, new LikedViewModel(_user), this);
+            ChangeToHistory = new NavigateCommand(_navigationStore, new HistoryViewModel(_user, this, _navigationStore), this);
+            ChangeToPlaylists = new NavigateCommand(_navigationStore, new PlaylistsViewModel(), this);
+            ChangeToAccount = new NavigateCommand(_navigationStore, new AccountViewModel(), this);
         }
 
         private void OnCurrentViewModelChanged()
