@@ -13,39 +13,43 @@
     </UserControl.Resources>
 
     <Border CornerRadius="0 0 10 0">
-        <StackPanel Margin="40 0 40 0">
-            <StackPanel Margin="0 20 0 25"
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+              VerticalScrollBarVisibility="auto">
+            <StackPanel Margin="40 0 40 0">
+                <StackPanel Margin="0 20 0 25"
                     Orientation="Horizontal">
-                <Image Width="150"
+                    <Image Width="150"
                    Height="150"
                    Source="/../Images/liked_logo.png" />
-                <StackPanel Margin="18 0 0 0">
-                    <TextBlock Style="{StaticResource ViewBoldText}"
+                    <StackPanel Margin="18 0 0 0">
+                        <TextBlock Style="{StaticResource ViewBoldText}"
                         Text="Liked music"/>
-                    <TextBlock Style="{StaticResource ViewRegularText}"
+                        <TextBlock Style="{StaticResource ViewRegularText}"
                         Text="{Binding CountText}"/>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-            <Grid>
-                <loadingSpiner:LoadingSpinner
+                <Grid>
+                    <loadingSpiner:LoadingSpinner
+                    VerticalAlignment="Center"
                     Diameter="50"
                     Thickness="3"
                     Color="{StaticResource CommonWhite}"
                     IsLoading="{Binding IsLoading}"/>
 
-                <Grid Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
-                    <StackPanel Visibility="{Binding HasTracks, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
-                        <TextBlock Style="{StaticResource ViewExtraBoldText}"
+                    <Grid Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                        <StackPanel Visibility="{Binding HasTracks, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                            <TextBlock Style="{StaticResource ViewExtraBoldText}"
                             Text="There is nothing here yet" />
-                        <TextBlock Style="{StaticResource ViewExtraBoldText}"
+                            <TextBlock Style="{StaticResource ViewExtraBoldText}"
                             Text="Check out some songs in Explore tab" />
-                    </StackPanel>
-                    
-                    <components:LikedHistoryTrackLayoutBox 
+                        </StackPanel>
+
+                        <components:LikedHistoryTrackLayoutBox 
                         Visibility="{Binding HasTracks, Converter={StaticResource BooleanToVisibilityConverter}}"
                         ItemSource="{Binding LikedTrackDtos}" />
+                    </Grid>
                 </Grid>
-            </Grid>
-        </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Border>
 </UserControl>
