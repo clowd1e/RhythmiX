@@ -28,5 +28,13 @@ namespace RhythmiX.WPF
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
+
+        private void MusicPlayerBar_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (musicPlayerBar.Visibility == Visibility.Visible)
+                accountButton.Margin = new Thickness(0, 125, 0, 0);
+            else
+                accountButton.Margin = new Thickness(0, 174, 0, 0);
+        }
     }
 }

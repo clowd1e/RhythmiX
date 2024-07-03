@@ -67,7 +67,7 @@
 
                         <components:MenuButtonComponent Command="{Binding ChangeToPlaylists}" Text="Playlists" Icon="playlist.png" Margin="0 17 0 0" />
 
-                        <components:MenuButtonComponent Command="{Binding ChangeToAccount}" Text="Account" Icon="user_circle_main.png" Margin="0 174 0 0" />
+                        <components:MenuButtonComponent Command="{Binding ChangeToAccount}" Text="Account" x:Name="accountButton" Icon="user_circle_main.png" Margin="0 174 0 0" />
                     </StackPanel>
                 </Border>
 
@@ -104,7 +104,9 @@
             </Grid>
 
             <!--Place for music player-->
-            <components:MusicPlayerBar Visibility="{Binding IsPlayerBarShown, Converter={StaticResource BooleanToVisibilityConverter}}"
+            <components:MusicPlayerBar x:Name="musicPlayerBar"
+                                       IsVisibleChanged="MusicPlayerBar_IsVisibleChanged"
+                                       Visibility="{Binding IsPlayerBarShown, Converter={StaticResource BooleanToVisibilityConverter}}"
                                        VerticalAlignment="Bottom" />
         </Grid>
     </Border>
